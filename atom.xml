@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://preszang.github.io</id>
     <title>霜序五</title>
-    <updated>2021-02-08T08:53:39.690Z</updated>
+    <updated>2021-02-08T08:57:48.927Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://preszang.github.io"/>
     <link rel="self" href="https://preszang.github.io/atom.xml"/>
@@ -10,6 +10,34 @@
     <logo>https://preszang.github.io/images/avatar.png</logo>
     <icon>https://preszang.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 霜序五</rights>
+    <entry>
+        <title type="html"><![CDATA[【贯口】地理图]]></title>
+        <id>https://preszang.github.io/post/CoqzCyRqw/</id>
+        <link href="https://preszang.github.io/post/CoqzCyRqw/">
+        </link>
+        <updated>2021-02-08T08:57:20.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[一些常用的web测试方法]]></title>
+        <id>https://preszang.github.io/post/3W_lw6qiO/</id>
+        <link href="https://preszang.github.io/post/3W_lw6qiO/">
+        </link>
+        <updated>2021-02-08T08:56:17.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[一些常用的APP测试方法]]></title>
+        <id>https://preszang.github.io/post/ob8y4p_m4/</id>
+        <link href="https://preszang.github.io/post/ob8y4p_m4/">
+        </link>
+        <updated>2021-02-08T08:55:37.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[一些常用的查询功能测试方法]]></title>
+        <id>https://preszang.github.io/post/gERkuO2Or/</id>
+        <link href="https://preszang.github.io/post/gERkuO2Or/">
+        </link>
+        <updated>2021-02-08T08:55:09.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Python Faker库常用操作 函数]]></title>
         <id>https://preszang.github.io/post/K6Iq63FrK/</id>
@@ -51,33 +79,5 @@
         <link href="https://preszang.github.io/post/jyh3VyyYn/">
         </link>
         <updated>2021-02-08T08:48:36.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[selenium之破解腾讯滑块验证码]]></title>
-        <id>https://preszang.github.io/post/VseyNxd0Y/</id>
-        <link href="https://preszang.github.io/post/VseyNxd0Y/">
-        </link>
-        <updated>2021-02-08T08:47:34.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[2020 年最热的 Python 库年度 Top 10 ]]></title>
-        <id>https://preszang.github.io/post/eeYWta-p7/</id>
-        <link href="https://preszang.github.io/post/eeYWta-p7/">
-        </link>
-        <updated>2021-02-08T08:46:49.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[python+selenium自动化UI测试基本教程]]></title>
-        <id>https://preszang.github.io/post/XfbZQSvJ5/</id>
-        <link href="https://preszang.github.io/post/XfbZQSvJ5/">
-        </link>
-        <updated>2021-02-08T08:37:32.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[pytest接口测试基本教程]]></title>
-        <id>https://preszang.github.io/post/3oHikQsbE/</id>
-        <link href="https://preszang.github.io/post/3oHikQsbE/">
-        </link>
-        <updated>2021-02-08T08:36:46.000Z</updated>
     </entry>
 </feed>

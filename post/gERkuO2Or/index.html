@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>解决  No module named &#39;pip&#39; | 霜序五</title>
+<title>一些常用的查询功能测试方法 | 霜序五</title>
 
 <link rel="shortcut icon" href="https://preszang.github.io/favicon.ico?v=1612774666345">
 
@@ -202,47 +202,135 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    解决  No module named &#39;pip&#39;
+                    一些常用的查询功能测试方法
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
                         · 2021-02-08 ·
                     </time>
                     
-                        <a href="https://preszang.github.io/tag/python/" class="post-tags">
-                            # python
+                        <a href="https://preszang.github.io/tag/ruan-jian-ce-shi/" class="post-tags">
+                            # 软件测试
                         </a>
                     
                 </div>
                 <div class="post-content">
-                    <h4 id="问题再现">问题再现</h4>
-<p>今天 安装其它python包时，莫名报了这个错</p>
-<pre><code class="language-cmd">Traceback (most recent call last):
-  File &quot;d:\program files\python38\lib\runpy.py&quot;, line 194, in _run_module_as_main
-    return _run_code(code, main_globals, None,
-  File &quot;d:\program files\python38\lib\runpy.py&quot;, line 87, in _run_code
-    exec(code, run_globals)
-  File &quot;D:\Program Files\python38\Scripts\pip.exe\__main__.py&quot;, line 5, in &lt;module&gt;
-ModuleNotFoundError: No module named 'pip'
-</code></pre>
-<h4 id="解决方案">解决方案</h4>
+                    <blockquote>
+<p>记录了一些常用的查询功能测试方法</p>
+</blockquote>
+<h2 id="一-测试方法">一、测试方法</h2>
+<p>查询类型包含单个查询、组合查询、输入框输入查询、时间控件查询四种场景：</p>
+<h4 id="1-功能实现">1、功能实现</h4>
+<ul>
+<li>（1）支持模糊查询搜索</li>
+<li>（2）时间控件查询</li>
+<li>（3）默认空查询</li>
+<li>（4）查询后默认清空输入框记录（根据业务需求）</li>
+<li>（5）输入系统中不存在与之匹配的条件查询</li>
+</ul>
+<h4 id="2-组合查询">2、组合查询</h4>
+<ul>
+<li>（1）单个查询条件。
+<blockquote>
+<p>单个条件查询切换以及单个查询、<br>
+组合查询来回切换的查询结果与错误提示</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>（2）组合查询条件。（正交试验法）</li>
+</ul>
+<h4 id="3-时间控件查询">3、时间控件查询</h4>
+<ul>
+<li>起始时间、结束时间</li>
+</ul>
+<h2 id="二-主要测试点">二、主要测试点</h2>
+<ul>
+<li>
+<p>（1）默认查询</p>
+<blockquote>
+<ul>
+<li>界面 UI 规范性（输入条件与输出结果页面）</li>
+<li>显示符合条件的数据</li>
+<li>校对数据与页码是否匹配、总数目、每页数据条数</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>（2）正常查询功能</p>
+<blockquote>
+<ul>
+<li>输入符合规则的查询条件，得到查询结果验证。</li>
+<li>支持的输入字符类型、字符长度、含空格等文本域条件逐个验证<br>
+重置条件二次查询</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>（3）边界值查询</p>
+<blockquote>
+<ul>
+<li>（等价类、边界值综合--字符长度）</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>（4）异常查询与相关提示</p>
+<blockquote>
+<ul>
+<li>非法字符控制逐个验证（不符合输入规则）</li>
+<li>字符长度超长、过短（不符合输入规则）</li>
+<li>错误查询的提示信息<br>
+（5）模糊查询</li>
+<li>单个字符、多个字符、特殊字符、英文大小写搜索查询</li>
+<li>超长字符查询</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>（6）查询后是否清空查询记录</p>
+</li>
+<li>
+<p>（7）空查询</p>
+<blockquote>
+<ul>
+<li>查询结果为空或者为全部数据。</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>（8）组合查询</p>
+<blockquote>
+<ul>
+<li>多种不同组合条件的查询与查询结果验证。</li>
+<li>组合查询不符合要求的错误提示。</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>（9）时间查询</p>
+<blockquote>
+<ul>
+<li>起始时间与结束时间的逻辑判断</li>
+<li>起始时间与结束时间内的查询结果验证</li>
+<li>起止时间边界值校验</li>
+<li>大月、小月、闰月、跨年、跨月、跨日查询、日期溢出查询</li>
+<li>起止时间溢出的查询控制<br>
+（10）数据库验证</li>
+<li>查询条件、输出结果、数据库查询验证三者必须一致。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h4 id="容易遗漏的点">容易遗漏的点</h4>
 <ol>
-<li><code>python -m ensurepip</code></li>
-<li><code>python -m pip install --upgrade pip</code></li>
-<li>若第二步 更新太慢可更换软件源 <code>python -m pip install --upgrade pip -i https://pypi.tuna.tsinghua.edu.cn/simple/</code></li>
-<li>问题解决</li>
+<li>必填项的星号提示方向不一致问题</li>
+<li>代码首位是 0 的情况</li>
+<li>面包屑跳转</li>
+<li>面包屑与一二级导航的统一</li>
+<li>所有提示框中英文符号合理显示</li>
+<li>列表中，一些宽度要固定</li>
 </ol>
-<pre><code class="language-cmd">  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/5a/4a/39400ff9b36e719bdf8f31c99fe1fa7842a42fa77432e584f707a5080063/pip-20.2.2-py2.py3-none-any.whl (1.5MB)
-     |████████████████████████████████| 1.5MB 130kB/s
-Installing collected packages: pip
-  Found existing installation: pip 19.2.3
-    Uninstalling pip-19.2.3:
-      Successfully uninstalled pip-19.2.3
-Successfully installed pip-20.2.2
-</code></pre>
-<pre><code class="language-cmd">pip -V
-pip 20.2.2 from d:\program files\python38\lib\site-packages\pip (python 3
-</code></pre>
 
                 </div>
             </article>
@@ -251,8 +339,8 @@ pip 20.2.2 from d:\program files\python38\lib\site-packages\pip (python 3
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://preszang.github.io/post/jyh3VyyYn/" class="post-title gt-a-link">
-                    在pypi上发布python包
+                <a href="https://preszang.github.io/post/K6Iq63FrK/" class="post-title gt-a-link">
+                    Python Faker库常用操作 函数
                 </a>
             </div>
         

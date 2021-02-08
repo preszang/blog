@@ -1,0 +1,574 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>一些常用的APP测试方法 | 霜序五</title>
+
+<link rel="shortcut icon" href="https://preszang.github.io/favicon.ico?v=1612774666345">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://preszang.github.io/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<style>
+    hr {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border: 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <style>
+    /* 导航栏样式 */
+    .navbar {
+        position: relative;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -ms-flex-align: center;
+        align-items: center;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        padding: 0.5rem 1rem;
+    }
+
+    .navbar-brand {
+        display: inline-block;
+        padding-top: 0.3125rem;
+        padding-bottom: 0.3125rem;
+        margin-right: 1rem;
+        font-size: 1.25rem;
+        line-height: inherit;
+        white-space: nowrap;
+    }
+
+    .navbar-brand:hover,
+    .navbar-brand:focus {
+        text-decoration: none;
+    }
+
+    .navbar-nav {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+    }
+
+    .navbar-collapse {
+        -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+    .navbar-toggler {
+        padding: 0.25rem 0.75rem;
+        font-size: 1.25rem;
+        line-height: 1;
+        background-color: transparent;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
+    }
+
+    .navbar-toggler:hover,
+    .navbar-toggler:focus {
+        text-decoration: none;
+    }
+
+    @media (min-width: 992px) {
+        .navbar-expand-lg {
+            -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
+            -ms-flex-pack: start;
+            justify-content: flex-start;
+        }
+
+        .navbar-expand-lg .navbar-nav {
+            -ms-flex-direction: row;
+            flex-direction: row;
+        }
+
+        .navbar-expand-lg .navbar-collapse {
+            display: -ms-flexbox !important;
+            display: flex !important;
+            -ms-flex-preferred-size: auto;
+            flex-basis: auto;
+        }
+
+        .navbar-expand-lg .navbar-toggler {
+            display: none;
+        }
+    }
+
+    @media (max-width: 991px) {
+        #navbarSupportedContent {
+            display: none;
+        }
+    }
+</style>
+<nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            霜序五
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1612774666345"
+                action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = function () {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    一些常用的APP测试方法
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2021-02-08 ·
+                    </time>
+                    
+                        <a href="https://preszang.github.io/tag/ruan-jian-ce-shi/" class="post-tags">
+                            # 软件测试
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <blockquote>
+<p>记录了一些常用的 app 测试方法</p>
+</blockquote>
+<h3 id="一-安全测试">一、安全测试</h3>
+<h4 id="1软件权限">1.软件权限</h4>
+<ul>
+<li>1）扣费风险：包括短信、拨打电话、连接网络等。</li>
+<li>2）隐私泄露风险：包括访问手机信息、访问联系人信息等。</li>
+<li>3）对 App 的输入有效性校验、认证、授权、数据加密等方面进行检测</li>
+<li>4）限制/允许使用手机功能接入互联网</li>
+<li>5）限制/允许使用手机发送接收信息功能</li>
+<li>6）限制或使用本地连接</li>
+<li>7）限制/允许使用手机拍照或录音</li>
+<li>8）限制/允许使用手机读取用户数据</li>
+<li>9）限制/允许使用手机写入用户数据</li>
+<li>10）限制/允许应用程序来注册自动启动应用程序</li>
+</ul>
+<h4 id="2安装与卸载安全性">2.安装与卸载安全性</h4>
+<ul>
+<li>1）应用程序应能正确安装到设备驱动程序上</li>
+<li>2）能够在安装设备驱动程序上找到应用程序的相应图标</li>
+<li>3）安装路径应能指定</li>
+<li>4）没有用户的允许，应用程序不能预先设定自动启动</li>
+<li>5）卸载是否安全，其安装进去的文件是否全部卸载</li>
+<li>6）卸载用户使用过程中产生的文件是否有提示</li>
+<li>7）其修改的配置信息是否复原</li>
+<li>8）卸载是否影响其他软件的功能</li>
+<li>9）卸载应该移除所有的文件</li>
+</ul>
+<h4 id="3数据安全性">3.数据安全性</h4>
+<ul>
+<li>1）当将密码或其它的敏感数据输入到应用程序时，其不会被存储在设备中，同时密码也不会被解码。</li>
+<li>2）输入的密码将不以明文形式进行显示。</li>
+<li>3）密码、信用卡明细或其他的敏感数据将不被存储在它们预输入的位置上。</li>
+<li>4）不同的应用程序的个人身份证或密码长度必须至少在 4-8 个数字长度之间。</li>
+<li>5）当应用程序处理信用卡明细或其它的敏感数据时，不以明文形式将数据写到其他单独的文件或者临时文件中。以防止应用程序异常终止而又没有删除它的临时文件，文件可能遭受入侵者的袭击，然后读取这些数据信息。</li>
+<li>6）党建敏感数据输入到应用程序时，其不会被存储在设备中。</li>
+<li>7）应用程序应考虑或者虚拟机器产生的用户提示信息或安全警告</li>
+<li>8）应用程序不能忽略系统或者虚拟机器产生的用户提示信息或安全警告，更不能在安全警告显示前，利用显示误导信息欺骗用户，应用程序不应该模拟进行安全警告误导用户。</li>
+<li>9）在数据删除之前，应用程序应当通知用户或者应用程序提供一个“取消”命令的操作。</li>
+<li>10）应用程序应当能够处理当不允许应用软件连接到个人信息管理的情况。</li>
+<li>11）当进行读或写用户信息操作时，应用程序将会向用户发送一个操作错误的提示信息。</li>
+<li>12）在没有用户明确许可的前提下不损坏删除个人信息管理应用程序中的任何内容。</li>
+<li>13）如果数据库中重要的数据正要被重写，应及时告知用户。</li>
+<li>14）能合理的处理出现的错误。</li>
+<li>15）意外情况下应提示用户。</li>
+</ul>
+<h4 id="4通讯安全性">4.通讯安全性</h4>
+<ul>
+<li>1）在运行软件过程中，如果有来电、SMS、蓝牙等通讯或充电时，是否能暂停程序，优先处理通信，并在处理完毕后能正常恢复软件，继续其原来的功能。</li>
+<li>2）当创立连接时，应用程序能够处理因为网络连接中断，进而告诉用户连接中断的情况。</li>
+<li>3）应能处理通讯延时或中断。</li>
+<li>4）应用程序将保持工作到通讯超时，进而给用户一个错误信息指示有链接错误。</li>
+<li>5）应能处理网络异常和及时将异常情况通报用户。</li>
+<li>6）应用程序关闭网络连接不再使用时应及时关闭，断开。</li>
+</ul>
+<h4 id="5人机接口安全测试">5.人机接口安全测试</h4>
+<ul>
+<li>1）返回菜单应总保持可用。</li>
+<li>2）命令有优先权顺序。</li>
+<li>3）声音的设置不影响使用程序的功能。</li>
+<li>4）声音的设置不影响应用程序的功能</li>
+<li>5）应用程序必须能够处理不可预知的用户操作，例如错误的操作和同时按下多个键。</li>
+</ul>
+<h3 id="二-安装-卸载测试">二、安装、卸载测试</h3>
+<p>验证 App 是否能正确安装、运行、卸载、以及操作过程和操作前后对系统资源的使用情况</p>
+<h4 id="1安装">1.安装</h4>
+<ul>
+<li>1）软件安装后是否能够正常运行，安装后的文件夹以及文件是否写到了指定的目录里。</li>
+<li>2）软件安装各个选项的组合是否符合概要设计说明。</li>
+<li>3）软件安装向导的 UI 测试</li>
+<li>4）安装后没有生成多余的目录结构和文件。</li>
+</ul>
+<h4 id="2卸载">2.卸载</h4>
+<ul>
+<li>1）测试系统直接卸载程序是否有提示信息。</li>
+<li>2）测试卸载后文件是否全部删除所有的安装文件夹。</li>
+<li>3）卸载是否支持取消功能，单击取消后软件卸载的情况。</li>
+<li>4）系统直接卸载 UI 测试，是否有卸载状态进度条提示。</li>
+</ul>
+<h3 id="三-ui-测试">三、UI 测试</h3>
+<ul>
+<li>1）测试用户界面（如菜单、对话框、窗口和其他控件）布局、风格是否满足要求、文字是否正确、页面是否美观、文字、图片组合是否完美、操作是否友好等。</li>
+<li>2）UI 测试的目标是确保用户界面会通过测试对象的功能来为用户提供相应的访问或浏览功能。确保用户界面符合公司或行业的标准。包括用户友好性、人性化、易操作性测试。</li>
+</ul>
+<h4 id="1导航测试">1.导航测试</h4>
+<ul>
+<li>1）按钮、对话框、列表和窗口等；或在不同的连接页面之间需要导航。</li>
+<li>2）是否易于导航，导航是否直观。</li>
+<li>3）是否需要搜索引擎。</li>
+<li>4）导航帮助是否准确直观。</li>
+<li>5）导航与页面结构、菜单、连接页面的风格是否一致。</li>
+</ul>
+<h4 id="2图形测试">2.图形测试</h4>
+<ul>
+<li>1）横向比较，各控件操作方式统一。</li>
+<li>2）自适应界面设计，内容根据窗口大小自适应。</li>
+<li>3）页面标签风格是否统一。</li>
+<li>4）页面是否美观。</li>
+<li>5）页面的图片应有其实际意义而要求整体有序美观。</li>
+</ul>
+<h4 id="3内容测试">3.内容测试</h4>
+<ul>
+<li>1）输入框说明文字的内容与系统功能是否一致。</li>
+<li>2）文字长度是否加以限制。</li>
+<li>3）文字内容是否表意不明。</li>
+<li>4）是否有错别字。</li>
+<li>5）信息是否为中文显示。</li>
+</ul>
+<h3 id="四-功能测试">四、功能测试</h3>
+<p>根据软件说明或用户需求验证 App 的各个功能实现，采用如下方法实现并评估功能测试过程：</p>
+<ul>
+<li>1）采用时间、地点、对象、行为和背景五元素或业务分析等方法分析、提炼 App 的用户使用场景，对比说明或需求，整理出内在、外在及非功能直接相关的需求，构建测试点，并明确测试标准。</li>
+<li>2）根据被测功能点的特性列出相应类型的测试用例对其进行覆盖，如：设计输入的地方需要考虑等价、边界、负面、异常、非法、场景回滚、关联测试等测试类型对其进行覆盖。</li>
+<li>3）在测试实现的各个阶段跟踪测试实现与需求输入的覆盖情况，及时修正业务或需求理解错误。</li>
+</ul>
+<h4 id="1运行">1.运行</h4>
+<ul>
+<li>
+<p>1）App 安装完成后的试运行，可正常打开软件。</p>
+</li>
+<li>
+<p>2）App 打开测试，是否有加载状态进度提示。</p>
+</li>
+<li>
+<p>3）App 页面间的切换是否流畅，逻辑是否正确。</p>
+</li>
+<li>
+<p>4）注册</p>
+<blockquote>
+<ul>
+<li>同表单编辑页面</li>
+<li>用户名密码长度</li>
+<li>注册后的提示页面</li>
+<li>前台注册页面和后台的管理页面数据是否一致</li>
+<li>注册后，在后台管理中页面提示</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>5）登录</p>
+<blockquote>
+<ul>
+<li>使用合法的用户登录系统</li>
+<li>系统是否允许多次非法的登录，是否有次数限制</li>
+<li>使用已经登录的账号登录系统是否正确处理</li>
+<li>用户名、口令（密码）错误或漏填时能否登陆</li>
+<li>删除或修改后的用户，原用户名登陆</li>
+<li>不输入用户口令和重复点“确定/取消”按钮，是否允许登录</li>
+<li>登陆后，页面中登录信息</li>
+<li>页面中有注销按钮</li>
+<li>登录超时的处理</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h4 id="2应用的前后台切换">2.应用的前后台切换</h4>
+<ul>
+<li>1）App 切换到后台，再回到 App，检查是否停留在上一次操作界面。</li>
+<li>2）App 切换到后台，再回到 App，检查功能及应用状态是否正常。</li>
+<li>3）App 切换到后台，再回到前台时，注意程序是否崩溃，功能状态是否正常，尤其是对于从后台切换回前台数据有自动更新的时候。</li>
+<li>4）手机锁屏解锁后进入 App 注意是否会崩溃，功能状态是否正常，尤其是对于从后台切换回前台数据有自动更新的时候。</li>
+<li>5）当 App 使用过程中有电话进来中断后再切换到 App，功能状态是否正常。</li>
+<li>6）当杀掉 App 进城后，再开启 App，App 能否正常启动。</li>
+<li>7）出现必须处理的提示框后，切换到后台，再切换回来，检查提示框是否还存在，有时候会出现应用自动跳过提示框的缺陷。</li>
+<li>8）对于有数据交换的页面，每个页面都必须要进行前后台切换、锁屏的测试，这种页面最容易出现崩溃。</li>
+</ul>
+<h4 id="3免登陆">3.免登陆</h4>
+<p>很多应用提供免登陆功能，当应用开启时自动以上一次登录的用户身份来使用 App。</p>
+<ul>
+<li>1）考虑无网络情况时能否正常进入免登录状态。</li>
+<li>2）切换用户登陆后，要校验用户登录信息以及数据内容是否相应更新，确保原用户退出。</li>
+<li>3）根据 Mtop 的现有规则，一个账户只允许登陆一台机器。所以，需要检查一个账户登录多台手机的情况。原手机里的用户需要被退出，给出友好提示。</li>
+<li>4）App 切换到后台，在切换回前台的校验。</li>
+<li>5）切换到后台，再切换回到前台的测试。</li>
+<li>6）密码更换后，检查有数据交换时是否进行了有效身份的校验。</li>
+<li>7）支持自动登录的应用在进行数据校验时，检查系统是否能自动登录成功并且数据操作无误。</li>
+<li>8）检查用户主动退出登录后，下次启动 App，应停留在登录界面。</li>
+</ul>
+<h4 id="4离线浏览">4.离线浏览</h4>
+<p>很多应用会支持离线浏览，即在本地客户端会缓存一部分数据供用户查看。</p>
+<ul>
+<li>1）在无线网络情况可以浏览本地数据。</li>
+<li>2）退出 App 再开启 App 时能正常浏览。</li>
+<li>3）切换到后台再回到前台可以正常浏览。</li>
+<li>4）锁屏后再解锁回到应用前台可以正常浏览。</li>
+<li>5）在对服务器段的数据有更新时回给予离线的相应提示。</li>
+</ul>
+<h4 id="5app-更新">5.App 更新</h4>
+<ul>
+<li>1）当客户端有新版本时，有更新提示。</li>
+<li>2）当版本为非强制升级版时，用户可以取消更新，老版本能正常使用。用户在下次启动 App 时，仍出现更新提示。</li>
+<li>3）当版本为强制升级版时，但给出强制更新后用户没有做更新时，退出客户端。下次启动 App 时，仍出现强制升级提示。</li>
+<li>4）当客户端有新版本时，在本地不删除客户端的情况下，直接更新检查是否能正常更新。</li>
+<li>5）当客户端有新版本时，在本地不删除客户端的情况下，检查更新后的客户端功能是否是新版本。</li>
+<li>6）当客户端有新版本时，在本地不删除客户端的情况下，检查资源同名文件如图片是否能正常更新成最新版本。如果以上无法更新成功的，也都属于缺陷。</li>
+</ul>
+<h4 id="6定位-照相机服务">6.定位、照相机服务</h4>
+<ul>
+<li>1）App 有用到相机，定位服务时，需要注意系统版本差异。</li>
+<li>2）有用到照相机服务的地方，需要进行前后台的切换测试，检查应用是否正常。</li>
+<li>3）测试照相机服务时，需要采用真机进行测试。</li>
+</ul>
+<h4 id="7push-测试">7.PUSH 测试</h4>
+<ul>
+<li>1）检查 Push 消息是否按照指定的业务规则发送。</li>
+<li>2）检查不接收推送消息时，用户不会在接收到 Push 消息。</li>
+<li>3）如果用户设置了免打扰的时间段，检查在免打扰时间段内，用户接收不到 Push。在非免打扰时间段内，用户能正常收到 Push。</li>
+<li>4）当 Push 消息是针对登录用户的时候，需要检查收到的 Push 与用户身份是否相符，没有错误的将其他人的消息推送过来。一般情况下，只对手机上最后一个登录用户进行消息推送。</li>
+<li>5）测试 Push 时，需要采用真机进行测试。</li>
+</ul>
+<h3 id="五-性能测试">五、性能测试</h3>
+<ul>
+<li>
+<p>1）响应能力测试：测试 App 中的各类操作是否满足用户响应时间要求。</p>
+<blockquote>
+<ul>
+<li>App 安装、卸载的响应时间</li>
+<li>App 各类功能性操作的响应时间</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>2）压力测试，反复/长期操作下，系统资源是否占用异常。</p>
+<blockquote>
+<ul>
+<li>App 反复进行安装卸载，检查系统资源是否正常</li>
+<li>其他功能反复进行操作，检查系统资源是否正常</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h3 id="六-交叉事件测试">六、交叉事件测试</h3>
+<p>针对智能终端应用的服务等级划分方式及实时特性所提出的测试方法。</p>
+<p>交叉测试又叫事件或冲突测试，是指一个功能正在执行过程中，同时另外一个事件或操作对该过程进行干扰的测试。</p>
+<p>如：App 在前/后台运行状态时与来电、文件下载、音乐收听等关键运用的交互情况测试等。</p>
+<p>交叉事件测试非常重要，能发现很多应用中潜在的性能问题。</p>
+<ul>
+<li>1）多个 App 同时运行是否影响正常功能。</li>
+<li>2）App 运行时前/后台切换是否影响正常功能。</li>
+<li>3）App 运行时拨打/接听电话。</li>
+<li>4）App 运行时发送/接收信息。</li>
+<li>5）App 运行时发送/收取邮件。</li>
+<li>6）App 运行时浏览网络。</li>
+<li>7）App 运行时使用蓝牙传送/接收数据。</li>
+<li>8）App 运行时使用相机、计算器等手机自带设备。</li>
+</ul>
+<h3 id="七-兼容测试">七、兼容测试</h3>
+<p>主要测试内部和外部兼容性</p>
+<ul>
+<li>
+<p>1）与本地及主流 App 是否兼容</p>
+</li>
+<li>
+<p>2）与各种设备是否兼容，若有跨系统支持则需要检验是否在个系统下，各种行为是否一致。</p>
+<blockquote>
+<ul>
+<li>不同手机屏幕分标率的兼容性</li>
+<li>不同手机品牌的兼容性</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h3 id="八-回归测试">八、回归测试</h3>
+<ul>
+<li>1）Bug 修复后且在新版本发布后需要进行回归测试。</li>
+<li>2）Bug 修复后的回归测试在交付前、要进行大量用例的回归测试。</li>
+</ul>
+<h3 id="九-用户体验测试">九、用户体验测试</h3>
+<p>以主观的普通消费者的角度去感知产品或服务的舒适、有用、易用、友好亲切程度。通过不同个体、独立空间和非经验的统计复用方式去有效评价产品的体验特性，提出修改意见提升产品的潜在客户满意度。</p>
+<ul>
+<li>1）是否有空数据界面设计，引导用户去执行操作。</li>
+<li>2）是否滥用用户引导。</li>
+<li>3）是否有不可点击的效果，如：你的按钮此时处于不可用状态，那么一定要灰掉，或者拿掉按钮，否则会给用户误导。</li>
+<li>4）菜单层次是否太深。</li>
+<li>5）交互流程分支是否太多。</li>
+<li>6）相关的选项是否离的很远。</li>
+<li>7）一次是否载入太多的数据。</li>
+<li>8）界面中按钮可点击范围是否适中。</li>
+<li>9）标签页是否跟内容没有从属关系，当切换标签的时候，内容跟着切换。</li>
+<li>10）操作应该有主次从属关系。</li>
+<li>11）是否定义 Back 的逻辑。涉及软硬件交互时，Back 键应具体定义。</li>
+<li>12）是否有横屏模式的设计，应用一般需要支持横屏模式，即自适应设计。</li>
+</ul>
+<h3 id="十-手势操作测试">十、手势操作测试</h3>
+<ul>
+<li>1）手机开锁屏对运行中的 App 的影响。</li>
+<li>2）运行中的 App 前后台切换的影响。</li>
+<li>3）多个运行中的 App 的切换。</li>
+<li>4）App 运行时关机。</li>
+<li>5）App 运行时重启系统。</li>
+<li>6）App 运行时充电</li>
+<li>7）App 运行时 Kill 掉进程再打开</li>
+</ul>
+<h3 id="十一-客户端数据库测试">十一、客户端数据库测试</h3>
+<ul>
+<li>1）一般的增、删、改、查测试。</li>
+<li>2）当表不存在时是否能自动创建，当数据库表被删除后能否再自建，数据是否还能自动从服务器中获取回来并保存。</li>
+<li>3）在业务需要从服务器端取回数据保存到客户端的时候，客户端能否将数据保存到本地。</li>
+<li>4）当业务需要从客户端取数据时，检查客户端数据存在时，App 数据是否能自动从客户端数据中取出，还是仍然会从服务器端获取？检查客户端数据不存在时，App 数据能否自动从服务器端获取到并保存到服务器端。</li>
+<li>5）当业务对数据进行了修改、删除后，客户端和服务器端是否会有相应的更新。</li>
+</ul>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://preszang.github.io/post/gERkuO2Or/" class="post-title gt-a-link">
+                    一些常用的查询功能测试方法
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">啦啦啦啦啦啦啦啦啦啦啦啦</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        是谁来自山川湖海，却囿于昼夜、厨房与爱。
+    </div>
+
+<!--    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://preszang.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div> -->
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>
