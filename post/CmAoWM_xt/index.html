@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>关于 | 霜序五</title>
+<title>解决  No module named &#39;pip&#39; | 霜序五</title>
 
 <link rel="shortcut icon" href="https://preszang.github.io/favicon.ico?v=1612774214992">
 
@@ -202,28 +202,59 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    关于
+                    解决  No module named &#39;pip&#39;
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2019-01-25 ·
+                        · 2021-02-08 ·
                     </time>
+                    
+                        <a href="https://preszang.github.io/tag/python/" class="post-tags">
+                            # python
+                        </a>
                     
                 </div>
                 <div class="post-content">
-                    <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<h2 id="联系我呀">📬 联系我呀</h2>
-<!-- more -->
+                    <h4 id="问题再现">问题再现</h4>
+<p>今天 安装其它python包时，莫名报了这个错</p>
+<pre><code class="language-cmd">Traceback (most recent call last):
+  File &quot;d:\program files\python38\lib\runpy.py&quot;, line 194, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File &quot;d:\program files\python38\lib\runpy.py&quot;, line 87, in _run_code
+    exec(code, run_globals)
+  File &quot;D:\Program Files\python38\Scripts\pip.exe\__main__.py&quot;, line 5, in &lt;module&gt;
+ModuleNotFoundError: No module named 'pip'
+</code></pre>
+<h4 id="解决方案">解决方案</h4>
+<ol>
+<li><code>python -m ensurepip</code></li>
+<li><code>python -m pip install --upgrade pip</code></li>
+<li>若第二步 更新太慢可更换软件源 <code>python -m pip install --upgrade pip -i https://pypi.tuna.tsinghua.edu.cn/simple/</code></li>
+<li>问题解决</li>
+</ol>
+<pre><code class="language-cmd">  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/5a/4a/39400ff9b36e719bdf8f31c99fe1fa7842a42fa77432e584f707a5080063/pip-20.2.2-py2.py3-none-any.whl (1.5MB)
+     |████████████████████████████████| 1.5MB 130kB/s
+Installing collected packages: pip
+  Found existing installation: pip 19.2.3
+    Uninstalling pip-19.2.3:
+      Successfully uninstalled pip-19.2.3
+Successfully installed pip-20.2.2
+</code></pre>
+<pre><code class="language-cmd">pip -V
+pip 20.2.2 from d:\program files\python38\lib\site-packages\pip (python 3
+</code></pre>
 
                 </div>
             </article>
         </div>
 
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://preszang.github.io/post/jyh3VyyYn/" class="post-title gt-a-link">
+                    在pypi上发布python包
+                </a>
+            </div>
         
 
         

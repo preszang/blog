@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>关于 | 霜序五</title>
+<title> 一个测试dubbo接口的小工具 | 霜序五</title>
 
 <link rel="shortcut icon" href="https://preszang.github.io/favicon.ico?v=1612774214992">
 
@@ -202,28 +202,153 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    关于
+                     一个测试dubbo接口的小工具
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2019-01-25 ·
+                        · 2021-02-08 ·
                     </time>
+                    
+                        <a href="https://preszang.github.io/tag/ruan-jian-ce-shi/" class="post-tags">
+                            # 软件测试
+                        </a>
+                    
+                        <a href="https://preszang.github.io/tag/python/" class="post-tags">
+                            # python
+                        </a>
                     
                 </div>
                 <div class="post-content">
-                    <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
+                    <h2 id="测试dubbo接口的小工具">测试dubbo接口的小工具</h2>
+<blockquote>
+<p>flask+kazoo+telnet</p>
 </blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<h2 id="联系我呀">📬 联系我呀</h2>
-<!-- more -->
+<ul>
+<li>
+<p><a href="https://kazoo.readthedocs.io/en/latest/">kazoo是一个Python库，旨在使得Python能够轻松、便捷的使用zookeeper。</a></p>
+</li>
+<li>
+<p><a href="https://dormousehole.readthedocs.io/en/latest/"><em>Flask</em>是一个使用 Python 编写的轻量级 Web 应用框架。</a></p>
+</li>
+<li>
+<p><a href="http://dubbo.apache.org/zh-cn/docs/user/references/telnet.html">从 <code>2.0.5</code> 版本开始，dubbo 开始支持通过 telnet 命令来进行服务治理。</a></p>
+</li>
+</ul>
+<h3 id="一-启动说明">一、启动说明</h3>
+<ol>
+<li>
+<p><code>git clone https://gitee.com/prestest/dubboTestTool</code></p>
+</li>
+<li>
+<p>修改配置文件[<code>config.py</code>]</p>
+<pre><code class="language-python">  
+config = {
+'zooKeeper': [
+    # 需要替换zk的地址
+    'zk.xxx.cn:2181'
+],
+'robot': {
+    # status的状态表示是否发送消息
+    'dingTalk': {
+        'status': False,
+        # 需要替换钉钉的签名key
+        'signKey': '[需要替换钉钉的签名key]',
+        # 需要替换钉钉的webhook_key
+        'token': '[需要替换钉钉的webhook_key]'
+    },
+    'qyWechat': {
+        'status': False,
+        # 需要替换企业微信的webhook_key
+        'token': '[需要替换企业微信的webhook_key]'
+    }
+}
+</code></pre>
+</li>
+<li>
+<p>安装第三方库</p>
+<pre><code class="language-bash"># flask、kazoo、requests
+pip install -r requirements.txt
+</code></pre>
+</li>
+<li>
+<p>启动方式</p>
+<pre><code class="language-bash">python run.py
+</code></pre>
+</li>
+<li>
+<p>打开网页 <code>localhost:5000</code></p>
+<pre><code class="language-python"># 默认端口为5000，可在`run.py`中修改
+app.run(host='0.0.0.0', port=5000, debug=True)
+</code></pre>
+</li>
+</ol>
+<h3 id="二-在页面上请求">二、在页面上请求</h3>
+<ol>
+<li>选择需要测试的ServiceAPI，可模糊搜索，点击搜索。</li>
+</ol>
+<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2020/04/22/UBm7y8zPYFQnH6q.jpg" alt="1.jpg" loading="lazy"></figure>
+<ol start="2">
+<li>出现方法列表后，选择要测试的Method，可模糊搜索</li>
+</ol>
+<figure data-type="image" tabindex="2"><img src="https://i.loli.net/2020/04/22/HAOpMbxhYqUN3zt.jpg" alt="2.jpg" loading="lazy"></figure>
+<ol start="3">
+<li>
+<p>输入相应参数</p>
+<ul>
+<li>
+<p>具体参数要求内容可向研发咨询或查看代码或者接口文档。</p>
+</li>
+<li>
+<p>参数顺序必须与接口的参数顺序保持一致   如 接口为    <code>Method(String userid,Integer number)</code>，则只需输入参数为 <code>&quot;userid1&quot;,456</code></p>
+</li>
+<li>
+<p>当参数为Map&lt;Integer,T&gt;，key的类型为Integer时，建议指定类型<code>&quot;class&quot;:&quot;java.util.HashMap&quot;</code></p>
+</li>
+<li>
+<p>当类型转换失败的时候，可以通过增加class属性指定需要转换类，类的路径查看代码或者向研发询问即可</p>
+<pre><code class="language-bash">  {
+    &quot;name&quot;:&quot;zhangsan&quot;,
+    &quot;age&quot;:12,
+    &quot;class&quot;:&quot;org.apache.dubbo.qos.legacy.service.Person&quot;
+  }
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<figure data-type="image" tabindex="3"><img src="https://i.loli.net/2020/04/22/KZgUfhdObRBy8kl.jpg" alt="3.jpg" loading="lazy"></figure>
+<ol start="4">
+<li>需要测试其他api，则需要重新打开页面或者，点击左上角的刷新按钮。</li>
+</ol>
+<h3 id="三-以http的方式调用">三、以http的方式调用</h3>
+<blockquote>
+<p>可以在postman中发起http请求，去调用dubbo接口。将常用的请求通过postman保存下来，或者其他方式使用</p>
+</blockquote>
+<ul>
+<li>
+<p>请求方式：get/post</p>
+</li>
+<li>
+<p>参数请求格式：raw ，参数用逗号隔开。或者直接在地址后追加原始参数</p>
+</li>
+<li>
+<p>地址：<code>http://localhost:5000/d2h/{service}/{method}</code></p>
+</li>
+</ul>
+<figure data-type="image" tabindex="4"><img src="https://i.loli.net/2020/04/28/9AKSO4Eiv6r5B1d.jpg" alt="1.jpg" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://i.loli.net/2020/04/28/afXDP8v4Th5iU9t.jpg" alt="2.jpg" loading="lazy"></figure>
 
                 </div>
             </article>
         </div>
 
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://preszang.github.io/post/CmAoWM_xt/" class="post-title gt-a-link">
+                    解决  No module named &#39;pip&#39;
+                </a>
+            </div>
         
 
         

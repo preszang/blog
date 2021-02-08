@@ -1,0 +1,357 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>2020 年最热的 Python 库年度 Top 10  | 霜序五</title>
+
+<link rel="shortcut icon" href="https://preszang.github.io/favicon.ico?v=1612774214992">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://preszang.github.io/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<style>
+    hr {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border: 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <style>
+    /* 导航栏样式 */
+    .navbar {
+        position: relative;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -ms-flex-align: center;
+        align-items: center;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        padding: 0.5rem 1rem;
+    }
+
+    .navbar-brand {
+        display: inline-block;
+        padding-top: 0.3125rem;
+        padding-bottom: 0.3125rem;
+        margin-right: 1rem;
+        font-size: 1.25rem;
+        line-height: inherit;
+        white-space: nowrap;
+    }
+
+    .navbar-brand:hover,
+    .navbar-brand:focus {
+        text-decoration: none;
+    }
+
+    .navbar-nav {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+    }
+
+    .navbar-collapse {
+        -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+    .navbar-toggler {
+        padding: 0.25rem 0.75rem;
+        font-size: 1.25rem;
+        line-height: 1;
+        background-color: transparent;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
+    }
+
+    .navbar-toggler:hover,
+    .navbar-toggler:focus {
+        text-decoration: none;
+    }
+
+    @media (min-width: 992px) {
+        .navbar-expand-lg {
+            -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
+            -ms-flex-pack: start;
+            justify-content: flex-start;
+        }
+
+        .navbar-expand-lg .navbar-nav {
+            -ms-flex-direction: row;
+            flex-direction: row;
+        }
+
+        .navbar-expand-lg .navbar-collapse {
+            display: -ms-flexbox !important;
+            display: flex !important;
+            -ms-flex-preferred-size: auto;
+            flex-basis: auto;
+        }
+
+        .navbar-expand-lg .navbar-toggler {
+            display: none;
+        }
+    }
+
+    @media (max-width: 991px) {
+        #navbarSupportedContent {
+            display: none;
+        }
+    }
+</style>
+<nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            霜序五
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1612774214992"
+                action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = function () {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    2020 年最热的 Python 库年度 Top 10 
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2021-02-08 ·
+                    </time>
+                    
+                        <a href="https://preszang.github.io/tag/python/" class="post-tags">
+                            # python
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h3 id="1-typer">1、Typer</h3>
+<p>Typer 跟 FastAPI 的原理相同，都是 Python 上用来构建 API 服务的一个高性能框架。</p>
+<figure data-type="image" tabindex="1"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy9ZaWNVaGs1YUFHdEJIZk9ubldDSVJ1dkhpYUo5ZU1hekZja3IwQXFvcTJqMXdLeElBMWNOaklZVVJHT1gyTEs1N3lORGN0SWlhT2NPYTNqakJPcndtUVhmdy82NDA?x-oss-process=image/format,png" alt="img" loading="lazy"></figure>
+<p>它是 FastAPI 的升级版，不仅能够准确地记录代码，还能够轻松地进行 CLI 验证。</p>
+<p>Typer 易于学习和使用，不需要用户阅读复杂的教程文档即可上手。支持编辑器（如 VSCode）代码自动补全，提高开发人员的开发效率，减少 bug 的数量。</p>
+<p>其次，Typer 还能配合命令行神器 Click 使用，就可以利用 Click 的优点和插件，实现更复杂的功能。</p>
+<p>开源地址：https://github.com/tiangolo/typer</p>
+<h3 id="2-rich">2、Rich</h3>
+<p>谁规定 CLI 界面一定得是黑白的？它也可以是彩色的。</p>
+<p>Rich API 不仅能够在终端输出提供丰富的彩色文本和精美的格式，还提供了精美的表格、进度条、编辑器、追踪器、语法高亮等。如下图所示。</p>
+<figure data-type="image" tabindex="2"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy9ZaWNVaGs1YUFHdEJIZk9ubldDSVJ1dkhpYUo5ZU1hekZja09VVlBSS2g1SWtWNE8yRmc5cVJzZjNNUXhScVhMSHFHOHVYdzZZR2d3QTQ4U1NoaWFGaWJKWkEvNjQw?x-oss-process=image/format,png" alt="img" loading="lazy"></figure>
+<p>它还可以安装在 Python REPL 上，所有的数据结构都可以漂亮地输出或标注。</p>
+<p>总而言之，它是彩色的、漂亮的、强大的。</p>
+<p>Rich 兼容性也不错，适用于 Linux，Mac 和 Windows 等多种系统。真彩色/表情符号可与新的 Windows 终端一起使用。</p>
+<p>但是请注意，Rich 必须要 Python 3.6.1 或以上版本。</p>
+<p>开源地址：https://github.com/willmcgugan/rich</p>
+<h3 id="3-dear-pygui">3、Dear PyGui</h3>
+<p>如上所示，虽然终端应用程序可以做成很漂亮的样子。但是，你可能还需要一个真正的 GUI。</p>
+<figure data-type="image" tabindex="3"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy9ZaWNVaGs1YUFHdEJIZk9ubldDSVJ1dkhpYUo5ZU1hekZjV1VWbVhpYWR2UDdxOU8ySURGUWJpYUx5QTV1SDJKNHpydkxFSmpDNTA2S3NnMVdHWXdPZWtpYkZnLzY0MA?x-oss-process=image/format,png" alt="img" loading="lazy"></figure>
+<p>Dear PyGui 是一个便于使用、功能强大的 Python GUI 框架。但是它与其他的 Python GUI 却有着根本上的不同。</p>
+<p>它使用了即时模式范式和计算机的 GPU 来实现动态界面。即时模式范式在视频游戏中非常流行，这意味着它的动态 GUI 不需要保留任何数据，而是逐帧独立绘制的。同时，它还使用 GPU 来建构动态界面。</p>
+<figure data-type="image" tabindex="4"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy9ZaWNVaGs1YUFHdEJIZk9ubldDSVJ1dkhpYUo5ZU1hekZjZUFhQURpYkVYaWFyZHBub1A0akcyOXhqaWNEZ2NINnE1NHhZMlFLdjZYV1oxZG5pYUwycjJrVEVqdy82NDA?x-oss-process=image/format,png" alt="img" loading="lazy"></figure>
+<p>Dear PyGui 还可以绘图、创建主题、创建 2D 游戏，还拥有一些小工具，比如说内置文档、日志记录、源代码查看器之类的，这些小工具可以协助 App 的开发。</p>
+<p>支持它的系统有：Windows 10（DirectX 11），Linux（OpenGL 3）和 macOS（Metal）等。</p>
+<p>开源地址：https://github.com/hoffstadt/DearPyGui</p>
+<h3 id="4-prettyerrors">4、PrettyErrors</h3>
+<p>PrettyErrors 是一个精简 Python 错误信息的工具，特点是界面十分简洁友好。</p>
+<p>它最显著的功能是支持在终端进行彩色输出，标注出文件栈踪迹，发现错误信息，过滤掉冗余信息，提取出关键部分，并且进行彩色标注，从而提高开发者的效率。</p>
+<figure data-type="image" tabindex="5"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy9ZaWNVaGs1YUFHdEJIZk9ubldDSVJ1dkhpYUo5ZU1hekZjendFSG1SQUZvQldIeHFIYW9Pb3RqZG9TMlNWT2xObWlhR2lhaDFiUVZBbzB2QkgwYUh4NWhSZXcvNjQw?x-oss-process=image/format,png" alt="img" loading="lazy"></figure>
+<p>而且它可以不用安装，直接被导入项目中使用，但是需要先配置一些参数，其导入和配置的参数如下：</p>
+<figure data-type="image" tabindex="6"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy9ZaWNVaGs1YUFHdEJIZk9ubldDSVJ1dkhpYUo5ZU1hekZjTFpPRFBUZ1o3VEhMZkRpYXdjbkcxdTVxSndyMGdlZ3d4SXRpY25UU1dnUXRveWhWQUtMaWNqcUNnLzY0MA?x-oss-process=image/format,png" alt="img" loading="lazy"></figure>
+<p>开源地址：https://github.com/onelivesleft/PrettyErrors</p>
+<h3 id="5-diagrams">5、Diagrams</h3>
+<p>程序员在编程的时候，有时候需要跟同事解释他设计的程序代码之间复杂的结构关系，然而这不是一两句话能说清楚的，需要画表或者做脉络图。</p>
+<p>一般情况下，程序员使用 GUI 工具处理图表，并将文稿进行可视化处理。但是还有更好的方法，比如说使用 Diagrams 库。</p>
+<p>Diagrams 让不需要任何设计类工具，直接在 Python 代码中绘制云系统结构。它们的图标来自多家云服务商，包括 AWS, Azure, GCP 等。</p>
+<p>仅需几行代码，就可以简单地创造出箭头符号和结构图。</p>
+<figure data-type="image" tabindex="7"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy9ZaWNVaGs1YUFHdEJIZk9ubldDSVJ1dkhpYUo5ZU1hekZjTGxCMkN0YmdWWTBiUzU4TlRhZ1VVZkZaRkhlMFRXWjRrRXV6b2tWZGJpY0dSTE5vVExyR0Jody82NDA?x-oss-process=image/format,png" alt="img" loading="lazy"></figure>
+<p>由于它使用 Graphviz 来渲染图，所以还需要先安装好 Graphviz。</p>
+<p>开源地址：https://github.com/mingrammer/diagrams</p>
+<h3 id="6-hydra-and-omegaconf">6、Hydra and OmegaConf</h3>
+<p>在做机器学习项目的时候，需要做一大堆的环境配置工作。因此，在一些复杂的应用程序中，配置管理工作也相应变得复杂。</p>
+<p>Hydra 可以使配置工作变得简单。它能够从命令行或者配置文件中覆盖部分出来，无需维护相似的配置文件，用组合的方式进行配置，从而加快了实验运行速度。</p>
+<figure data-type="image" tabindex="8"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy9ZaWNVaGs1YUFHdEJIZk9ubldDSVJ1dkhpYUo5ZU1hekZja2FmR1owbmJuUGZyd05XZE80bUw0OW5xb2RxY0lIRGpEUVQ3UHNHb1IwOHZuYzIyZUJ2RXp3LzY0MA?x-oss-process=image/format,png" alt="img" loading="lazy"></figure>
+<p>Hydra 兼容性强，拥有含插件的结构，能够很好地与开发者的操作文件融合。它的插件还可以实现直接通过命令行，就把代码发布到 AWS 或者其他云端系统。</p>
+<p>Hydra 也离不开 OmegaConf，两者关系密不可分，OmegaConf 为 Hydra 的分层配置系统提供了协同的 API，二者协同运作可支持 YAML、配置文件、对象、CLI 参数等。</p>
+<p>开源地址：https://github.com/facebookresearch/hydra</p>
+<p>开源地址：https://github.com/omry/omegaconf</p>
+<h3 id="7-pytorch-lightning">7、PyTorch Lightning</h3>
+<p>PyTorch Lightning 也是 Facebook 的一个研究成果。它是一个轻巧的 PyTorch 包装器，用于高性能 AI 研究，其最重要的特征是能够解析 PyTorch代码，让代码研究成分和工程成分的分离。</p>
+<figure data-type="image" tabindex="9"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy9ZaWNVaGs1YUFHdEJIZk9ubldDSVJ1dkhpYUo5ZU1hekZjOEhZSFlTa3FZeVd1YllaYkwxSTNINUFoTjcxaEhKbGZUMzJ2cFNIUXY1dUFHNEdadEdpYmdEdy82NDA?x-oss-process=image/format,png" alt="img" loading="lazy"></figure>
+<p>它的扩展模型可以在任何硬件（CPU、GPU、TPU）上运行，且容易被复制，删除了大量的文件样本，保持了自身的灵活性，运行速度快。</p>
+<p>Lightning 能够使 DL / ML 研究的 40 多个部分实现自动化，例如 GPU训练、分布式 GPU（集群）训练、TPU 训练等等……</p>
+<p>因为 Lightning 将可以将文件自动导出到 ONNX 或T orchScript，所以它适用于进行快速推理的 AI 研究员、BERT 或者自监督学习的研究团队等。</p>
+<p>开源地址：https://github.com/PyTorchLightning/PyTorch-lightning</p>
+<h3 id="8-hummingbird">8、Hummingbird</h3>
+<p>Hummingbird 是微软的一项研究成果，它能够将已经训练好的 ML 模型汇编成张量计算，从而不需要设计新的模型。</p>
+<p>还允许用户使用神经网络框架（例如 PyTorch）来加速传统的 ML 模型。<br>
+<img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy9ZaWNVaGs1YUFHdEJIZk9ubldDSVJ1dkhpYUo5ZU1hekZjTFBiY3dNNFg5WUxrR25YNDBNZGZFQjQ0V2txQW1uNnVEVDVMWWpqc1hJcHVsS3pBeE5hcmpBLzY0MA?x-oss-process=image/format,png" alt="img" loading="lazy"></p>
+<p>它的推理 API 跟 sklearn 范例十分相似，都可以重复使用现有的代码，但是它是用 Hummingbird 生成的代码去实现的。</p>
+<p>Hummingbird 还在 Sklearn API 之后提供了一个方便的统一推理API。这样就可以将 Sklearn 模型与 Hummingbird 生成的模型互换，而无需更改推理代码。</p>
+<p>它之所以被重点关注，还因为它能够支持多种多样的模型和格式。</p>
+<p>到目前为止，Hummingbird 支持 PyTorch、TorchScript、ONNX 和 TVM 等各种 ML 模型。</p>
+<p>开源地址：https://github.com/microsoft/hummingbird</p>
+<h3 id="9-hiplot">9、HiPlot</h3>
+<p>由于 ML 模型变得越来越复杂，还有很多超参数，于是就需要用到 HiPlot。HiPlot 是今年 3 月 Facebook 发行的一个库，主要用于处理高维数据。</p>
+<p>Facebook AI 通过几十个超参数和 10 万多个实验，利用 HiPlot，来分析深度神经网络。</p>
+<p>它是用平行图和其他的图像方式，帮助AI研究者发现高维数据的相关性和模型，是一款轻巧的交互式可视化工具。</p>
+<figure data-type="image" tabindex="10"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy9ZaWNVaGs1YUFHdEJIZk9ubldDSVJ1dkhpYUo5ZU1hekZjMTVROWlheGQzd1RGY1JyMjJrbDJMMVc2SUFlQ0U1ZDhBTFZDdmwzaWJNVUlHTzJid1dBM2liYzR3LzY0MA?x-oss-process=image/format,png" alt="img" loading="lazy"></figure>
+<p>HiPlot 与其他可视化工具相比，有其特有的优点：</p>
+<p>首先，它的互动性强，因为平行图是交互式的，所以能够满足多种情况下的图像可视化。</p>
+<p>其次，它简单易用，可以通过 IPython Notebook 或者通过带有“ hiplot”命令的服务直接使用。</p>
+<p>它还有具有可扩展性。默认情况下，HiPlot 的 Web 服务可以解析 CSV 或 JSON 文件，还可以为其提供自定义 Python 解析器，将实验转换为 HiPlot 实验。</p>
+<p>开源地址：https://github.com/facebookresearch/hiplot</p>
+<p>参考链接：https://ai.facebook.com/blog/hiplot-high-dimensional-interactive-plots-made-easy</p>
+<h3 id="10-scalene">10、Scalene</h3>
+<p>Scalene 是一个用于 Python 脚本的 CPU 和内存分析器，能够正确处理多线程代码，还能区分 Python 代码和本机代码的运行时间。</p>
+<p>你不需要修改代码，只需运行 Scalene 脚本，它就会生成一个文本形式的报告，显示出每一行代码的 CPU 和内存的使用情况。通过这个文本报告，开发人员可以提高代码的效率。</p>
+<figure data-type="image" tabindex="11"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X3BuZy9ZaWNVaGs1YUFHdEJIZk9ubldDSVJ1dkhpYUo5ZU1hekZjTTBQcnViVGljajVaSllCRTF3YWNiNkZCNk1lWjRzUzJUS0lqVXJNbDNraWNzWEcyZmtQeUlSblEvNjQw?x-oss-process=image/format,png" alt="img" loading="lazy"></figure>
+<p>Scalene 的速度快、准确率高，还能够对高耗能的代码行进行标注。</p>
+<p>开源地址https://github.com/emeryberger/scalene</p>
+<p>除了以上 10 个，还有多个高性能的 Python 库被点名了，例如 Norfair、Quart、Alibi-detect、Einops……等等。</p>
+<p>那么，你今年有发现好用的 Python 库吗？</p>
+<p>参考链接：https://tryolabs.com/blog/2020/12/21/top-10-python-libraries-of-2020/</p>
+<p>参考链接：https://www.upgrad.com/blog/reasons-why-python-popular-with-developers/</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://preszang.github.io/post/XfbZQSvJ5/" class="post-title gt-a-link">
+                    python+selenium自动化UI测试基本教程
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">啦啦啦啦啦啦啦啦啦啦啦啦</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        是谁来自山川湖海，却囿于昼夜、厨房与爱。
+    </div>
+
+<!--    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://preszang.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div> -->
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

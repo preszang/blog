@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://preszang.github.io</id>
     <title>霜序五</title>
-    <updated>2021-02-08T08:44:43.819Z</updated>
+    <updated>2021-02-08T08:50:18.281Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://preszang.github.io"/>
     <link rel="self" href="https://preszang.github.io/atom.xml"/>
@@ -10,6 +10,41 @@
     <logo>https://preszang.github.io/images/avatar.png</logo>
     <icon>https://preszang.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 霜序五</rights>
+    <entry>
+        <title type="html"><![CDATA[ 一个测试dubbo接口的小工具]]></title>
+        <id>https://preszang.github.io/post/KST7ZTnOT/</id>
+        <link href="https://preszang.github.io/post/KST7ZTnOT/">
+        </link>
+        <updated>2021-02-08T08:49:49.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[解决  No module named 'pip']]></title>
+        <id>https://preszang.github.io/post/CmAoWM_xt/</id>
+        <link href="https://preszang.github.io/post/CmAoWM_xt/">
+        </link>
+        <updated>2021-02-08T08:49:22.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[在pypi上发布python包]]></title>
+        <id>https://preszang.github.io/post/jyh3VyyYn/</id>
+        <link href="https://preszang.github.io/post/jyh3VyyYn/">
+        </link>
+        <updated>2021-02-08T08:48:36.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[selenium之破解腾讯滑块验证码]]></title>
+        <id>https://preszang.github.io/post/VseyNxd0Y/</id>
+        <link href="https://preszang.github.io/post/VseyNxd0Y/">
+        </link>
+        <updated>2021-02-08T08:47:34.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2020 年最热的 Python 库年度 Top 10 ]]></title>
+        <id>https://preszang.github.io/post/eeYWta-p7/</id>
+        <link href="https://preszang.github.io/post/eeYWta-p7/">
+        </link>
+        <updated>2021-02-08T08:46:49.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[python+selenium自动化UI测试基本教程]]></title>
         <id>https://preszang.github.io/post/XfbZQSvJ5/</id>
@@ -44,19 +79,5 @@
         <link href="https://preszang.github.io/post/Pyunit测试框架基本教程/">
         </link>
         <updated>2021-02-08T07:50:26.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Python 第三方日志框架 loguru 使用]]></title>
-        <id>https://preszang.github.io/post/Python 第三方日志框架 loguru 使用/</id>
-        <link href="https://preszang.github.io/post/Python 第三方日志框架 loguru 使用/">
-        </link>
-        <updated>2021-02-08T03:52:14.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[【山雀】万能青年旅店]]></title>
-        <id>https://preszang.github.io/post/shan-que-wan-neng-qing-nian-lu-dian/</id>
-        <link href="https://preszang.github.io/post/shan-que-wan-neng-qing-nian-lu-dian/">
-        </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
     </entry>
 </feed>

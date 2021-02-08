@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>关于 | 霜序五</title>
+<title>在pypi上发布python包 | 霜序五</title>
 
 <link rel="shortcut icon" href="https://preszang.github.io/favicon.ico?v=1612774214992">
 
@@ -202,28 +202,106 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    关于
+                    在pypi上发布python包
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2019-01-25 ·
+                        · 2021-02-08 ·
                     </time>
+                    
+                        <a href="https://preszang.github.io/tag/python/" class="post-tags">
+                            # python
+                        </a>
                     
                 </div>
                 <div class="post-content">
-                    <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
+                    <h1 id="在pypi上发布python包">在pypi上发布python包</h1>
+<h3 id="一-注册账号">一、注册账号</h3>
+<p>到pypi（<code>https://pypi.org/</code>）上注册自己的用户, 点击“Register”，填写自己的用户名，密码，邮箱。</p>
+<p>如果期望测试发布，同时需要注册pypitest账号（可以采用相同的用户名和密码）。pypitest官网：<code>https://test.pypi.org/</code></p>
+<h3 id="二-准备setup-文件">二、准备setup 文件</h3>
+<p>准备setup.py文件，它是放在你包的根目录的，这一步至关重要，包括要发布的包名字，版本，license，描述，特性（classifier)等等。</p>
+<p>下面是setup.py文件的示例内容，基本上只需要在这个上面修改就行了，具体如下：</p>
+<pre><code class="language-python">#!/usr/bin/env python
+# coding:utf-8
+
+from setuptools import find_packages, setup
+
+setup(
+name='&lt;项目的名称&gt;',
+version='&lt;项目的版本&gt;',
+description='&lt;项目的简单描述&gt;',
+long_description=open('README.rst').read(),
+author='&lt;项目的作者&gt;',
+author_email='&lt;作者邮箱&gt;',
+maintainer='&lt;维护人员的名字&gt;',
+maintainer_email='&lt;维护人员的邮箱&gt;',
+packages=find_packages(),
+platforms=[&quot;all&quot;],
+url='&lt;项目的网址，可以使用自己github的url&gt;',
+license='BSD License',
+classifiers=[
+'Development Status :: 4 - Beta',
+'Operating System :: OS Independent',
+'Intended Audience :: Developers',
+'License :: OSI Approved :: BSD License',
+'Programming Language :: Python',
+'Programming Language :: Python :: 2.7',
+'Programming Language :: Python :: Implementation :: CPython',
+'Programming Language :: Python :: Implementation :: PyPy'
+],
+)
+</code></pre>
+<p>version：这个简单，就是包的发布的版本，可以直接写在这，也可以从其他地方引用过来。</p>
+<p>long_description：必须是rst（reStructuredText )格式的，因为这个里面的内容是显示在pypi包首页上</p>
+<p>packages：申明你的包里面要包含的目录</p>
+<p>install_requires：申明依赖包，安装包时pip会自动安装</p>
+<blockquote>
+<p>大名鼎鼎的requests库的作者大神kennethreitz为大家准备了一个仓库作为一个setup.py的很好的模板，当然你也可以自己手写setup.py。</p>
 </blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<h2 id="联系我呀">📬 联系我呀</h2>
-<!-- more -->
+<pre><code class="language-bash">git clone https://github.com/kennethreitz/setup.py
+</code></pre>
+<h3 id="三-最终的代码结构">三、最终的代码结构</h3>
+<pre><code>│ LICENSE
+│ MANIFEST.in
+│ README.rst
+│ setup.py
+│
+└─condition_chain
+core.py
+__init__.py
+__version__.py
+</code></pre>
+<h3 id="四-编写核心代码">四、编写核心代码</h3>
+<p>接下来我们就可以编写自己的代码了，要注意源代码文件夹（仓库里的my_package文件夹）的名字与setup.py里配置的包名（Name）要一致。<br>
+另外在重新上传之前我们要修改<code>__version__.py</code>里的版本号，以免覆盖了以前的上传（相信会有人是需要之前版本的库的）。</p>
+<h3 id="五-打包上传">五、打包上传</h3>
+<p>打包一个wheels格式的包，使用下面的命令搞定：</p>
+<pre><code>python setup.py bdist_wheel --universal
+</code></pre>
+<p>上传生成的包，可以使用twine上传</p>
+<pre><code class="language-bash">pip install twine
+</code></pre>
+<pre><code class="language-bash">twine upload dist/*
+</code></pre>
+<p>会提示你前面注册的用户名和密码。一切搞定，你的包现在可以通过pip在任何地方安装了。</p>
+<h3 id="六-报错解决">六、报错解决</h3>
+<p>1.<code>HTTPError: 403 Client Error: The user 'xxx' isn't allowed to upload to project '&lt;项目的名称&gt;'. See https://pypi.org/help/#project-name for more information. for url: https://upload.pypi.org/legacy/</code></p>
+<p>出现这个报错一般是python包名冲突，换个包名就可以了</p>
+<p>2.<code>HTTPError: 403 Client Error: Invalid or non-existent authentication information. for url: https://upload.pypi.org/legacy/</code></p>
+<p>出现这个报错一般是用户名和密码错误了，要去网站上验证一下你前面注册的用户名和密码。</p>
 
                 </div>
             </article>
         </div>
 
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://preszang.github.io/post/VseyNxd0Y/" class="post-title gt-a-link">
+                    selenium之破解腾讯滑块验证码
+                </a>
+            </div>
         
 
         

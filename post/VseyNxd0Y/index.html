@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>关于 | 霜序五</title>
+<title>selenium之破解腾讯滑块验证码 | 霜序五</title>
 
 <link rel="shortcut icon" href="https://preszang.github.io/favicon.ico?v=1612774214992">
 
@@ -202,28 +202,129 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    关于
+                    selenium之破解腾讯滑块验证码
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2019-01-25 ·
+                        · 2021-02-08 ·
                     </time>
+                    
+                        <a href="https://preszang.github.io/tag/python/" class="post-tags">
+                            # python
+                        </a>
                     
                 </div>
                 <div class="post-content">
-                    <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
+                    <h1 id="selenium之破解腾讯滑块验证码">selenium之破解腾讯滑块验证码</h1>
+<blockquote>
+<p>就是图中的这种滑块验证码</p>
 </blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<h2 id="联系我呀">📬 联系我呀</h2>
-<!-- more -->
+<img src="https://s1.ax1x.com/2020/11/07/B4PMG9.jpg" alt="B4PMG9.jpg" style="zoom:50%;" />
+<blockquote>
+<p>先贴源码，基本思路就是 用PIL，然后对比 验证码图片 有缺口和无缺口的不同，计算出偏移量，模拟滑块滑动。</p>
+</blockquote>
+<pre><code class="language-python">import time
+import random
+import io
+from PIL import Image
+from urllib.request import urlopen
+from selenium.webdriver.common.action_chains import ActionChains
+
+
+def openImgUrl(src):
+    # 打开图片链接
+    ImgUrl = urlopen(src, timeout=1).read()
+    img = Image.open(io.BytesIO(ImgUrl))
+    # 恢复原始大小
+    imgResize = (int(i // 2) for i in img.size)
+    return img.resize(imgResize, Image.ANTIALIAS)
+
+
+def getImg(dr):
+    dr.switch_to.frame('tcaptcha_iframe')
+    src1 = dr.find_element_by_id('slideBg').get_attribute('src')
+    src2 = src1.replace('img_index=1', 'img_index=0')
+    return openImgUrl(src1), openImgUrl(src2)
+
+
+# 比较两张图片同一点上的像数值，差距大于设置标准返回False
+def isPixel(img1, img2, x, y):
+    i = 100
+    px1, px2 = img1.load()[x, y], img2.load()[x, y]
+    r, g, b = [abs(p1 - p2) for p1, p2 in zip(px1, px2)]
+    return True if r &lt; i and g &lt; i and b &lt; i else False
+
+
+# 获取缺口的偏移量，两张图片对比,(i,j)像素点的RGB差距，过大则该x为偏移值
+def getOffset(img1, img2):
+    offset, distance = None, 70
+    x, y = img1.size
+    for i in range(distance, x):
+        for j in range(y):
+            if not isPixel(img1, img2, i, j):
+                offset = i
+                return offset
+    return offset
+
+
+# 计算滑块的移动轨迹 滑块并不是从0开始移动，有一个初始值
+def getTrack(offset):
+    offset -= 30
+    return [offset / 4] * 4
+
+
+# 模拟释放鼠标抖动
+def shake(dr):
+    ActionChains(dr).move_by_offset(xoffset=-2, yoffset=0).perform()
+    ActionChains(dr).move_by_offset(xoffset=2, yoffset=0).perform()
+    time.sleep(random.random())
+
+
+# 按轨迹移动
+def move(dr, track):
+    for i in track:
+        ActionChains(dr).move_by_offset(xoffset=i, yoffset=0).perform()
+        time.sleep(random.random() / 100)
+    time.sleep(random.random())
+
+
+# 完成拖动操作
+def sliderBtn(dr, track):
+    btn = dr.find_element_by_id('tcaptcha_drag_thumb')
+    ActionChains(dr).click_and_hold(btn).perform()  # 按住按钮不放
+    move(dr, track)  # 按正向轨迹移动
+    move(dr, [-1, -0.5, -1])  # 按逆向轨迹移动
+    shake(dr)  # 模拟人手抖动
+    ActionChains(dr).release().perform()  # 松开滑块按钮
+
+
+# 处理验证码
+def dealCaptcha(dr):
+    time.sleep(3)
+    img1, img2 = getImg(dr)
+    offset = getOffset(img1, img2)
+    track = getTrack(offset)
+    sliderBtn(dr, track)
+</code></pre>
+<p>基于selenium的webdriver</p>
+<pre><code class="language-python">from selenium import webdriver
+
+if __name__ == '__main__':
+    dr = webdriver.Chrome('chromedriver的地址')
+    dealCaptcha(dr)
+</code></pre>
 
                 </div>
             </article>
         </div>
 
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://preszang.github.io/post/eeYWta-p7/" class="post-title gt-a-link">
+                    2020 年最热的 Python 库年度 Top 10 
+                </a>
+            </div>
         
 
         
