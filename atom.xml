@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://preszang.github.io</id>
     <title>霜序五</title>
-    <updated>2021-02-08T07:18:55.101Z</updated>
+    <updated>2021-02-08T08:24:51.918Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://preszang.github.io"/>
     <link rel="self" href="https://preszang.github.io/atom.xml"/>
@@ -10,6 +10,27 @@
     <logo>https://preszang.github.io/images/avatar.png</logo>
     <icon>https://preszang.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 霜序五</rights>
+    <entry>
+        <title type="html"><![CDATA[关于软件测试和软件测试人员]]></title>
+        <id>https://preszang.github.io/post/关于软件测试和软件测试人员/</id>
+        <link href="https://preszang.github.io/post/关于软件测试和软件测试人员/">
+        </link>
+        <updated>2021-02-08T08:20:46.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[【女儿情】叶锐文版本]]></title>
+        <id>https://preszang.github.io/post/nu-er-qing-xie-rui-wen-ban-ben/</id>
+        <link href="https://preszang.github.io/post/nu-er-qing-xie-rui-wen-ban-ben/">
+        </link>
+        <updated>2021-02-08T08:17:58.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Pyunit测试框架基本教程]]></title>
+        <id>https://preszang.github.io/post/Pyunit测试框架基本教程/</id>
+        <link href="https://preszang.github.io/post/Pyunit测试框架基本教程/">
+        </link>
+        <updated>2021-02-08T07:50:26.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Python 第三方日志框架 loguru 使用]]></title>
         <id>https://preszang.github.io/post/Python 第三方日志框架 loguru 使用/</id>
@@ -19,8 +40,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[【山雀】万能青年旅店]]></title>
-        <id>https://preszang.github.io/post/【山雀】万能青年旅店/</id>
-        <link href="https://preszang.github.io/post/【山雀】万能青年旅店/">
+        <id>https://preszang.github.io/post/shan-que-wan-neng-qing-nian-lu-dian/</id>
+        <link href="https://preszang.github.io/post/shan-que-wan-neng-qing-nian-lu-dian/">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
     </entry>
