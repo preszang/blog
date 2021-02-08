@@ -1,0 +1,1115 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>pytest接口测试基本教程 | 霜序五</title>
+
+<link rel="shortcut icon" href="https://preszang.github.io/favicon.ico?v=1612773481777">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://preszang.github.io/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<style>
+    hr {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border: 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <style>
+    /* 导航栏样式 */
+    .navbar {
+        position: relative;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -ms-flex-align: center;
+        align-items: center;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        padding: 0.5rem 1rem;
+    }
+
+    .navbar-brand {
+        display: inline-block;
+        padding-top: 0.3125rem;
+        padding-bottom: 0.3125rem;
+        margin-right: 1rem;
+        font-size: 1.25rem;
+        line-height: inherit;
+        white-space: nowrap;
+    }
+
+    .navbar-brand:hover,
+    .navbar-brand:focus {
+        text-decoration: none;
+    }
+
+    .navbar-nav {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+    }
+
+    .navbar-collapse {
+        -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+    .navbar-toggler {
+        padding: 0.25rem 0.75rem;
+        font-size: 1.25rem;
+        line-height: 1;
+        background-color: transparent;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
+    }
+
+    .navbar-toggler:hover,
+    .navbar-toggler:focus {
+        text-decoration: none;
+    }
+
+    @media (min-width: 992px) {
+        .navbar-expand-lg {
+            -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
+            -ms-flex-pack: start;
+            justify-content: flex-start;
+        }
+
+        .navbar-expand-lg .navbar-nav {
+            -ms-flex-direction: row;
+            flex-direction: row;
+        }
+
+        .navbar-expand-lg .navbar-collapse {
+            display: -ms-flexbox !important;
+            display: flex !important;
+            -ms-flex-preferred-size: auto;
+            flex-basis: auto;
+        }
+
+        .navbar-expand-lg .navbar-toggler {
+            display: none;
+        }
+    }
+
+    @media (max-width: 991px) {
+        #navbarSupportedContent {
+            display: none;
+        }
+    }
+</style>
+<nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            霜序五
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1612773481777"
+                action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = function () {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    pytest接口测试基本教程
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2021-02-08 ·
+                    </time>
+                    
+                        <a href="https://preszang.github.io/tag/ruan-jian-ce-shi/" class="post-tags">
+                            # 软件测试
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="1快速开始">1.快速开始</h2>
+<blockquote>
+<p>pytest测试框架可以让我们很方便的编写测试用例，这些用例写起来虽然简单，但仍然可以规模化以及编写更加复杂的测试用例。<a href="https://docs.pytest.org/en/latest/index.html">官方文档</a></p>
+</blockquote>
+<h3 id="安装">安装</h3>
+<pre><code class="language-bash">pip install -U pytest
+</code></pre>
+<p>用下面的命令去检查一下pytest是否成功安装</p>
+<pre><code class="language-bash">$ pytest --version
+This is pytest version 3.x.y, imported from $PYTHON_PREFIX/lib/python3.5/site-packages/pytest.py
+</code></pre>
+<h3 id="快速开始">快速开始</h3>
+<p>创建名为<code>test_quick_start.py</code>的文件，敲如下内容</p>
+<pre><code class="language-python">def reverse(string):
+    return string[::-1]
+
+def test_reverse():
+    string = &quot;good&quot;
+    assert reverse(string) == &quot;doog&quot;
+
+    another_string = &quot;itest&quot;
+    assert reverse(another_string) == &quot;tseti&quot;
+</code></pre>
+<p>上面的代码做了2件事情</p>
+<ul>
+<li>定义了名为<code>reverse(string)</code>的全局函数，作用是把string反转并返回。比如输入&quot;abc&quot;会反转成&quot;cba&quot;</li>
+<li>定义了名为<code>test_reverse()</code>的函数，包含了2个断言，用来测试<code>reverse()</code>方法的正确性</li>
+</ul>
+<p>在命令行中使用下面的命令去运行用例</p>
+<pre><code class="language-bash">pytest
+</code></pre>
+<p>结果应该大致如下</p>
+<pre><code class="language-bash">========================================================================= test session starts =========================================================================
+platform darwin -- Python 2.7.12, pytest-3.2.3, py-1.4.34, pluggy-0.4.0
+rootdir: /Users/easonhan/code/testclass.net/src/pytest, inifile:
+collected 1 item
+
+test_quick_start.py .
+
+====================================================================== 1 passed in 0.01 seconds =======================================================================
+</code></pre>
+<h3 id="总结">总结</h3>
+<p>这是最简单的单元测试实例，实现了用代码去测试代码的目的。</p>
+<h2 id="2运行多个文件">2.运行多个文件</h2>
+<blockquote>
+<p>在现实的测试活动中，我们经常会定义多个用例文件，用来实现业务逻辑或其他逻辑上用例的物理分隔，比如</p>
+</blockquote>
+<pre><code>login_test.py # 登录相关功能的测试用例
+cart_test.py # 购物车相关功能的测试用例
+checkout_test.py # 结算相关功能的用例
+order_test.py # 订单相关功能的用例
+</code></pre>
+<blockquote>
+<p>使用pytest可以很方便的执行批量执行一组文件中定义的用例。</p>
+</blockquote>
+<h3 id="潜规则">潜规则</h3>
+<p>在批量执行用例之前，我们需要了解一下pytest的潜规则，注意，由于pytest可以支持丰富的定制选项，下面的潜规则是在<strong>没有定制的默认情况下</strong>的缺省规则</p>
+<ul>
+<li>pytest会找当前以及递查找子文件夹下面所有的<code>test_*.py</code>或<code>*_test.py</code>的文件，把其当作测试文件</li>
+<li>在这些文件里，pytest会收集下面的一些函数或方法，当作测试用例
+<ul>
+<li>不在类定义中的以<code>test_</code>开头的函数或方法</li>
+<li>在以<code>Test</code>开头的类中(不能包含<code>__init__</code>方法)，以<code>test_</code>开头的方法</li>
+</ul>
+</li>
+<li>pytest也支持unittest模式的用例定义</li>
+</ul>
+<h3 id="实例">实例</h3>
+<p>新建<code>test_calc.py</code>文件，与上一节的<code>test_quick_start.py</code>放在同一文件夹下，敲入下面的内容</p>
+<pre><code class="language-python">def add(x, y):
+    return x + y
+
+def test_add():
+    assert add(1, 0) == 1
+    assert add(1, 1) == 2
+    assert add(1, 99) == 100
+</code></pre>
+<p>现在当前文件夹下应该有2个文件</p>
+<pre><code class="language-bash">test_calc.py
+test_quick_start.py
+</code></pre>
+<h3 id="运行">运行</h3>
+<p>在当前文件夹敲下面的命令</p>
+<pre><code class="language-bash">pytest
+</code></pre>
+<p>结果大致应该如下所示</p>
+<pre><code class="language-bash">$ pytest
+========================================================================= test session starts =========================================================================
+platform darwin -- Python 2.7.12, pytest-3.2.3, py-1.4.34, pluggy-0.4.0
+rootdir: /Users/easonhan/code/testclass.net/src/pytest, inifile:
+collected 2 items
+
+test_calc.py .
+test_quick_start.py .
+
+====================================================================== 2 passed in 0.01 seconds =======================================================================
+</code></pre>
+<h3 id="总结-2">总结</h3>
+<p>上面的例子里</p>
+<ul>
+<li>所有以test_开头的py文件都被当成了测试文件</li>
+<li>所有测试文件中以test开头的方法被当成了测试用例执行</li>
+</ul>
+<h2 id="3assert">3.Assert</h2>
+<blockquote>
+<p>Assert就是断言，每个测试用例都需要断言。</p>
+<p>与unittest不同，pytest使用的是python自带的assert关键字来进行断言，大大降低了学习成本。</p>
+<p>assert关键字后面可以接一个表达式，只要表达式的最终结果为True，那么断言通过，用例执行成功，否则用例执行失败。</p>
+</blockquote>
+<h3 id="详尽的用例失败描述">详尽的用例失败描述</h3>
+<p>pytest的用例失败描述非常详尽，一目了人。考虑下面的例子</p>
+<pre><code class="language-python"># content of test_assert1.py
+def f():
+    return 3
+
+def test_function():
+    assert f() == 4
+</code></pre>
+<p>执行上面的用例</p>
+<pre><code class="language-bash">$ pytest test_assert1.py
+======= test session starts ========
+platform linux -- Python 3.x.y, pytest-3.x.y, py-1.x.y, pluggy-0.x.y
+rootdir: $REGENDOC_TMPDIR, inifile:
+collected 1 item
+
+test_assert1.py F
+
+======= FAILURES ========
+_______ test_function ________
+
+    def test_function():
+&gt;       assert f() == 4
+E       assert 3 == 4
+E        +  where 3 = f()
+
+test_assert1.py:5: AssertionError
+======= 1 failed in 0.12 seconds ========
+</code></pre>
+<p>可以很明显的看出，pytest给出的错误提示是：f()的值是3，也就是实际结果是3，而预期结果是4，3不等于4，因此断言未通过，用例失败。</p>
+<h3 id="断言异常抛出">断言异常抛出</h3>
+<p>pytest有自己的异常抛出断言套路，下面是最简单的形式</p>
+<pre><code class="language-python">import pytest
+
+def test_zero_division():
+    with pytest.raises(ZeroDivisionError):
+        1 / 0
+</code></pre>
+<p>上面代码的意思是: 1/0的时候应该抛出ZeroDivisionError，否则用例失败，断言不通过。</p>
+<p>另外pytest还允许我们访问异常的具体信息，如下面的例子</p>
+<pre><code class="language-python">def test_recursion_depth():
+    with pytest.raises(RuntimeError) as excinfo:
+        def f():
+            f()
+        f()
+    assert 'maximum recursion' in str(excinfo.value)
+</code></pre>
+<p>我们还可以定制断言异常的错误信息，比如</p>
+<pre><code class="language-python">&gt;&gt;&gt; with raises(ZeroDivisionError, message=&quot;Expecting ZeroDivisionError&quot;):
+...    pass
+... Failed: Expecting ZeroDivisionError
+</code></pre>
+<h3 id="总结-3">总结</h3>
+<p>更多断言异常以及定制assert中比较方式的例子，请参阅<a href="https://docs.pytest.org/en/latest/assert.html">官方文档</a></p>
+<h2 id="4fixture">4.Fixture</h2>
+<blockquote>
+<p>我们可以简单的把Fixture理解为准备测试数据和初始化测试对象的阶段。</p>
+<p>一般我们对测试数据和测试对象的管理有这样的一些场景</p>
+<ul>
+<li>所有用例开始之前初始化测试数据或对象</li>
+<li>所有用例结束之后销毁测试数据或对象</li>
+<li>每个用例开始之前初始化测试数据或对象</li>
+<li>每个用例结束之后销毁测试数据或对象</li>
+<li>在每个／所有module的用例开始之前初始化数据或对象</li>
+<li>在每个／所有module的用例开始之后销毁数据或对象</li>
+<li>......</li>
+<li>......</li>
+</ul>
+<p>pytest的fixture特性可以满足上面的需求。</p>
+</blockquote>
+<h3 id="简单的例子">简单的例子</h3>
+<p>考虑这种场景，我们需要判断用户的密码中包含简单密码，规则是这样的，密码必须至少6位，满足6位的话判断用户的密码不是password123或者password之类的弱密码。</p>
+<p>我们将用户的信息导出成名为users.dev.json的文件，该文件如下所示</p>
+<pre><code class="language-python">[
+  {&quot;name&quot;:&quot;jack&quot;,&quot;password&quot;:&quot;Iloverose&quot;},
+  {&quot;name&quot;:&quot;rose&quot;,&quot;password&quot;:&quot;Ilovejack&quot;},
+  {&quot;name&quot;:&quot;tom&quot;,&quot;password&quot;:&quot;password123&quot;}
+]
+</code></pre>
+<p>新建名为test_user_password.py的文件，键入以下内容，一定要<strong>保证users.dev.json文件与该文件在同一路径下</strong></p>
+<pre><code class="language-python">import pytest
+import json
+
+class TestUserPassword(object):
+    @pytest.fixture
+    def users(self):
+        return json.loads(open('./users.dev.json', 'r').read()) # 读取当前路径下的users.dev.json文件，返回的结果是dict
+
+    def test_user_password(self, users):
+        # 遍历每条user数据
+        for user in users:
+            passwd = user['password']
+            assert len(passwd) &gt;= 6
+            msg = &quot;user %s has a weak password&quot; %(user['name'])
+            assert passwd != 'password', msg
+            assert passwd != 'password123', msg
+</code></pre>
+<h3 id="运行-2">运行</h3>
+<p>pytest可以通过指定文件名的方式运行单个用例文件，这里我们只运行test_user_password.py文件</p>
+<pre><code class="language-bash">pytest test_user_password.py
+</code></pre>
+<h3 id="运行结果">运行结果</h3>
+<pre><code class="language-bash">$ pytest test_user_password.py
+========================================================================= test session starts =========================================================================
+platform darwin -- Python 2.7.12, pytest-3.2.3, py-1.4.34, pluggy-0.4.0
+rootdir: /Users/easonhan/code/testclass.net/src/pytest, inifile:
+collected 1 item
+
+test_user_password.py F
+
+============================================================================== FAILURES ===============================================================================
+_________________________________________________________________ TestUserPassword.test_user_password _________________________________________________________________
+
+self = &lt;test_user_password.TestUserPassword object at 0x1046e3290&gt;
+users = [{'name': 'jack', 'password': 'Iloverose'}, {'name': 'rose', 'password': 'Ilovejack'}, {'name': 'tom', 'password': 'password123'}]
+
+    def test_user_password(self, users):
+        for user in users:
+            passwd = user['password']
+            assert len(passwd) &gt;= 6
+            msg = &quot;user %s has a weak password&quot; %(user['name'])
+            assert passwd != 'password', msg
+&gt;           assert passwd != 'password123', msg
+E           AssertionError: user tom has a weak password
+E           assert 'password123' != 'password123'
+
+test_user_password.py:14: AssertionError
+====================================================================== 1 failed in 0.03 seconds =======================================================================
+</code></pre>
+<h3 id="分析">分析</h3>
+<ul>
+<li>使用@pytest.fixture装饰器可以定义feature</li>
+<li>在用例的参数中传递fixture的名称以便直接调用fixture，拿到fixture的返回值</li>
+<li>3个assert是递进关系，前1个assert断言失败后，后面的assert是不会运行的，因此重要的assert放到前面</li>
+<li><code>E AssertionError: user tom has a weak password</code>可以很容易的判断出是哪条数据出了问题，所以定制可读性好的错误信息是很必要的</li>
+<li>任何1个断言失败以后，for循环就会退出，所以上面的用例1次只能发现1条错误数据，换句话说任何1个assert失败后，用例就终止运行了</li>
+</ul>
+<h3 id="执行顺序">执行顺序</h3>
+<p>pytest是这样运行上面的用例的</p>
+<ol>
+<li>pytest找到以test_开头的方法，也就是<code>test_user_password</code>方法，执行该方法时发现传入的参数里有跟fixture users名称相同的参数</li>
+<li>pytest认定users是fixture，执行该fixture，读取json文件解析成dict实例</li>
+<li>test_user_password方法真正被执行，users fixture被传入到该方法</li>
+</ol>
+<p><strong>注意</strong> 我们可以使用下面的命令来查看用例中可用的fixtures</p>
+<pre><code class="language-bash">pytest --fixtures test_user_password.py
+</code></pre>
+<h3 id="数据清理">数据清理</h3>
+<p>有时候我们需要在用例结束的时候去清理一些测试数据，或清除测试过程中创建的对象，我们可以使用下面的方式</p>
+<pre><code class="language-python">import smtplib
+import pytest
+
+@pytest.fixture(scope=&quot;module&quot;)
+def smtp():
+    smtp = smtplib.SMTP(&quot;smtp.gmail.com&quot;, 587, timeout=5)
+    yield smtp  # provide the fixture value
+    print(&quot;teardown smtp&quot;)
+    smtp.close()
+</code></pre>
+<ul>
+<li>yield 关键字返回了fixture中实例化的对象smtp</li>
+<li>module中的用例执行完成后<code>smtp.close()</code>方法会执行，无论用例的运行状态是怎么样的,都会执行</li>
+</ul>
+<h3 id="更多的数据清理方式">更多的数据清理方式</h3>
+<p><code>addfinalizer</code> 也可以完成数据清理的工作，具体见<a href="https://docs.pytest.org/en/latest/fixture.html#fixture-finalization-executing-teardown-code">这里</a></p>
+<h2 id="5参数化的fixture">5.参数化的Fixture</h2>
+<blockquote>
+<p>继续上一节的测试需求，在上一节里，任何1条测试数据导致断言不通过后测试用例就会停止运行，这样每次只能检查出1条不符合规范的数据，有没有什么办法可以一次性把所有的不符合结果都测出来呢？</p>
+<p>这时候我们就需要用到参数化的fixture特性了</p>
+</blockquote>
+<h3 id="更新数据文件">更新数据文件</h3>
+<p>新建<code>users.test.json</code>文件，内容如下</p>
+<pre><code class="language-python">[
+  {&quot;name&quot;:&quot;jack&quot;,&quot;password&quot;:&quot;Iloverose&quot;},
+  {&quot;name&quot;:&quot;rose&quot;,&quot;password&quot;:&quot;Ilovejack&quot;}
+  {&quot;name&quot;:&quot;tom&quot;,&quot;password&quot;:&quot;password123&quot;},
+  {&quot;name&quot;:&quot;mike&quot;,&quot;password&quot;:&quot;password&quot;},
+  {&quot;name&quot;:&quot;james&quot;,&quot;password&quot;:&quot;AGoodPasswordWordShouldBeLongEnough&quot;}
+]
+</code></pre>
+<p>我们增加了2条用户信息，其中mike的密码是弱密码。</p>
+<h3 id="参数化fixture">参数化fixture</h3>
+<p>参数化fixture允许我们向fixture提供参数，参数可以是list，该list中有几条数据，fixture就会运行几次，相应的测试用例也会运行几次。</p>
+<p>参数化fixture的语法是</p>
+<pre><code>@pytest.fixture(params=[&quot;smtp.gmail.com&quot;, &quot;mail.python.org&quot;])
+</code></pre>
+<p>其中<code>len(params)</code>的值就是用例执行的次数</p>
+<p>在fixture的定义中，可以使用<code>request.param</code>来获取每次传入的参数，如下:</p>
+<pre><code class="language-python">@pytest.fixture(scope=&quot;module&quot;,
+                params=[&quot;smtp.gmail.com&quot;, &quot;mail.python.org&quot;])
+def smtp(request):
+    smtp = smtplib.SMTP(request.param, 587, timeout=5)
+    yield smtp
+    print (&quot;finalizing %s&quot; % smtp)
+    smtp.close()
+</code></pre>
+<ul>
+<li>上面的代码smtp fixture会执行2次</li>
+<li>第1次<code>request.param == 'smtp.gmail.com'</code></li>
+<li>第2次<code>request.param == 'mail.python.org'</code></li>
+</ul>
+<h3 id="实现用例">实现用例</h3>
+<p>我们现在使用参数化fixtures来实现一次性检查出弱密码的用例。</p>
+<p>新建文件<code>test_user_password_with_params.py</code>，内容如下:</p>
+<pre><code class="language-python">import pytest
+import json
+users = json.loads(open('./users.test.json', 'r').read())
+
+class TestUserPasswordWithParam(object):
+    @pytest.fixture(params=users)
+    def user(self, request):
+        return request.param
+
+    def test_user_password(self, user):
+        passwd = user['password']
+        assert len(passwd) &gt;= 6
+        msg = &quot;user %s has a weak password&quot; %(user['name'])
+        assert passwd != 'password', msg
+        assert passwd != 'password123', msg
+</code></pre>
+<p>上面的例子里，我们先把所有用户信息读到users变量里，注意users这时候是list类型，可以直接传入到fixture的params</p>
+<h3 id="运行及结果">运行及结果</h3>
+<p>运行</p>
+<pre><code>pytest test_user_password_with_params.py
+</code></pre>
+<p>结果</p>
+<pre><code class="language-bash">$ pytest test_user_password_with_params.py
+========================================================================= test session starts =========================================================================
+platform darwin -- Python 2.7.12, pytest-3.2.3, py-1.4.34, pluggy-0.4.0
+rootdir: /Users/easonhan/code/testclass.net/src/pytest, inifile:
+collected 5 items
+
+test_user_password_with_params.py ..FF.
+
+============================================================================== FAILURES ===============================================================================
+_________________________________________________________ TestUserPasswordWithParam.test_user_password[user2] _________________________________________________________
+
+self = &lt;test_user_password_with_params.TestUserPasswordWithParam object at 0x10de1d790&gt;, user = {'name': 'tom', 'password': 'password123'}
+
+    def test_user_password(self, user):
+        passwd = user['password']
+        assert len(passwd) &gt;= 6
+        msg = &quot;user %s has a weak password&quot; %(user['name'])
+        assert passwd != 'password', msg
+&gt;       assert passwd != 'password123', msg
+E       AssertionError: user tom has a weak password
+E       assert 'password123' != 'password123'
+
+test_user_password_with_params.py:15: AssertionError
+_________________________________________________________ TestUserPasswordWithParam.test_user_password[user3] _________________________________________________________
+
+self = &lt;test_user_password_with_params.TestUserPasswordWithParam object at 0x10de1df50&gt;, user = {'name': 'mike', 'password': 'password'}
+
+    def test_user_password(self, user):
+        passwd = user['password']
+        assert len(passwd) &gt;= 6
+        msg = &quot;user %s has a weak password&quot; %(user['name'])
+&gt;       assert passwd != 'password', msg
+E       AssertionError: user mike has a weak password
+E       assert 'password' != 'password'
+
+test_user_password_with_params.py:14: AssertionError
+================================================================= 2 failed, 3 passed in 0.05 seconds ==================================================================
+</code></pre>
+<p>稍微留意一下, 可以看出tom和mike使用了弱密码。总共运行了5个用例,3个成功,2个失败。</p>
+<h3 id="fixture的更多特性">fixture的更多特性</h3>
+<p>fixture还有很多更加灵活和深入的用法，具体见<a href="https://docs.pytest.org/en/latest/fixture.html#pytest-fixtures-explicit-modular-scalable">这里</a></p>
+<h2 id="6parametrize-fixture">6.Parametrize Fixture</h2>
+<blockquote>
+<p><code>@pytest.mark.parametrize</code> 装饰器可以让我们每次参数化fixture的时候传入多个项目。回忆上一节，我们参数化的时候只能传入传入1个字符串或者是其他的数据对象，parametrize每次多个参数，更加灵活。</p>
+</blockquote>
+<h3 id="例子">例子</h3>
+<pre><code class="language-python">import pytest
+@pytest.mark.parametrize(&quot;test_input,expected&quot;, [
+    (&quot;3+5&quot;, 8),
+    (&quot;2+4&quot;, 6),
+    (&quot;6*9&quot;, 42),
+])
+def test_eval(test_input, expected):
+    assert eval(test_input) == expected
+</code></pre>
+<p>test_eval方法中传入了2个参数，就如同<code>@pytest.mark.parametrize</code>装饰器中定义的那样，因此简单理解，我们可以把parametrize装饰器想象成是数据表格，有表头(test_input,expected)以及具体的数据。</p>
+<h3 id="运行结果-2">运行结果</h3>
+<pre><code class="language-bash">$ pytest
+======= test session starts ========
+platform linux -- Python 3.x.y, pytest-3.x.y, py-1.x.y, pluggy-0.x.y
+rootdir: $REGENDOC_TMPDIR, inifile:
+collected 3 items
+
+test_expectation.py ..F
+
+======= FAILURES ========
+_______ test_eval[6*9-42] ________
+
+test_input = '6*9', expected = 42
+
+    @pytest.mark.parametrize(&quot;test_input,expected&quot;, [
+        (&quot;3+5&quot;, 8),
+        (&quot;2+4&quot;, 6),
+        (&quot;6*9&quot;, 42),
+    ])
+    def test_eval(test_input, expected):
+&gt;       assert eval(test_input) == expected
+E       AssertionError: assert 54 == 42
+E        +  where 54 = eval('6*9')
+
+test_expectation.py:8: AssertionError
+======= 1 failed, 2 passed in 0.12 seconds ========
+</code></pre>
+<h2 id="7常见套路">7.常见套路</h2>
+<blockquote>
+<p>在使用pytest的时候，下面这些问题我们可能会经常遇到，这里给出官方的解决方案，按照套路来执行就可以了。</p>
+</blockquote>
+<h3 id="基础用法">基础用法</h3>
+<ul>
+<li><a href="https://docs.pytest.org/en/latest/example/simple.html#pass-different-values-to-a-test-function-depending-on-command-line-options">把命令行参数传入到用例</a></li>
+<li><a href="https://docs.pytest.org/en/latest/example/simple.html#dynamically-adding-command-line-options">动态添加命令行参数</a></li>
+<li><a href="https://docs.pytest.org/en/latest/example/simple.html#control-skipping-of-tests-according-to-command-line-option">根据命令行参数来忽略用例执行</a></li>
+<li><a href="https://docs.pytest.org/en/latest/example/simple.html#writing-well-integrated-assertion-helpers">编写集成度更好的辅助断言</a></li>
+<li><a href="https://docs.pytest.org/en/latest/example/simple.html#detect-if-running-from-within-a-pytest-run">判断是否由pytest执行</a></li>
+<li><a href="https://docs.pytest.org/en/latest/example/simple.html#adding-info-to-test-report-header">在测试报告的头部添加内容</a></li>
+<li><a href="https://docs.pytest.org/en/latest/example/simple.html#profiling-test-duration">统计用例运行时间</a></li>
+<li><a href="https://docs.pytest.org/en/latest/example/simple.html#profiling-test-duration">定义测试步骤，也就是让用例按照一定的顺序执行</a></li>
+<li><a href="https://docs.pytest.org/en/latest/example/simple.html#package-directory-level-fixtures-setups">Package/Directory-level fixtures (setups)</a></li>
+<li><a href="https://docs.pytest.org/en/latest/example/simple.html#post-process-test-reports-failures">在报告和用例失败之前添加钩子</a></li>
+<li><a href="https://docs.pytest.org/en/latest/example/simple.html#making-test-result-information-available-in-fixtures">在fixtures中访问测试结果</a></li>
+<li><a href="https://docs.pytest.org/en/latest/example/simple.html#pytest-current-test-environment-variable">PYTEST_CURRENT_TEST环境变量</a></li>
+<li><a href="https://docs.pytest.org/en/latest/example/simple.html#freezing-pytest">冻结pytest</a></li>
+</ul>
+<h3 id="参数化">参数化</h3>
+<ul>
+<li><a href="https://docs.pytest.org/en/latest/example/parametrize.html#generating-parameters-combinations-depending-on-command-line">根据命令行参数来组合测试参数</a></li>
+<li><a href="https://docs.pytest.org/en/latest/example/parametrize.html#generating-parameters-combinations-depending-on-command-line">配置test ID</a></li>
+<li><a href="https://docs.pytest.org/en/latest/example/parametrize.html#a-quick-port-of-testscenarios">快速创建测试场景的功能</a></li>
+<li><a href="https://docs.pytest.org/en/latest/example/parametrize.html#deferring-the-setup-of-parametrized-resources">延迟参数资源加载</a></li>
+<li><a href="https://docs.pytest.org/en/latest/example/parametrize.html#apply-indirect-on-particular-arguments">间接参数</a></li>
+<li><a href="https://docs.pytest.org/en/latest/example/parametrize.html#parametrizing-test-methods-through-per-class-configuration">为不同的方法设置不同的参数</a></li>
+<li><a href="https://docs.pytest.org/en/latest/example/parametrize.html#indirect-parametrization-with-multiple-fixtures">在多个fixture中使用间接参数</a></li>
+<li><a href="https://docs.pytest.org/en/latest/example/parametrize.html#indirect-parametrization-of-optional-implementations-imports">Indirect parametrization of optional implementations/imports</a></li>
+<li><a href="https://docs.pytest.org/en/latest/example/parametrize.html#set-marks-or-test-id-for-individual-parametrized-test">单独的为每个参数化用例设置标记和ID</a></li>
+</ul>
+<h2 id="8使用pytest做简单的接口测试">8.使用pytest做简单的接口测试</h2>
+<blockquote>
+<p>我们现在需要测试<a href="http://www.v2ex.com/">v2ex</a>网站的查看论坛节点信息的api。具体如下:</p>
+<ul>
+<li>节点信息：获得指定节点的名字，简介，URL 及头像图片的地址。
+<ul>
+<li>https://www.v2ex.com/api/nodes/show.json</li>
+<li>Method: GET</li>
+<li>Authentication: None</li>
+</ul>
+</li>
+<li>接受参数：
+<ul>
+<li>name: 节点名（V2EX 的节点名全是半角英文或者数字）<br>
+例如：https://www.v2ex.com/api/nodes/show.json?name=python</li>
+</ul>
+</li>
+<li>接口返回</li>
+</ul>
+</blockquote>
+<pre><code class="language-json">{
+    &quot;id&quot; : 90,
+    &quot;name&quot; : &quot;python&quot;,
+    &quot;url&quot; : &quot;http://www.v2ex.com/go/python&quot;,
+    &quot;title&quot; : &quot;Python&quot;,
+    &quot;title_alternative&quot; : &quot;Python&quot;,
+    &quot;topics&quot; : 7963,
+    &quot;stars&quot; : 5138,
+
+        &quot;header&quot; : &quot;这里讨论各种 Python 语言编程话题，也包括 Django，Tornado 等框架的讨论。这里是一个能够帮助你解决实际问题的地方。&quot;,
+
+
+        &quot;footer&quot; : null,
+
+    &quot;created&quot; : 1278683336,
+    &quot;avatar_mini&quot; : &quot;//v2ex.assets.uxengine.net/navatar/8613/985e/90_mini.png?m=1509941286&quot;,
+    &quot;avatar_normal&quot; : &quot;//v2ex.assets.uxengine.net/navatar/8613/985e/90_normal.png?m=1509941286&quot;,
+    &quot;avatar_large&quot; : &quot;//v2ex.assets.uxengine.net/navatar/8613/985e/90_large.png?m=1509941286&quot;
+}
+</code></pre>
+<h3 id="需求分析">需求分析</h3>
+<p>该接口是获取数据的接口，一般来说，这种接口我们的测试重点是验证数据的准确性。</p>
+<p>根据<a href="http://www.testclass.net/interface/3a/">3A原则</a>，我们可以设计如下的<a href="http://www.testclass.net/interface/first_case/">用例</a></p>
+<ul>
+<li>测试数据: 节点的名称:python</li>
+<li>接口地址: https://www.v2ex.com/api/nodes/show.json</li>
+<li>断言: 返回的结果里，id必须是90,name必须等于python，大家想一想为什么？</li>
+</ul>
+<h3 id="代码">代码</h3>
+<p>新建名为<code>v2ex_api_test.py</code>的文件，键入如下内容</p>
+<pre><code class="language-python">import requests
+
+class TestV2exApi(object):
+    domain = 'https://www.v2ex.com/'
+
+    def test_node(self):
+        path = 'api/nodes/show.json?name=python'
+        url = self.domain + pathpython
+        res = requests.get(url).json()
+        assert res['id'] == 90
+        assert res['name'] == 'python'
+</code></pre>
+<p>需要注意的点</p>
+<ul>
+<li>使用<a href="http://docs.python-requests.org/en/master/">requests</a>库来简化发送get请求并将返回值的json字符串转换成python字典</li>
+<li>使用domain变量来参数化测试的地址，因为不同环境的地址可能不一样，使用domain变量之后只需要改动这个变量就可以切换测试环境了</li>
+<li>断言id为90是因为测试数据是静态的，id不会发生变化</li>
+</ul>
+<h3 id="运行-3">运行</h3>
+<pre><code class="language-bash">$ pytest v2ex_api_test.py
+======================================================================== test session starts ========================================================================
+platform darwin -- Python 2.7.12, pytest-3.2.3, py-1.4.34, pluggy-0.4.0
+rootdir: /Users/easonhan/code/testclass.net/src/pytest, inifile:
+collected 1 item
+
+v2ex_api_test.py .
+
+===================================================================== 1 passed in 1.39 seconds ======================================================================
+</code></pre>
+<p>用例执行成功，我们实现了最简单的接口测试场景。</p>
+<h2 id="9使用fixture参数化接口入参">9.使用fixture参数化接口入参</h2>
+<blockquote>
+<p>接上一节<a href="http://www.v2ex.com/">v2ex</a>网站的查看论坛节点信息的api。具体如下:</p>
+<ul>
+<li>
+<p>节点信息：获得指定节点的名字，简介，URL 及头像图片的地址。</p>
+<ul>
+<li>
+<p>https://www.v2ex.com/api/nodes/show.json</p>
+</li>
+<li>
+<p>Method: GET</p>
+</li>
+<li>
+<p>Authentication: None</p>
+</li>
+</ul>
+</li>
+<li>
+<p>接受参数：</p>
+<ul>
+<li>name: 节点名（V2EX 的节点名全是半角英文或者数字）<br>
+例如：https://www.v2ex.com/api/nodes/show.json?name=python</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>我们试一下，通过传入不同的name，我们可以获取不同的节点信息。上面例子里我们获取了python讨论区的信息。现在我们把name改成java，该接口会返回java讨论区节点的信息，如下所示https://www.v2ex.com/api/nodes/show.json?name=python</p>
+<pre><code class="language-json">
+{
+    &quot;id&quot; : 63,
+    &quot;name&quot; : &quot;java&quot;,
+    &quot;url&quot; : &quot;http://www.v2ex.com/go/java&quot;,
+    &quot;title&quot; : &quot;Java&quot;,
+    &quot;title_alternative&quot; : &quot;Java&quot;,
+    &quot;topics&quot; : 1219,
+    &quot;stars&quot; : 1547,
+
+        &quot;header&quot; : &quot;The most popular programming language.&quot;,
+
+
+        &quot;footer&quot; : null,
+
+    &quot;created&quot; : 1272669207,
+    &quot;avatar_mini&quot; : &quot;//v2ex.assets.uxengine.net/navatar/03af/dbd6/63_mini.png?m=1509589840&quot;,
+    &quot;avatar_normal&quot; : &quot;//v2ex.assets.uxengine.net/navatar/03af/dbd6/63_normal.png?m=1509589840&quot;,
+    &quot;avatar_large&quot; : &quot;//v2ex.assets.uxengine.net/navatar/03af/dbd6/63_large.png?m=1509589840&quot;
+}
+</code></pre>
+<p>那么新的需求来了，现在我们要测试给定的几个节点名称(python/java/go/nodejs)，v2ex的节点api可以正确返回节点的名字</p>
+<h3 id="需求分析-2">需求分析</h3>
+<p>根据<a href="http://www.testclass.net/interface/3a/">3A原则</a>，我们可以设计如下的用例</p>
+<ul>
+<li>测试数据: 节点的名称:python/java/go/nodejs</li>
+<li>接口地址: https://www.v2ex.com/api/nodes/show.json</li>
+<li>断言: 返回的结果里，name字段的值必须等于传入的节点名称</li>
+</ul>
+<h3 id="代码-2">代码</h3>
+<p>在<code>v2ex_api_test.py</code>的文件中添加如下内容</p>
+<pre><code class="language-python">import requests
+import pytest
+
+class TestV2exApiWithParams(object):
+    domain = 'https://www.v2ex.com/'
+
+    @pytest.fixture(params=['python', 'java', 'go', 'nodejs'])
+    def lang(self, request):
+        return request.param
+
+    def test_node(self, lang):
+        path = 'api/nodes/show.json?name=%s' %(lang)
+        url = self.domain + path
+        res = requests.get(url).json()
+        assert res['name'] == lang
+        assert 0
+</code></pre>
+<p>需要注意的点</p>
+<ul>
+<li>每次都可以用<code>request.param</code>来访问本次传入fixture中的参数</li>
+<li>在测试方法中传入同名的fixture方法名可以直接访问fixture</li>
+<li>使用<code>assert(0)</code>强制用例失败，这样可以看到每次fixture的参数值</li>
+</ul>
+<h3 id="运行-4">运行</h3>
+<pre><code class="language-bash">$ pytest v2ex_api_test.py
+======================================================================== test session starts ========================================================================
+platform darwin -- Python 2.7.12, pytest-3.2.3, py-1.4.34, pluggy-0.4.0
+rootdir: /Users/easonhan/code/testclass.net/src/pytest, inifile:
+collected 5 items
+
+v2ex_api_test.py .FFFF
+
+============================================================================= FAILURES ==============================================================================
+______________________________________________________________ TestV2exApiWithParams.test_node[python] ______________________________________________________________
+
+self = &lt;v2ex_api_test.TestV2exApiWithParams object at 0x105e0edd0&gt;, lang = 'python'
+
+    def test_node(self, lang):
+        path = 'api/nodes/show.json?name=%s' %(lang)
+        url = self.domain + path
+        res = requests.get(url).json()
+        assert res['name'] == lang
+&gt;       assert 0
+E       assert 0
+
+v2ex_api_test.py:27: AssertionError
+_______________________________________________________________ TestV2exApiWithParams.test_node[java] _______________________________________________________________
+
+self = &lt;v2ex_api_test.TestV2exApiWithParams object at 0x1075e2750&gt;, lang = 'java'
+
+    def test_node(self, lang):
+        path = 'api/nodes/show.json?name=%s' %(lang)
+        url = self.domain + path
+        res = requests.get(url).json()
+        assert res['name'] == lang
+&gt;       assert 0
+E       assert 0
+
+v2ex_api_test.py:27: AssertionError
+________________________________________________________________ TestV2exApiWithParams.test_node[go] ________________________________________________________________
+
+self = &lt;v2ex_api_test.TestV2exApiWithParams object at 0x107636190&gt;, lang = 'go'
+
+    def test_node(self, lang):
+        path = 'api/nodes/show.json?name=%s' %(lang)
+        url = self.domain + path
+        res = requests.get(url).json()
+        assert res['name'] == lang
+&gt;       assert 0
+E       assert 0
+
+v2ex_api_test.py:27: AssertionError
+______________________________________________________________ TestV2exApiWithParams.test_node[nodejs] ______________________________________________________________
+
+self = &lt;v2ex_api_test.TestV2exApiWithParams object at 0x1075e2790&gt;, lang = 'nodejs'
+
+    def test_node(self, lang):
+        path = 'api/nodes/show.json?name=%s' %(lang)
+        url = self.domain + path
+        res = requests.get(url).json()
+        assert res['name'] == lang
+&gt;       assert 0
+E       assert 0
+
+v2ex_api_test.py:27: AssertionError
+================================================================ 4 failed, 1 passed in 1.91 seconds =================================================================
+</code></pre>
+<p>用例执行失败，但是每次运行时<code>lang</code>的值我们可以看的很明白。</p>
+<h2 id="10使用fixture参数化测试预期结果">10.使用fixture参数化测试预期结果</h2>
+<blockquote>
+<p>接上一节<a href="http://www.v2ex.com/">v2ex</a>网站的查看论坛节点信息的api。</p>
+<p>我们在上一节的测试用例里只断言了返回值的name字段必须与我们传入的入参相同，但是返回值的id却没有进行判定。这一节里我们加强一下测试脚本，实现判断id的功能。</p>
+</blockquote>
+<h3 id="测试数据">测试数据</h3>
+<pre><code class="language-bash">python, id=90
+java, id=63
+nodejs, id=436
+go, id=375
+</code></pre>
+<h3 id="代码实现">代码实现</h3>
+<p>在<code>v2ex_api_test.py</code>的文件中加入如下内容:</p>
+<pre><code class="language-python">class TestV2exApiWithExpectation(object):
+    domain = 'https://www.v2ex.com/'
+
+    @pytest.mark.parametrize('name,node_id', [('python', 90), ('java', 63), ('go', 375), ('nodejs', 436)])
+
+    def test_node(self, name, node_id):
+        path = 'api/nodes/show.json?name=%s' %(name)
+        url = self.domain + path
+        res = requests.get(url).json()
+        assert res['name'] == name
+        assert res['id'] == node_id
+        assert 0
+</code></pre>
+<h3 id="运行及结果-2">运行及结果</h3>
+<pre><code class="language-bash">$ pytest v2ex_api_test.py
+======================================================================== test session starts ========================================================================
+platform darwin -- Python 2.7.12, pytest-3.2.3, py-1.4.34, pluggy-0.4.0
+rootdir: /Users/easonhan/code/testclass.net/src/pytest, inifile:
+collected 9 items
+
+v2ex_api_test.py .FFFFFFFF
+
+============================================================================= FAILURES ==============================================================================
+______________________________________________________________ TestV2exApiWithParams.test_node[python] ______________________________________________________________
+
+self = &lt;v2ex_api_test.TestV2exApiWithParams object at 0x10618eb10&gt;, lang = 'python'
+
+    def test_node(self, lang):
+        path = 'api/nodes/show.json?name=%s' %(lang)
+        url = self.domain + path
+        res = requests.get(url).json()
+        assert res['name'] == lang
+&gt;       assert 0
+E       assert 0
+
+v2ex_api_test.py:27: AssertionError
+_______________________________________________________________ TestV2exApiWithParams.test_node[java] _______________________________________________________________
+
+self = &lt;v2ex_api_test.TestV2exApiWithParams object at 0x106691790&gt;, lang = 'java'
+
+    def test_node(self, lang):
+        path = 'api/nodes/show.json?name=%s' %(lang)
+        url = self.domain + path
+        res = requests.get(url).json()
+        assert res['name'] == lang
+&gt;       assert 0
+E       assert 0
+
+v2ex_api_test.py:27: AssertionError
+________________________________________________________________ TestV2exApiWithParams.test_node[go] ________________________________________________________________
+
+self = &lt;v2ex_api_test.TestV2exApiWithParams object at 0x10666dc50&gt;, lang = 'go'
+
+    def test_node(self, lang):
+        path = 'api/nodes/show.json?name=%s' %(lang)
+        url = self.domain + path
+        res = requests.get(url).json()
+        assert res['name'] == lang
+&gt;       assert 0
+E       assert 0
+
+v2ex_api_test.py:27: AssertionError
+______________________________________________________________ TestV2exApiWithParams.test_node[nodejs] ______________________________________________________________
+
+self = &lt;v2ex_api_test.TestV2exApiWithParams object at 0x106691890&gt;, lang = 'nodejs'
+
+    def test_node(self, lang):
+        path = 'api/nodes/show.json?name=%s' %(lang)
+        url = self.domain + path
+        res = requests.get(url).json()
+        assert res['name'] == lang
+&gt;       assert 0
+E       assert 0
+
+v2ex_api_test.py:27: AssertionError
+__________________________________________________________ TestV2exApiWithExpectation.test_node[python-90] __________________________________________________________
+
+self = &lt;v2ex_api_test.TestV2exApiWithExpectation object at 0x1066d20d0&gt;, name = 'python', node_id = 90
+
+    @pytest.mark.parametrize('name,node_id', [('python', 90), ('java', 63), ('go', 375), ('nodejs', 436)])
+
+    def test_node(self, name, node_id):
+        path = 'api/nodes/show.json?name=%s' %(name)
+        url = self.domain + path
+        res = requests.get(url).json()
+        assert res['name'] == name
+        assert res['id'] == node_id
+&gt;       assert 0
+E       assert 0
+
+v2ex_api_test.py:40: AssertionError
+___________________________________________________________ TestV2exApiWithExpectation.test_node[java-63] ___________________________________________________________
+
+self = &lt;v2ex_api_test.TestV2exApiWithExpectation object at 0x1066e9690&gt;, name = 'java', node_id = 63
+
+    @pytest.mark.parametrize('name,node_id', [('python', 90), ('java', 63), ('go', 375), ('nodejs', 436)])
+
+    def test_node(self, name, node_id):
+        path = 'api/nodes/show.json?name=%s' %(name)
+        url = self.domain + path
+        res = requests.get(url).json()
+        assert res['name'] == name
+        assert res['id'] == node_id
+&gt;       assert 0
+E       assert 0
+
+v2ex_api_test.py:40: AssertionError
+___________________________________________________________ TestV2exApiWithExpectation.test_node[go-375] ____________________________________________________________
+
+self = &lt;v2ex_api_test.TestV2exApiWithExpectation object at 0x10666d790&gt;, name = 'go', node_id = 375
+
+    @pytest.mark.parametrize('name,node_id', [('python', 90), ('java', 63), ('go', 375), ('nodejs', 436)])
+
+    def test_node(self, name, node_id):
+        path = 'api/nodes/show.json?name=%s' %(name)
+        url = self.domain + path
+        res = requests.get(url).json()
+        assert res['name'] == name
+        assert res['id'] == node_id
+&gt;       assert 0
+E       assert 0
+
+v2ex_api_test.py:40: AssertionError
+_________________________________________________________ TestV2exApiWithExpectation.test_node[nodejs-436] __________________________________________________________
+
+self = &lt;v2ex_api_test.TestV2exApiWithExpectation object at 0x1066d2710&gt;, name = 'nodejs', node_id = 436
+
+    @pytest.mark.parametrize('name,node_id', [('python', 90), ('java', 63), ('go', 375), ('nodejs', 436)])
+
+    def test_node(self, name, node_id):
+        path = 'api/nodes/show.json?name=%s' %(name)
+        url = self.domain + path
+        res = requests.get(url).json()
+        assert res['name'] == name
+        assert res['id'] == node_id
+&gt;       assert 0
+E       assert 0
+
+v2ex_api_test.py:40: AssertionError
+================================================================ 8 failed, 1 passed in 1.81 seconds =================================================================
+</code></pre>
+<h2 id="11生成xml格式的测试报告">11.生成xml格式的测试报告</h2>
+<blockquote>
+<p>pytest有非常友好的命令行报告输出，在做用例开发的时候，这是极好的。然而我们在运行用例后经常会需要将测试结果广而告之，发送给相关责任人浏览，所以生成简洁美观的测试报告是很有必要的。</p>
+</blockquote>
+<h3 id="生成junit格式的xml报告">生成junit格式的xml报告</h3>
+<p>pytest可以生成junit格式的xml报告，在命令行中加入<code>--junit-xml=path</code> 参数就可以了。</p>
+<pre><code class="language-bash">pytest test_quick_start.py --junit-xml=report.xml
+</code></pre>
+<p>上面的命令在当前文件夹中生成了名为report.xml的测试报告</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;testsuite errors=&quot;0&quot; failures=&quot;0&quot; name=&quot;pytest&quot; skips=&quot;0&quot; tests=&quot;1&quot; time=&quot;0.009&quot;&gt;&lt;testcase classname=&quot;test_quick_start&quot; file=&quot;test_quick_start.py&quot; line=&quot;3&quot; name=&quot;test_reverse&quot; time=&quot;0.000499725341797&quot;&gt;&lt;/testcase&gt;&lt;/testsuite&gt;%
+</code></pre>
+<h3 id="ci集成">ci集成</h3>
+<p>jenkins在build后可以通过插件展示junit格式的测试报告，具体步骤就不描述了。</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://preszang.github.io/post/关于软件测试和软件测试人员/" class="post-title gt-a-link">
+                    关于软件测试和软件测试人员
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">是谁来自山川湖海</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        一只伪文艺的 IT菜鸟
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://preszang.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>
