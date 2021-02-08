@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>关于 | 霜序五</title>
+<title>Python 第三方日志框架 loguru 使用 | 霜序五</title>
 <meta name="description" content="一直伪文艺的IT菜鸟">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -89,25 +89,114 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>关于</h1>
+            <h1>Python 第三方日志框架 loguru 使用</h1>
             <p class="article-meta">
-              2019-01-25
+              2021-02-08
+              
+                <a href="https://preszang.github.io/blog/tag/python/" class="badge secondary">
+                  python
+                </a>
               
             </p>
             
             <div class="post-content">
-              <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
+              <h2 id="python-第三方日志框架-loguru-使用">Python 第三方日志框架 loguru 使用</h2>
+<blockquote>
+<p>看到了一个不错的 python 第三方日志框架 loguru，优雅的记录日志</p>
 </blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<h2 id="联系我呀">📬 联系我呀</h2>
+<ul>
+<li>Github: <code>https://github.com/Delgan/loguru</code></li>
+<li>文档：<code>https://loguru.readthedocs.io/en/stable/index.html</code></li>
+</ul>
+<h3 id="1-安装">1、安装</h3>
+<pre><code class="language-python">pip install loguru
+</code></pre>
+<h3 id="2-输出日志">2、输出日志</h3>
+<pre><code class="language-python">from loguru import logger
+logger.debug(&quot;这是一条debug日志&quot;)
+
+# 终端执行后出现带颜色的日志，挺酷的
+</code></pre>
+<h3 id="3-输出到文件">3、输出到文件</h3>
+<pre><code class="language-python">from loguru import logger
+
+logger.add(&quot;file_{time}.log&quot;)
+
+logger.debug(&quot;这是一条debug日志&quot;)
+logger.info(&quot;这是一条info日志&quot;)
+# 目录下多出一个日志文件 ：file_2019-03-14_19-53-25_661314.log
+</code></pre>
+<h3 id="4-日志规则">4、日志规则</h3>
+<pre><code class="language-python">from loguru import logger
+# 设置日志格式，过滤器，日志级别
+logger.add(&quot;file.log&quot;, format=&quot;{time} {level} {message}&quot;, filter=&quot;&quot;, level=&quot;INFO&quot;)
+logger.debug(&quot;这是一条debug日志&quot;)
+logger.info(&quot;这是一条info日志&quot;)
+#输出
+# 2019-03-14T20:01:25.392454+0800 INFO 这是一条info日志
+</code></pre>
+<h3 id="5-日志文件">5、日志文件</h3>
+<pre><code class="language-python"># 文件管理方式
+logger.add(&quot;file_1.log&quot;, rotation=&quot;500 MB&quot;)    # 文件过大就会重新生成一个文件
+logger.add(&quot;file_2.log&quot;, rotation=&quot;12:00&quot;)     # 每天12点创建新文件
+logger.add(&quot;file_3.log&quot;, rotation=&quot;1 week&quot;)    # 文件时间过长就会创建新文件
+
+logger.add(&quot;file_X.log&quot;, retention=&quot;10 days&quot;)  # 一段时间后会清空
+
+logger.add(&quot;file_Y.log&quot;, compression=&quot;zip&quot;)    # 保存zip格式
+</code></pre>
+<h3 id="6-其他参数">6、其他参数</h3>
+<pre><code class="language-python">logger.add(&quot;somefile.log&quot;, enqueue=True)  # 异步写入
+
+logger.add(&quot;somefile.log&quot;, serialize=True)  # 序列化为json
+</code></pre>
+<h3 id="7-时间格式化">7、时间格式化</h3>
+<pre><code class="language-python">logger.add(&quot;file.log&quot;, format=&quot;{time:YYYY-MM-DD at HH:mm:ss} | {level} | {message}&quot;)
+</code></pre>
+<blockquote>
+<p>配合 notifiers 模块</p>
+</blockquote>
+<ul>
+<li>github： <code>https://github.com/notifiers/notifiers</code></li>
+<li>文档：<code>https://notifiers.readthedocs.io/en/latest/</code></li>
+</ul>
+<h3 id="8-在工程中创建多个文件处理器对象并解决中文乱码问题">8、在工程中创建多个文件处理器对象并解决中文乱码问题</h3>
+<pre><code class="language-python"># coding=utf-8
+import os
+import sys
+from loguru import logger
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+log_file_path = os.path.join(BASE_DIR, 'Log/my.log')
+err_log_file_path = os.path.join(BASE_DIR, 'Log/err.log')
+
+logger.add(sys.stderr, format=&quot;{time} {level} {message}&quot;, filter=&quot;my_module&quot;, level=&quot;INFO&quot;)
+# logger.add(s)
+logger.add(log_file_path, rotation=&quot;500 MB&quot;, encoding='utf-8')  # Automatically rotate too big file
+logger.add(err_log_file_path, rotation=&quot;500 MB&quot;, encoding='utf-8',level='ERROR')
+
+# Automatically rotate too big file
+logger.debug(&quot;That's it, beautiful and simple logging!&quot;)
+logger.debug(&quot;中文日志可以不&quot;)
+logger.error(&quot;严重错误&quot;)
+</code></pre>
 
             </div>
           </article>
         </div>
         <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://preszang.github.io/blog/post/hello-gridea/">
+                <h3 class="post-title">
+                  Hello Gridea
+                </h3>
+              </a>
+            </div>
           
         </div>
         
