@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://https://preszang.github.io/</id>
+    <id>https://preszang.github.io</id>
     <title>霜序五</title>
-    <updated>2021-02-08T05:51:56.774Z</updated>
+    <updated>2021-02-08T05:52:42.916Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://https://preszang.github.io/"/>
-    <link rel="self" href="https://https://preszang.github.io/atom.xml"/>
+    <link rel="alternate" href="https://preszang.github.io"/>
+    <link rel="self" href="https://preszang.github.io/atom.xml"/>
     <subtitle>一直伪文艺的IT菜鸟</subtitle>
-    <logo>https://https://preszang.github.io/images/avatar.png</logo>
-    <icon>https://https://preszang.github.io/favicon.ico</icon>
+    <logo>https://preszang.github.io/images/avatar.png</logo>
+    <icon>https://preszang.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 霜序五</rights>
     <entry>
         <title type="html"><![CDATA[Python 第三方日志框架 loguru 使用]]></title>
-        <id>https://https://preszang.github.io/post/python-di-san-fang-ri-zhi-kuang-jia-loguru-shi-yong/</id>
-        <link href="https://https://preszang.github.io/post/python-di-san-fang-ri-zhi-kuang-jia-loguru-shi-yong/">
+        <id>https://preszang.github.io/post/python-di-san-fang-ri-zhi-kuang-jia-loguru-shi-yong/</id>
+        <link href="https://preszang.github.io/post/python-di-san-fang-ri-zhi-kuang-jia-loguru-shi-yong/">
         </link>
         <updated>2021-02-08T03:52:14.000Z</updated>
         <content type="html"><![CDATA[<h2 id="python-第三方日志框架-loguru-使用">Python 第三方日志框架 loguru 使用</h2>
@@ -101,8 +101,8 @@ logger.error(&quot;严重错误&quot;)
     </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://https://preszang.github.io/post/hello-gridea/</id>
-        <link href="https://https://preszang.github.io/post/hello-gridea/">
+        <id>https://preszang.github.io/post/hello-gridea/</id>
+        <link href="https://preszang.github.io/post/hello-gridea/">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
