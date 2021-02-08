@@ -1,1052 +1,1196 @@
-<!DOCTYPE html>
-<html>
-
 <head>
-  <meta charset="UTF-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://preszang.github.io/media/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/live2d.css">
+    <link rel="stylesheet" href="https://preszang.github.io/styles/main.css">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<meta name="keywords" content="Gridea静态个人博客">
-<meta name="description" content="是谁来自山川湖海">
-<meta name="theme-color" content="#000">
-<title>霜序五</title>
-<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/preszang/preszang.github.io@main/favicon.ico?v=1612766590795">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/preszang/preszang.github.io@main/media/css/pisces.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/preszang/preszang.github.io@main/media/fonts/font-awesome.css">
-<link
-  href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"
-  rel="stylesheet" type="text/css">
-
-<link href="https://cdn.jsdelivr.net/gh/preszang/preszang.github.io@main/media/hljs/styles/default.css"
-  rel="stylesheet">
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/preszang/preszang.github.io@main/styles/main.css">
-
-<script src="https://cdn.jsdelivr.net/gh/preszang/preszang.github.io@main/media/hljs/highlight.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.ui.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
-  integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
-
-
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
-  integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
-  integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
-  onload="renderMathInElement(document.body);"></script>
-
-
-
-
-
+    <!-- pjax 加载valine文件 -->
+    <script src="https://preszang.github.io/media/js/valine.min.js"></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    <meta name="description" content="是谁来自山川湖海" />
+    <meta http-equiv="x-pjax-version" content="v123">
+    <title>霜序五</title>
 </head>
 
+
 <body>
-  <div class="head-top-line"></div>
-  <div class="header-box">
-    
-<div class="pisces">
-  <header class="header  ">
-    <div class="blog-header box-shadow-wrapper bg-color " id="header">
-      <div class="nav-toggle" id="nav_toggle">
-        <div class="toggle-box">
-          <div class="line line-top"></div>
-          <div class="line line-center"></div>
-          <div class="line line-bottom"></div>
-        </div>
-      </div>
-      <div class="site-meta">       
-        <div class="site-title">
-          
-            <a href="/" class="brand">
-              <span>霜序五</span>
-            </a>  
-          
-        </div>
-        
-          <p class="subtitle">精于心，简于形</p>
-        
-      </div>
-      <nav class="site-nav" id="site_nav">
-        <ul id="nav_ul">
-          
-            
-            
-              
-            
-            <li class="nav-item nav-item-active">
-              
-              
-                <a href="/" target="_self">
-                  <i class="fa fa-home"></i> 首页
-                </a>
-              
-            </li>
-          
-            
-            
-              
-            
-            <li class="nav-item ">
-              
-              
-                <a href="/archives/" target="_self">
-                  <i class="fa fa-archive"></i> 归档
-                </a>
-              
-            </li>
-          
-            
-            
-              
-            
-            <li class="nav-item ">
-              
-              
-                <a href="/tags/" target="_self">
-                  <i class="fa fa-tags"></i> 标签
-                </a>
-              
-            </li>
-          
-            
-            
-              
-            
-            <li class="nav-item ">
-              
-              
-                <a href="/post/about/" target="_self">
-                  <i class="fa fa-user"></i> 关于
-                </a>
-              
-            </li>
-          
-          
-            
-              <li class="nav-item ">
-                <a href="/friends/" target="_self">
-                  
-                    <i class="fa fa-address-book"></i> 友情链接
-                  
-                </a>
-              </li>
-            
-          
-          
-            <li id="fa_search" class="nav-item">
-              <a href="javascript:void(0);">
-                <i class="fa fa-search"></i> <span class="language" data-lan="search">搜索</span>
-              </a>
-            </li>
-          
-        </ul>
-      </nav>
-    </div>
-  </header>
-</div>
-
-<script type="text/javascript"> 
- 
-  let showNav = true;
-
-  let navToggle = document.querySelector('#nav_toggle'),
-  siteNav = document.querySelector('#site_nav');
-  
-  function navClick() {
-    let sideBar = document.querySelector('.sidebar');
-    let navUl = document.querySelector('#nav_ul');
-    navToggle.classList.toggle('nav-toggle-active');
-    siteNav.classList.toggle('nav-menu-active');
-    if (siteNav.classList.contains('nav-menu-active')) {
-      siteNav.style = "height: " + (navUl.children.length * 42) +"px !important";
-    } else {
-      siteNav.style = "";
-    }
-  }
-
-  navToggle.addEventListener('click',navClick);  
-</script>
-  </div>
-  <div class="main-continer">
-    
-    <div
-      class="section-layout pisces ">
-      <div class="section-layout-wrapper">
-        <div id="sidebarMeta" class="sidebar">
-    
-<div class="sidebar-wrapper box-shadow-wrapper bg-color">
-  <div class="sidebar-item">
-    <img class="site-author-image right-motion" src="https://cdn.jsdelivr.net/gh/preszang/preszang.github.io@main/images/avatar.png"/>
-    <p class="site-author-name">适用 Gemini,Pisces 布局,版权说明需配置</p>
-    
-  </div>
-  <div class="sidebar-item side-item-stat right-motion">
-    <div class="sidebar-item-box">
-      <a href="/archives/">
-        
-        <span class="site-item-stat-count">2</span>
-        <span class="site-item-stat-name language" data-lan="article">文章</span>
-      </a>
-    </div>
-    <div class="sidebar-item-box">
-      <a href="">
-        <span class="site-item-stat-count">2</span>
-        <span class="site-item-stat-name language" data-lan="category">分类</span>
-      </a>
-    </div>
-    <div class="sidebar-item-box">
-      <a href="/tags/">
-        <span class="site-item-stat-count">2</span>
-        <span class="site-item-stat-name language" data-lan="tag">标签</span>
-      </a>
-    </div>
-  </div>
-  
-    
-  
-  
-
-
-
-  <div style="width: 100%; position: relative;">
-    <canvas id="canvasDiyBlock" style="width:100%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
-    <script src="https://cdn.jsdelivr.net/gh/preszang/preszang.github.io@main/media/js/magic/clock.js"></script>
-  </div>
-
-</div>
-</div>
-<script>
-  let sidebarMeta = document.querySelector('#sidebarMeta');
-  let scheme = 'pisces';
-  let sidebarWrapper = document.querySelector('.sidebar-wrapper');
-  if (sidebarMeta && (scheme === 'pisces' || scheme === 'gemini')) {
-    document.addEventListener('scroll', function(e) {
-      if (document.scrollingElement.scrollTop > parseInt(sidebarMeta.style.marginTop) + 10) {
-        sidebarWrapper.classList.add('home-sidebar-fixed')
-      } else {
-        sidebarWrapper.classList.remove('home-sidebar-fixed')
-      }
-    });
-  }
-  </script>
-        <div class="section-box pisces">
-          <section class="section bg-color posts-expand slide-down-in">
-            
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://preszang.github.io/post/Python 第三方日志框架 loguru 使用/">
-      Python 第三方日志框架 loguru 使用
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item">
-      <i class="fa fa-thumb-tack"></i>
-      <span class="language" data-lan="top">置顶</span>
-      <span class="post-meta-divider">|</span>
-    </span>
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2021-02-08 11:52:14">2021-02-08</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show language" data-lan="category-in">分类于</span>
-      
-      
-      <a href="https://preszang.github.io/tag/python/">
-        <span>python</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>3<span class="language" data-lan="minute">分钟</span></span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>565<span class="pc-show language" data-lan="words">字数</span></span>
-    </span>
-    
-  </div>
-</section>
-      <div class="post-body">
-        
-        
-          
-            <!-- 没有手动摘要切开启了自动摘要,则根据配置筛除摘要内容 -->
-            
-            
-              
-              
-              
-            
-              
-              
-              
-            
-              
-              
-              
-            
-            
-              <p><h2 id="python-第三方日志框架-loguru-使用">Python 第三方日志框架 loguru 使用</h2>
-<blockquote>
-<p>看到了一个不错的 python 第三方日志框架 loguru，优雅的记录日志</p>
-
+    <!-- 响应式布局，针对PC端内容显示 -->
+    <div id="content">
+        <div class="nav-large">
+            <div class="row">
                 
-              <p>
-            
-          
+                <div class="side"><head>
+    <link rel="stylesheet" href="https://preszang.github.io/media/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://preszang.github.io/styles/main.css">
+    
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/default.min.css">
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/js/clipboard.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/live2d.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
+    <!-- 数学公式 -->
+    
+    
+</head>
+<style>
+    body{
+    cursor: url("https://preszang.github.io/media/images/mouse_cursor.png"),auto
+    }
+    </style>
+
+<body>
+    
+    <script>
+        let menupos = 'left'
+    </script>
+    
+    
+    <script>
+        let shareChoice = true
+    </script>
+    
+    
+    <script>
+        let donateChoice = true
+    </script>
+    
+    
+    <script>
+        let searchChoice = true
+    </script>
+    
+    <script>let postsnum = 0;</script>
+    <div id="side-posttitle" style="display: none;">
         
+    
+    Python 第三方日志框架 loguru 使用
+    <script>postsnum += 1</script>
+    
+    
+    
+    
+    
+    【山雀】万能青年旅店
+    <script>postsnum += 1</script>
+    
+    
+    </div>
+    <div class="pjaxloading" onclick="pjaxloadingClose()">
+        <div class="loadingbackground"></div>
+        <div id="loading">
+            <div class="loading">
+            </div>
+        </div>
+    </div>
+    
+    <div id=side>
+        <a onclick="showAaplayer()"><i style="font-size: 20px;"><img
+                    src='https://preszang.github.io/media/images/music.png' alt="音乐播放器" class="musicbtn"></i></a>
+        <div class="avatar-border">
+            <img src="https://preszang.github.io/images/avatar.png?v=1612768729546" class="avatar">
+        </div>
+        <div class="sitename">霜序五</div>
+        <span class="describtion" data-text='["是谁来自山川湖海"]'>&nbsp;</span>
         
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://preszang.github.io/post/Python 第三方日志框架 loguru 使用/" rel="contents">
-            阅读全文 »
-          </a>
+        <div class="search">
+            <!-- <input type="text" class="search-input" placeholder="标题搜索(●'◡'●)" /> -->
+            <input type="text" class="search-input" placeholder="标题搜索 ⚆_⚆ つ♡">
+            <div class="search-results"></div>
         </div>
         
-      </div>
-      
-        <footer class="post-footer">
-          <div class="post-eof"></div>
-        </footer>
-      
+    <div class="share-button">
+        <span>社交按钮</span>
+        
+        
+        
+        
+        
+        
     </div>
-  </article>
+    <div id="qq" style="display:none"></div>
+    
+    
+    <div class="mchocie describtion">
+        <a data-pjax href="/" class="menubutton">
+            首页
+        </a>
+    </div>
+    
+    
+    
+    <div class="mchocie describtion">
+        <a data-pjax href="/archives" class="menubutton">
+            归档
+        </a>
+    </div>
+    
+    
+    
+    <div class="mchocie describtion">
+        <a data-pjax href="/tags" class="menubutton">
+            标签
+        </a>
+    </div>
+    
+    
+    
+    <div class="mchocie describtion">
+        <a data-pjax href="/post/about" class="menubutton">
+            关于
+        </a>
+    </div>
+    
+    
+    
+    
+    <div class="mchocie describtion">
+        <a data-pjax href="https://preszang.github.io/friends" class="menubutton">友人帐</a>
+    </div>
+    
+    <hr>
+    <style>
+    .copyright {
+        font-size: 15px;
+        color: #d9d9d9;
+    }
 
-  <article class="post-list-box  post box-shadow-wrapper">
-    <div class="article-wrapper bg-color">
-      <section class="post-header">
-  <h1 class="post-title">
-    <a class="post-title-link" href="https://preszang.github.io/post/【山雀】万能青年旅店/">
-      【山雀】万能青年旅店
-    </a>
-  </h1>
-  <div class="post-meta">
-    
-    <span class="meta-item pc-show">
-      <i class="fa fa-calendar-o"></i>
-      <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2018-12-12 00:00:00">2018-12-12</span>
-      <span class="post-meta-divider pc-show">|</span>
-    </span>
-    
-    <span class="meta-item">
-      <i class="fa fa-folder-o"></i>
-      <span class="pc-show language" data-lan="category-in">分类于</span>
-      
-      
-      <a href="https://preszang.github.io/tag/XySIiVPfD/">
-        <span>Gridea</span>
-      </a>
-      
-      
-    </span>
-    <span class="post-meta-divider">|</span>
-    
-    <span class="meta-item">
-      <i class="fa fa-clock-o"></i>
-      <span>0<span class="language" data-lan="minute">分钟</span></span>
-    </span>
-    <span class="meta-item">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-file-word-o"></i>
-      <span>0<span class="pc-show language" data-lan="words">字数</span></span>
-    </span>
-    
-  </div>
-</section>
-      <div class="post-body">
-        
-        
-          
-            <!-- 没有手动摘要切开启了自动摘要,则根据配置筛除摘要内容 -->
-            
-            
-              
-              
-              
-            
-              
-              
-            
-              <p><figure data-type="image" tabindex="1"><img src="https://s3.ax1x.com/2021/01/07/sZjBOP.jpg" alt="" loading="lazy"></figure>
 
+    @media screen and (min-width: 1200px) {
+        .foot {
+            width: 100%;
+            height: 130px;
+        }
+    }
+
+    @media screen and (max-width: 1200px) {
+        .foot {
+            display: none;
+        }
+    }
+</style>
+
+<body>
+    <div class="foot">
+        <div id="footinfo">一只伪文艺的 IT菜鸟 | Theme: <a
+                href="https://github.com/850552586/gridea-theme-fog">Fog</a>
+            <div>
                 
-              <p>
-            
-          
-        
-        
-        <div class="post-button text-center">
-          <a class="btn language" data-lan="read-more" href="https://preszang.github.io/post/【山雀】万能青年旅店/" rel="contents">
-            阅读全文 »
-          </a>
+            </div>
+            <div>
+                
+            </div>
+            <div class="copyright" style="color:white;text-align: center;">Copyright © 2020  备案号: 鄂ICP备...号
+            </div>
         </div>
-        
-      </div>
-      
-        <footer class="post-footer">
-          <div class="post-eof"></div>
-        </footer>
-      
+
+
+
     </div>
-  </article>
-  
-            
-            
-<div class="page bg-color">
-  <ul class="pagination-ul">
-    
-    
-      
-        <li class="pagination-li pagination-active">
-            <a href="/page/../">
-              1
-            </a>
-        </li>
-      
-    
-    
-  </ul>
-</div>
-          </section>
-        </div>
-      </div>
-    </div>
-    <div class="footer-box">
-  <footer class="footer">
-    <div class="copyright">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | © 2019-2020 Theme By <a
-        href="https://github.com/hsxyhao/gridea-theme-next" target="_blank">HsxyHao</a>
-    </div>
-    <div class="poweredby">
-      一只伪文艺的 IT菜鸟
-    </div>
-  </footer>
-  
-  
-  <div class="pisces back-to-top" id="back_to_top">
-    <i class="fa fa-arrow-up"></i>
-    
-    <span class="scrollpercent">
-      <span id="back_to_top_text">0</span>%
-    </span>
-    
-  </div>
-  
-  
-  
-</div>
-<script>
-
-  let sideBarOpen = 'sidebar-open';
-  let body = document.body;
-  let back2Top = document.querySelector('#back_to_top'),
-    back2TopText = document.querySelector('#back_to_top_text'),
-    drawerBox = document.querySelector('#drawer_box'),
-    rightSideBar = document.querySelector('.sidebar'),
-    viewport = document.querySelector('body');
-
-  function scrollAnimation(currentY, targetY) {
-
-    let needScrollTop = targetY - currentY
-    let _currentY = currentY
-    setTimeout(() => {
-      const dist = Math.ceil(needScrollTop / 10)
-      _currentY += dist
-      window.scrollTo(_currentY, currentY)
-      if (needScrollTop > 10 || needScrollTop < -10) {
-        scrollAnimation(_currentY, targetY)
-      } else {
-        window.scrollTo(_currentY, targetY)
-      }
-    }, 1)
-  }
-
-  back2Top.addEventListener("click", function (e) {
-    scrollAnimation(document.scrollingElement.scrollTop, 0);
-    e.stopPropagation();
-    return false;
-  });
-
-  window.addEventListener('scroll', function (e) {
-    let percent = document.scrollingElement.scrollTop / (document.scrollingElement.scrollHeight - document.scrollingElement.clientHeight) * 100;
-    if (percent > 1 && !back2Top.classList.contains('back-top-active')) {
-      back2Top.classList.add('back-top-active');
-    }
-    if (percent == 0) {
-      back2Top.classList.remove('back-top-active');
-    }
-    if (back2TopText) {
-      back2TopText.textContent = Math.floor(percent);
-    }
-  });
-
-
-  let hasCacu = false;
-  window.onresize = function () {
-    calcuHeight();
-  }
-
-  function calcuHeight() {
-    // 动态调整站点概览高度
-    if (!hasCacu && back2Top.classList.contains('pisces') || back2Top.classList.contains('gemini')) {
-      let sideBar = document.querySelector('.sidebar');
-      let navUl = document.querySelector('#site_nav');
-      sideBar.style = 'margin-top:' + (navUl.offsetHeight + navUl.offsetTop + 15) + 'px;';
-      hasCacu = true;
-    }
-  }
-  calcuHeight();
-
-  let open = false, MOTION_TIME = 300, RIGHT_MOVE_DIS = '320px';
-
-  if (drawerBox) {
-    let rightMotions = document.querySelectorAll('.right-motion');
-    let right = drawerBox.classList.contains('right');
-
-    let transitionDir = right ? "transition.slideRightIn" : "transition.slideLeftIn";
-
-    let openProp, closeProp;
-    if (right) {
-      openProp = {
-        paddingRight: RIGHT_MOVE_DIS
-      };
-      closeProp = {
-        paddingRight: '0px'
-      };
-    } else {
-      openProp = {
-        paddingLeft: RIGHT_MOVE_DIS
-      };
-      closeProp = {
-        paddingLeft: '0px'
-      };
-    }
-
-    drawerBox.onclick = function () {
-      open = !open;
-      window.Velocity(rightSideBar, 'stop');
-      window.Velocity(viewport, 'stop');
-      window.Velocity(rightMotions, 'stop');
-      if (open) {
-        window.Velocity(rightSideBar, {
-          width: RIGHT_MOVE_DIS
-        }, {
-          duration: MOTION_TIME,
-          begin: function () {
-            window.Velocity(rightMotions, transitionDir, {});
-          }
-        })
-        window.Velocity(viewport, openProp, {
-          duration: MOTION_TIME
-        });
-      } else {
-        window.Velocity(rightSideBar, {
-          width: '0px'
-        }, {
-          duration: MOTION_TIME,
-          begin: function () {
-            window.Velocity(rightMotions, {
-              opacity: 0
-            });
-          }
-        })
-        window.Velocity(viewport, closeProp, {
-          duration: MOTION_TIME
-        });
-      }
-      for (let i = 0; i < drawerBox.children.length; i++) {
-        drawerBox.children[i].classList.toggle('muse-line');
-      }
-      drawerBox.classList.toggle(sideBarOpen);
-    }
-  }
-
-  // 链接跳转
-  let newWindow = 'false'
-  if (newWindow === 'true') {
-    let links = document.querySelectorAll('.post-body a')
-    links.forEach(item => {
-      if (!item.classList.contains('btn')) {
-        item.setAttribute("target", "_blank");
-      }
-    })
-  }
-
-  let faSearch = document.querySelector('#fa_search');
-  faSearch.addEventListener('click', function () {
-    document.querySelector('#search_mask').style = ''
-  })
-
-  // 代码高亮
-  hljs.initHighlightingOnLoad();
-  
-  // 离开当前页title变化
-  var leaveTitle = "";
-  if (leaveTitle) {
-    document.addEventListener('visibilitychange', function () {
-      if (document.visibilityState == 'hidden') {
-        normal_title = document.title;
-        document.title = leaveTitle;
-      } else {
-        document.title = normal_title;
-      }
-    });
-  }
-
-</script>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-
-<script>
-  let images = document.querySelectorAll('.section img');
-  console.log(images);
-  images.forEach(image => {
-    var parent = image.parentElement;
-    var next = image.nextElementSibling;
-    parent.removeChild(image);
-    var aelem = document.createElement('a');
-    aelem.href = image.src;
-    aelem.dataset['fancybox'] = 'images';
-    aelem.dataset['rel'] = 'fancybox-button';
-    aelem.classList.add('fancybox');
-    aelem.appendChild(image);
-    parent.insertBefore(aelem, next);
-  })
-</script>
-  </div>
 </body>
 
-<div class="search-mask" id="search_mask" style="display: none;">
-  <div class="search-box">
-    <div class="search-title">
-      <i class="fa fa-search"></i>
-      <div class="input-box">
-        <input id="search" type="text" class="language" data-lan="search" placeholder="搜索">
-      </div>
-      <i id="close" class="fa fa-times-circle"></i>
     </div>
-    <div class="stat-box">
-      <span id="stat_count">0</span><span class="language" data-lan="stat">条相关条目，使用了</span><span id="stat_times">0</span><span class="language" data-lan="stat-time">毫秒</span>
-      <hr>
+
+
+    <script src="https://preszang.github.io/media/js/wordshow.js"></script>
+    
+    
+</body>
+<script>
+    function showqq() {
+        var qq = document.getElementById("qq").innerHTML;
+        if (qq != '')
+            window.location.href = "tencent://message/?uin=" + qq + "&Site=&Menu=yes";
+        else
+            alert("博主暂未设置QQ联系方式");
+    }
+
+    //音乐播放器的显示
+    function showAaplayer() {
+        var aplayer = $(".aplayer-body");
+        if (aplayer.css("display") == 'block')
+            aplayer.fadeOut(200)
+        else
+            aplayer.fadeIn(200)
+    }
+</script>
+<script>
+    function getHotnum() {
+        //文章阅读热度（重构，利用leancloud原生api）
+        var pl = window.location.pathname;
+        if (pl.search("post") == -1)
+            return false;
+        if (pl[pl.length - 1] != '/')
+            pl += '/'
+        var ptitle = $("#ptitle").html();
+        var rootaddr = $("#rootaddr").html();
+        pl = pl.replace(rootaddr, "");
+        var appid = '';
+        var appkey = '';
+        console.log(appid, appkey)
+        if (AV == undefined)
+            AV.init({
+                appId: appid,
+                appKey: appkey
+            });
+        const query = new AV.Query('Counter');
+        query.equalTo('url', pl);
+        var time = 'Loading...';
+        query.find().then(function (results) {
+            console.log(results)
+            if (results.length == 0) {
+                console.log("0")
+                var NewCounter = AV.Object.extend('Counter');
+                var nc = new NewCounter();
+                nc.save({
+                    time: 1,
+                    title: ptitle,
+                    url: pl,
+                    xid: pl,
+                }).then(function (object) {
+                    $(".hotnum").eq(0).html(1);
+                    $(".hotnum").eq(1).html(1);
+                });
+            } else {
+                id = results[0].id;
+                var todo = AV.Object.createWithoutData('Counter', id);
+                time = results[0].attributes.time + 1;
+                todo.set("time", time);
+                todo.save();
+                console.log(todo);
+                $(".hotnum").eq(0).html(time);
+                $(".hotnum").eq(1).html(time);
+            }
+
+        }, function (error) {
+            console.log(error)
+        });
+    }
+</script>
+    <script src="https://preszang.github.io/media/share/dist/Share.js"></script>
+    <!-- 页面pjax测试 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery.pjax/2.0.1/jquery.pjax.js"></script>
+    <!--确保jQuery已经在此之前加载-->
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="https://preszang.github.io/media/js/all-pjax.js"></script>
+    <script>
+        //loading加载关闭
+        function pjaxloadingClose() {
+            var pjaxloading = $(".pjaxloading");
+            pjaxloading.hide();
+        }
+
+
+
+        function imglazyloadinit() {
+            var img = $("img");
+            for (var i = 0; i < img.length; i++) {
+                if (img.eq(i).attr("class") == undefined) {
+                    img.eq(i).attr("class", "lazyload");
+                    var imgsrc = img.eq(i).attr("src");
+                    img.eq(i).attr("data-original", imgsrc);
+                    img.eq(i).attr("src", "");
+                    img.eq(i).hide();
+                }
+            }
+        }
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        async function codebtncolorinit(e) {
+            await sleep(2000);
+            e.trigger.innerHTML = "复制代码"
+            e.trigger.style.background = "cornflowerblue"
+        }
+
+        function codeinit() {
+            //寻找所有code标签，加复制按钮鸭！(行内代码除外)
+            var codes = document.getElementsByTagName('code');
+            if (codes.length) {
+                for (var i = 0; i < codes.length; i++) {
+                    //高度/行高=文本行数
+                    // var rowNum=Math.round(codes[i].height()/parseFloat(codes[i].css('line-height')));
+                    // console.log("当前有"+rowNum+"行");
+                    var code_id = "code_id_" + i;
+                    codes[i].setAttribute("id", code_id);
+                    var ci = "#" + code_id;
+                    var codedot = $(ci);
+                    var rowNum = Math.round(codedot.height() / parseFloat(codedot.css('line-height')));
+                    if (rowNum <= 1) continue;
+                    var btn = document.createElement("button");
+                    btn.setAttribute("class", "copybt");
+                    btn.setAttribute("data-clipboard-target", "#" + code_id);
+                    btn.innerHTML = '复制代码';
+                    codes[i].parentNode.insertBefore(btn, codes[i]);
+                }
+            };
+            var cop = new ClipboardJS('.copybt');
+            cop.on('success', function (e) {
+                e.trigger.innerHTML = "复制成功~"
+                e.trigger.style.background = "#894e54"
+                codebtncolorinit(e)
+                e.clearSelection();
+            });
+            cop.on('error', function (e) {
+                alert("矮油，复制失败了...手动复制吧勇士！");
+                e.clearSelection();
+            });
+        }
+
+        function lazyload() {
+            var oLazyload = $("img.lazyload"),
+                fLazyload = function (hLazyload) {
+                    var nLazyload = $(window).height() + $(document).scrollTop();
+                    oLazyload.each(function () {
+                        $(this).offset().top < nLazyload && ($(this).trigger("appear"), oLazyload =
+                            oLazyload.not(this));
+                    }), 0 == oLazyload.length && $(window).unbind("scroll", fLazyload);
+                };
+            oLazyload.each(function () {
+                $(this).one("appear", function () {
+                    $(this).attr("src", $(this).attr("data-original"));
+                    $(this).fadeIn(500);
+                });
+            }), $(window).bind("scroll", fLazyload), fLazyload();
+        }
+
+        let talksall = [];
+        let talks = [];
+        let talkindex = 0;
+        get();
+        function get() {
+            var t = JSON.parse('[]');
+            talkindex = t.length - 1;
+            for (var i = 0; i <= t.length - 1; i++) {
+                var d = {};
+                d["time"] = t[i].time;
+                d["author"] = t[i].author;
+                d["text"] = t[i].text;
+                d["img"] = t[i].img;
+                talksall.push(d);
+            }
+        }
+
+        function add() {
+            for (var i = talkindex; i >= 0 && i > talkindex - 3; i--) {
+                talks.push(talksall[i]);
+            }
+            talkindex = (talkindex - 3) >= 0 ? (talkindex - 3) : -1;
+            if (talkindex < 0) $("#getmorebt").hide();
+            show();
+            refreshImg("talkimg");
+        }
+
+        function show() {
+            var talkT = document.getElementById("talkContainer");
+            talkT.innerHTML = "";
+            for (var i = 0; i < talks.length; i++) {
+                if (talks[i].img != '') {
+                    talkT.innerHTML += '\
+            <div class="talk" v-for="t in talks"> \
+                <img src="' + talks[i].img + '" class="talkimg"> \
+                <div class="ainfo">\
+                    <div class="ainfo-intro">\
+                        <img class="intro1" src="https://preszang.github.io/images/avatar.png?v=1612768729546">\
+                        <div class="author">' + talks[i].author + '</div>·\
+                        <div class="time">' + talks[i].time + '</div>\
+                    </div>\
+                </div>\
+                <div class="talkcontent">' + talks[i].text + '\
+                </div\>\
+            ';
+                } else {
+                    talkT.innerHTML += '\
+            <div class="talk" v-for="t in talks"> \
+                <div class="ainfo">\
+                    <div class="ainfo-intro">\
+                        <img class="intro1" src="https://preszang.github.io/images/avatar.png?v=1612768729546">\
+                        <div class="author">' + talks[i].author + '</div>·\
+                        <div class="time">' + talks[i].time + '</div>\
+                    </div>\
+                </div>\
+                <div class="talkcontent">' + talks[i].text + '\
+                </div\>\
+            ';
+                }
+            }
+        }
+
+        function refreshImg(imgclass) {
+            // 获取弹窗
+            var modal = document.getElementById('myModal');
+
+            // 获取图片插入到弹窗 - 使用 "alt" 属性作为文本部分的内容
+            var img = document.getElementsByClassName(imgclass);
+            var modalImg = document.getElementById("img01");
+            var captionText = document.getElementById("caption");
+            for (var i in img) {
+                img[i].onclick = function () {
+                    modal.style.display = "block";
+                    modalImg.src = this.src;
+                }
+            }
+
+            // 图片关闭
+            var modalImg = document.getElementById('img01');
+            // 鼠标点击模型外区域关闭登录框
+            window.onclick = function (event) {
+                console.log(event.target);
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+                if (menupos == 'left')
+                    return true;
+                if (event.target == social) {
+                    social.style.display = "none";
+                }
+            }
+        }
+
+        function shareInit() {
+            var title = document.getElementById("texttitle").getElementsByTagName("h2");
+            if (menupos == 'top') {
+                var avatarSrc = $(".menutopavatar").attr("src");
+                var dp = document.getElementsByClassName("navbar-brand")[1].innerHTML;
+            }
+            else {
+                var avatarSrc = $(".avatar").attr("src");
+                var dp = document.getElementsByClassName("describtion")[0].innerHTML;
+            }
+            var share = new Share('.share', {
+                title: title[0].innerHTML,
+                initialized: true,
+                //默认获取网站描述
+                description: dp,
+                //网站图片默认获取的是设置的用户头像
+                image: avatarSrc,
+                //激活的分享网站
+                sites: ["weibo", "qq", "wechat", "douban", "qzone", "facebook", "twitter", "google"],
+                //微信分享PC端会生成二维码分享,移动端如果可以唤起微信最好
+                wechatQrcodeTitle: "微信扫一扫：分享", // 微信二维码提示文字
+                wechatQrcodeHelper: '<p>微信里扫一下二维码</p><p>便可将本文分享至朋友圈。</p>',
+                //关闭的网站分享
+                disabled: ['google', 'linkedin'],
+                wechatQrcodePosition: 'bottom'
+            });
+            //点击分享按钮展现出分享icons
+            var sharebtnTag = false;
+            $(".sharebtn").click(function () {
+                if (!sharebtnTag) {
+                    $(".share").show();
+                    sharebtnTag = true;
+                }
+                else {
+                    $(".share").hide();
+                    sharebtnTag = false;
+                }
+            })
+        }
+
+        function donateInit() {
+            var donatebtnTag = false;
+            $(".donateImg").click(function () {
+                if (!donatebtnTag) {
+                    $(".donate").show();
+                    donatebtnTag = true;
+                }
+                else {
+                    $(".donate").hide();
+                    donatebtnTag = false;
+                }
+            })
+        }
+
+
+        let talkinit = false;
+        $(document).pjax('a[data-pjax]', '#main', {
+            fragment: '#main',
+            timeout: 8000
+        }).on('pjax:complete', function () {
+            //hljs.initHighlightingOnLoad();
+            document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightBlock(block);
+            });
+            //文章热度
+            getHotnum();
+            //文章索引
+            toginit();
+            //清空搜索栏
+            if (searchChoice) {
+                searchInit();
+                searchInput.value = "";
+            }
+            var pl = window.location.pathname;
+            //说说更新
+            if (pl.search("talk") != -1 && !talkinit) {
+                add();
+                talkinit = true;
+            }
+            else if (pl.search("talk") != -1) {
+                show();
+                refreshImg("talkimg");
+            }
+            //分享按钮更新
+            if (pl.search("post") != -1) {
+                if (shareChoice)
+                    shareInit();
+                if (donateChoice)
+                    donateInit();
+                imglazyloadinit();
+                lazyload();
+                refreshImg("lazyload");
+                codeinit();
+            }
+            if (btstate == true)
+                dropdown();
+        }).on('pjax:start', function () {
+            $(".pjaxloading").fadeIn(50);
+        }).on('pjax:end', function () {
+            $(".pjaxloading").fadeOut(50);
+        });
+    </script>
+
+    <script>
+        /**
+         * https://github.com/tangkaichuan/gridea-search
+         */
+        (function () {
+            var CACHES = checkCache()
+            if (!CACHES) {
+                var NOW = Date.now()
+                var API_CONTENT = '../api-content/index.html' + '?_=' + NOW
+                preload(API_CONTENT);
+                getContents(show_getContentresult);
+            }
+
+            function show_getContentresult(data) {
+                console.log("获取成功");
+                var postslen = data["posts"].length;
+                localStorage.setItem('postsnum', postslen);
+                var poststitlelen = 0;
+                var pt = document.getElementById("side-posttitle").innerHTML;
+                pt = pt.replace(/\s+/g, '').replace(/<script>.*?<\/script>/gi, "");
+                localStorage.setItem('poststitlelen', pt.length);
+            }
+
+
+
+            // preload
+            function preload(url) {
+                var preloadLink = document.createElement('link')
+                preloadLink.href = url
+                preloadLink.rel = 'preload'
+                preloadLink.as = 'fetch'
+                preloadLink.crossOrigin = 'anonymous'
+                document.head.appendChild(preloadLink)
+            }
+
+            // 异步 GET 请求
+            function get(obj) {
+                var xhr = new XMLHttpRequest()
+                xhr.open('get', obj.url, true)
+                xhr.send(null)
+                xhr.onreadystatechange = function () {
+                    // 异步请求：响应状态为4，数据加载完毕
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            obj.success(xhr.responseText)
+                        } else {
+                            obj.error(xhr.status)
+                        }
+                    }
+                }
+            }
+
+
+            // 检查缓存是否最新
+            function checkCache() {
+                var caches_postsnum = localStorage.getItem("postsnum");
+                var pt = document.getElementById("side-posttitle").innerHTML;
+                pt = pt.replace(/\s+/g, '').replace(/<script>.*?<\/script>/gi, "")
+                var ptlen = pt.length;
+                var ptlen_storage = localStorage.getItem("poststitlelen");
+                console.log(parseInt(postsnum));
+                if (caches_postsnum != postsnum || ptlen != ptlen_storage) {
+                    console.log("更新缓存");
+                    return false
+                }
+                return true;
+            }
+
+            // 获取博客全文 api
+            function getContents(callback) {
+                if (CACHES) {
+                    callback(CACHES.contents)
+                } else {
+                    get({
+                        url: API_CONTENT,
+                        success: function (data) {
+                            callback(JSON.parse(data));
+                            localStorage.setItem('ContentsCache', data);
+                        }
+                    })
+                }
+            }
+        })()
+
+        //-------------------------------------------------搜索
+        // 获取搜索框、搜索按钮、清空搜索、结果输出对应的元素
+        if (searchChoice) {
+            var searchInput = document.querySelector('.search-input');
+            var searchResults = document.querySelector('.search-results');
+        }
+        // 申明保存文章的标题、链接、内容的数组变量
+        var searchValue = '',
+            arrItems = [],
+            arrLinks = [],
+            arrTitles = [],
+            arrContents = [],
+            arrResults = [],
+            indexItem = [],
+            itemLength = 0;
+        var tmpDiv = document.createElement('div');
+        tmpDiv.className = 'result-item';
+
+
+        function getStorageContent() {
+            var data = localStorage.getItem('ContentsCache');
+            data = JSON.parse(data);
+            posts = data["posts"];
+            for (var i = 0; i < posts.length; i++) {
+                arrLinks[i] = posts[i].link;
+                arrTitles[i] = posts[i].title;
+                arrContents[i] = posts[i].content;
+                itemLength++;
+            }
+        }
+        getStorageContent();
+        // 输入框内容变化后就开始匹配，可以不用点按钮
+        // 经测试，onkeydown, onchange 等方法效果不太理想，
+        // 存在输入延迟等问题，最后发现触发 input 事件最理想，
+        // 并且可以处理中文输入法拼写的变化
+        searchInput.oninput = function () {
+            setTimeout(searchConfirm, 0);
+        }
+        searchInput.onfocus = function () {
+            searchResults.style.display = 'block';
+        }
+
+        function searchConfirm() {
+            if (searchInput.value == '') {
+                searchResults.style.display = 'none';
+            } else if (searchInput.value.search(/^\s+$/) >= 0) {
+                // 检测输入值全是空白的情况
+                searchInit();
+                var itemDiv = tmpDiv.cloneNode(true);
+                itemDiv.innerText = '请输入有效内容...';
+                searchResults.appendChild(itemDiv);
+            } else {
+                // 合法输入值的情况
+                searchInit();
+                searchValue = searchInput.value;
+                // 在标题、内容中查找
+                searchMatching(arrTitles, arrContents, searchValue);
+            }
+        }
+
+        // 每次搜索完成后的初始化
+        function searchInit() {
+            arrResults = [];
+            indexItem = [];
+            searchResults.innerHTML = '';
+            searchResults.style.display = 'block';
+        }
+
+        function searchMatching(arr1, arr2, input) {
+            // 忽略输入大小写
+            input = new RegExp(input, 'i');
+            var step = 10;
+            // 在所有文章标题、内容中匹配查询值
+            for (i = 0; i < itemLength; i++) {
+                var indexContent = arr2[i].search(input);
+                //标题匹配
+                if (arr1[i].search(input) != -1) {
+                    indexItem.push(i); // 保存匹配值的索引
+                    if (indexContent != -1) {
+                        startindex = (indexContent - step) >= 0 ? (indexContent - step) : 0;
+                        var searchcontent = arr2[i].slice(indexContent - step, indexContent + 5)
+                        arrResults.push("....." + searchcontent + ".....");
+                    }
+                    else
+                        arrResults.push("");
+                }
+                //内容匹配
+                else if (indexContent != -1) {
+                    indexItem.push(i); // 保存匹配值的索引
+
+                    startindex = (indexContent - step) >= 0 ? (indexContent - step) : 0;
+                    var searchcontent = arr2[i].slice(indexContent - step, indexContent + 5)
+                    arrResults.push("....." + searchcontent + ".....");
+                }
+            }
+
+            // 输出总共匹配到的数目
+            var totalDiv = tmpDiv.cloneNode(true);
+            totalDiv.innerHTML = '<b>总匹配：' + indexItem.length + ' 项<hr></b>';
+            searchResults.appendChild(totalDiv);
+
+            // 未匹配到内容的情况
+            if (indexItem.length == 0) {
+                var itemDiv = tmpDiv.cloneNode(true);
+                itemDiv.innerText = '未匹配到内容...';
+                searchResults.appendChild(itemDiv);
+            }
+
+            // 将所有匹配内容进行组合
+            for (i = 0; i < arrResults.length; i++) {
+                var itemDiv = tmpDiv.cloneNode(true);
+                itemDiv.innerHTML = '<a data-pjax class="searchresults" href="' + arrLinks[indexItem[i]] + '"><b>[' + arrTitles[indexItem[i]] +
+                    ']</b><p>' + arrResults[i] + '</p></a><hr />';
+                searchResults.appendChild(itemDiv);
+            }
+        }
+    </script>
     </div>
-    <div class="result" id="result">
-      
-      <div class="item">
-        <a class="result-title" style="opacity: 0;" href="https://preszang.github.io/post/Python 第三方日志框架 loguru 使用/"" data-c="
-          &lt;h2 id=&#34;python-第三方日志框架-loguru-使用&#34;&gt;Python 第三方日志框架 loguru 使用&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;看到了一个不错的 python 第三方日志框架 loguru，优雅的记录日志&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;Github: &lt;code&gt;https://github.com/Delgan/loguru&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;文档：&lt;code&gt;https://loguru.readthedocs.io/en/stable/index.html&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;1-安装&#34;&gt;1、安装&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;pip install loguru
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;2-输出日志&#34;&gt;2、输出日志&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from loguru import logger
-logger.debug(&amp;quot;这是一条debug日志&amp;quot;)
+                <div id="tab1" class="tab">
+                    <div class="bars">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="close"></div>
+                </div>
+                <div class="col-md-1 col-lg-3"></div>
+                <div class="mobilebar"><head>
+  <!-- 引入Bootstrap核心样式文件 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/bootstrap.min.css">
+</head>
+<style>
+  .navmobile {
+    z-index: 15;
+    max-height: 40vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
 
-# 终端执行后出现带颜色的日志，挺酷的
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;3-输出到文件&#34;&gt;3、输出到文件&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from loguru import logger
+  @media screen and (max-width: 1200px) {
+    .navbar {
+      max-width: 100vw;
+    }
+  }
 
-logger.add(&amp;quot;file_{time}.log&amp;quot;)
+  @media screen and (max-width:1200px) and (min-width: 768px) {
+    @media (min-width: 768px) {
+      .navbar-nav {
+        float: right;
+        margin: 0;
+      }
+    }
+  }
 
-logger.debug(&amp;quot;这是一条debug日志&amp;quot;)
-logger.info(&amp;quot;这是一条info日志&amp;quot;)
-# 目录下多出一个日志文件 ：file_2019-03-14_19-53-25_661314.log
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;4-日志规则&#34;&gt;4、日志规则&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from loguru import logger
-# 设置日志格式，过滤器，日志级别
-logger.add(&amp;quot;file.log&amp;quot;, format=&amp;quot;{time} {level} {message}&amp;quot;, filter=&amp;quot;&amp;quot;, level=&amp;quot;INFO&amp;quot;)
-logger.debug(&amp;quot;这是一条debug日志&amp;quot;)
-logger.info(&amp;quot;这是一条info日志&amp;quot;)
-#输出
-# 2019-03-14T20:01:25.392454+0800 INFO 这是一条info日志
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;5-日志文件&#34;&gt;5、日志文件&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# 文件管理方式
-logger.add(&amp;quot;file_1.log&amp;quot;, rotation=&amp;quot;500 MB&amp;quot;)    # 文件过大就会重新生成一个文件
-logger.add(&amp;quot;file_2.log&amp;quot;, rotation=&amp;quot;12:00&amp;quot;)     # 每天12点创建新文件
-logger.add(&amp;quot;file_3.log&amp;quot;, rotation=&amp;quot;1 week&amp;quot;)    # 文件时间过长就会创建新文件
-
-logger.add(&amp;quot;file_X.log&amp;quot;, retention=&amp;quot;10 days&amp;quot;)  # 一段时间后会清空
-
-logger.add(&amp;quot;file_Y.log&amp;quot;, compression=&amp;quot;zip&amp;quot;)    # 保存zip格式
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;6-其他参数&#34;&gt;6、其他参数&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;logger.add(&amp;quot;somefile.log&amp;quot;, enqueue=True)  # 异步写入
-
-logger.add(&amp;quot;somefile.log&amp;quot;, serialize=True)  # 序列化为json
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;7-时间格式化&#34;&gt;7、时间格式化&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;logger.add(&amp;quot;file.log&amp;quot;, format=&amp;quot;{time:YYYY-MM-DD at HH:mm:ss} | {level} | {message}&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;blockquote&gt;
-&lt;p&gt;配合 notifiers 模块&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;github： &lt;code&gt;https://github.com/notifiers/notifiers&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;文档：&lt;code&gt;https://notifiers.readthedocs.io/en/latest/&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;8-在工程中创建多个文件处理器对象并解决中文乱码问题&#34;&gt;8、在工程中创建多个文件处理器对象并解决中文乱码问题&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# coding=utf-8
-import os
-import sys
-from loguru import logger
-
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-log_file_path = os.path.join(BASE_DIR, &#39;Log/my.log&#39;)
-err_log_file_path = os.path.join(BASE_DIR, &#39;Log/err.log&#39;)
-
-logger.add(sys.stderr, format=&amp;quot;{time} {level} {message}&amp;quot;, filter=&amp;quot;my_module&amp;quot;, level=&amp;quot;INFO&amp;quot;)
-# logger.add(s)
-logger.add(log_file_path, rotation=&amp;quot;500 MB&amp;quot;, encoding=&#39;utf-8&#39;)  # Automatically rotate too big file
-logger.add(err_log_file_path, rotation=&amp;quot;500 MB&amp;quot;, encoding=&#39;utf-8&#39;,level=&#39;ERROR&#39;)
-
-# Automatically rotate too big file
-logger.debug(&amp;quot;That&#39;s it, beautiful and simple logging!&amp;quot;)
-logger.debug(&amp;quot;中文日志可以不&amp;quot;)
-logger.error(&amp;quot;严重错误&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-">Python 第三方日志框架 loguru 使用</a>
-      </div>
-      
-      <div class="item">
-        <a class="result-title" style="opacity: 0;" href="https://preszang.github.io/post/about/"" data-c="
-          &lt;blockquote&gt;
-&lt;p&gt;欢迎来到我的小站呀，很高兴遇见你！🤝&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;关于本站&#34;&gt;🏠 关于本站&lt;/h2&gt;
-&lt;h2 id=&#34;博主是谁&#34;&gt;👨‍💻 博主是谁&lt;/h2&gt;
-&lt;h2 id=&#34;兴趣爱好&#34;&gt;⛹ 兴趣爱好&lt;/h2&gt;
-&lt;h2 id=&#34;联系我呀&#34;&gt;📬 联系我呀&lt;/h2&gt;
-&lt;!-- more --&gt;
-">关于</a>
-      </div>
-      
-      <div class="item">
-        <a class="result-title" style="opacity: 0;" href="https://preszang.github.io/post/【山雀】万能青年旅店/"" data-c="
-          &lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://s3.ax1x.com/2021/01/07/sZjBOP.jpg&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
-">【山雀】万能青年旅店</a>
-      </div>
-      
-    </div>
-    <div class="page">
-      <div id="page_ul"></div>
+  @media screen and (max-width:768px) {
+    .mbapspan {
+      padding: 0;
+    }
+  }
+</style>
+<div class="pjaxloading"  onclick="pjaxloadingClose()">
+  <div class="loadingbackground"></div>
+  <div id="loading">
+    <div class="loading">
     </div>
   </div>
 </div>
+<nav class="navbar navbar-inverse navbar-fixed-top navmobile">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#barmenu"
+        aria-expanded="false" id="barbutton">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a data-pjax class="navbar-brand" href="https://preszang.github.io">霜序五&nbsp;&nbsp;|</a>
+      <span class="navbar-brand mbapspan"><i id="mbaplayer" class="fa fa-play-circle-o" aria-hidden="true"
+          style="font-size: 28px;top: 12px;position: absolute;" onclick="aplayerPlay();"></i></span>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="barmenu">
+      <ul class="nav navbar-nav">
+        
+        
+        <li>
+          <a data-pjax href="/">
+            首页
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a data-pjax href="/archives">
+            归档
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a data-pjax href="/tags">
+            标签
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a data-pjax href="/post/about">
+            关于
+          </a>
+        </li>
+        
+        
+        
+          
+        <li><a data-pjax href="https://preszang.github.io/friends">友链</a></li>
+
+        
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+
+  <!-- 引入jQuery核心js文件 -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+  <script>
+    let btstate = false;
+    var bt = $("#barbutton");
+    var bm = $("#barmenu");
+    bt.click(function () {
+      dropdown();
+    })
+    function dropdown() {
+      console.log(btstate);
+      //下拉
+      if (btstate == false) {
+        bt.removeClass("collapsed");
+        bt.attr("aria-expanded", "true");
+        bm.attr("aria-expanded", "true")
+        bm.fadeIn(700);
+        btstate = true;
+      }
+      else {
+        bt.addClass("collapsed");
+        bt.attr("aria-expanded", "false");
+        bm.removeClass("in");
+        bm.hide();
+        bm.attr("aria-expanded", "false");
+        btstate = false;
+      }
+    }
+  </script> 
+                </div>
+                <div id="main" class="col-xs-12 col-sm-12 col-md-11 col-lg-7">
+                    <!-- 移动端 -->
+                    <div class="mobilebar">
+                        <!-- 移动端欢迎页 -->
+<div class="welcome">
+    <div class="avatar-border">
+        <img src="https://preszang.github.io/images/avatar.png?v=1612768729546" class="avatar">
+    </div>
+    <span class="mobiledescribtion"></span>
+</div>
+
+<div id="mobilebgurl" style="display:none">/media/images/mobilebgimg.jpg</div>
+
 <script>
-  !function () {
-    let searchMask = document.querySelector('#search_mask');
-    let result = document.querySelector('#result');
-    let items = document.querySelectorAll('.item');
-    let searchBox = document.querySelector('#search');
-    let statCount = document.querySelector('#stat_count');
-    let statTimes = document.querySelector('#stat_times');
-    let pageUl = document.querySelector('#page_ul');
-    let close = document.querySelector('#close');
-    
-    close.addEventListener('click', function() {
-      searchMask.style = 'display: none;'
-    })
+    var welcome = $('.welcome');
+    var bgurl = document.getElementById("mobilebgurl").innerHTML;
+    for (var i = 0; i < 3; i++)
+        bgurl = bgurl.replace("\\", "/");
+    welcome.css("background", "url('" + bgurl + "')");
+    var mobiledes = document.querySelector(".mobiledescribtion");
+    var text = "是谁来自山川湖海";
+    // 当前显示第几个字
+    var mobilecharIndex = 1;
+    // 每个字显示间隔默认是500毫秒
+    var mobiledelta = 500;
 
-    let finds = [];
-    let contents = [];
-    let pageSize = 10;
-    items.forEach(item => {
-      let a = item.querySelector('a');
-      contents.push({
-        title: a.innerText,
-        details: a.dataset.c,
-        link: a.href
-      })
-      item.remove();
-    })
+    // 记录动画执行开始时间
+    var mobilestart = null;
+    // 是否为删除动画
+    var mobileisDeleting = false;
 
-    function insertStr(soure, start, count) {
-      let newStr = soure.substr(start, count);
-      return soure.slice(0, start) + '<em>' + newStr + '</em>' + soure.slice(start + count);
-    }
-
-    pageUl.addEventListener('click', function(event) {
-      let target = event.target;
-      if (target.__proto__ === HTMLSpanElement.prototype) {
-        appendResults(parseInt(target.dataset.i));
-      }
-    })
-
-    function appendResults(index) {
-      let htmlResult = '';
-      let start = index || 0;
-      let end = Math.min(start + pageSize, finds.length);
-      for (let i = start; i < end; i++) {
-        const current = finds[i];
-        let html = current.title;
-        let sum = 0;
-        let positions = current.positions;
-        positions.forEach(position => {
-          html = insertStr(html, position.start + sum, position.count);
-          sum += 9;
-        })
-        htmlResult += `<div class="item"><a class="result-title" href="${current.link}">${html}</a></div>`;
-      }
-      result.innerHTML = htmlResult;
-      pageUl.innerHTML = '';
-      let count = finds.length / pageSize;
-      let lis = '';
-      if (start !== 0) {
-        lis += `<span class="fa fa-angle-left" data-i='${start - 1}'></span>`;
-      }
-      for (let i = 0; i < count; i++) {
-        lis += `<span class='${i === start?'current':''}' data-i='${i}'>${i+1}</span>`;     
-      }
-      if (start+1 < count) {
-        lis += `<span class="fa fa-angle-right" data-i='${start+1}'></span>`;  
-      }
-      pageUl.innerHTML = lis;
-    }
-
-    function search(delay) {
-      let timer = null
-      return function () {
-        clearTimeout(timer)
-        timer = setTimeout(() => {
-          let start = Date.now();
-          let segments = searchBox.value.split(' ').filter(c => c != '');
-          if (segments.length <= 0) {
-            return;
-          }
-          finds = [];
-          let htmlResult = '';
-          contents.forEach(content => {
-            let title = content.title;
-            let positions = [];
-            let find = false;
-            segments.forEach((segment) => {
-              if (content.title.includes(segment)) {
-                find = true;
-                positions.push({
-                  start: content.title.indexOf(segment),
-                  count: segment.length
-                })
-              } else if (content.details.includes(segment)) {
-                find = true;
-              }
-            });
-            if (find) {
-              finds.push({
-                title: content.title,
-                link: content.link,
-                positions
-              });
+    // 动画回调函数
+    function mobileLoadDes(time) {
+        window.requestAnimationFrame(mobileLoadDes);
+        // 初始化开始时间
+        if (!mobilestart) start = time;
+        // 获取时间间隔
+        var mobileprogress = time - mobilestart;
+        // 每隔一定的时间，打印出一个新的字符
+        if (mobileprogress > mobiledelta) {
+            // 如果是打字效果
+            if (!mobileisDeleting) {
+                // 给展示文字的span新增一个字符，使用innerHTML来替换，charIndex自增1，然后返回新的字符串子串
+                mobiledes.innerHTML = "&nbsp;" + text.slice(
+                    0,
+                    ++mobilecharIndex
+                );
+                mobiledelta = 500 - Math.random() * 400;
+            } else {
+                // 如果是删除效果，则把文字一个一个减掉
+                mobiledes.innerHTML = "&nbsp;" + text.slice(
+                    0,
+                    mobilecharIndex--
+                );
             }
-          })
-          appendResults(0);
-          statCount.textContent = finds.length;
-          statTimes.textContent = Date.now() - start;
-        }, delay)
-      }
-    }
-    searchBox.addEventListener('input', search(200));
-  }()
-</script>
+            // 把star更新为当前时间，进行下一个周期
+            mobilestart = time;
 
-<input hidden id="copy" />
-<script>
-  !function () {
-    let times = document.querySelectorAll('.publish-time');
-    for (let i = 0; i < times.length; i++) {
-      let date = times[i].dataset.t;
-      let time = Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000);
-      if (time < 60) {
-        str = time + '秒之前';
-      } else if (time < 3600) {
-        str = Math.floor(time / 60) + '分钟之前';
-      } else if (time >= 3600 && time < 86400) {
-        str = Math.floor(time / 3600) + '小时之前';
-      } else if (time >= 86400 && time < 259200) {
-        str = Math.floor(time / 86400) + '天之前';
-      } else {
-        str = times[i].textContent;
-      }
-      times[i].textContent = str;
-    }
-  }();
-</script>
+            // 如果文字已经全部打印完毕
+            if (mobilecharIndex === text.length) {
+                // 下次开始删除文字
+                mobileisDeleting = true;
+                // 删除文字的间隔为200毫秒
+                mobiledelta = 100;
+                // 额外等待1.2秒后再删除
+                mobilestart = time + 1000;
+            }
 
-<script>
-  let language = '';
-  if (language !== '') {
-    let map = new Map();
-    if (language === 'en') {
-      map.set('search', 'Search');
-      map.set('category', 'Categories');
-      map.set('article', 'Articles');
-      map.set('tag', 'Tags');
-      map.set('top', 'Top');
-      map.set('publish', 'published');
-      map.set('minute', ' minutes');
-      map.set('read-more', 'Read More');
-      map.set('view', 'View');
-      map.set('words', ' words');
-      map.set('category-in', 'category in');
-      map.set('preview', 'Meta');
-      map.set('index', 'Toc');
-      map.set('no-archives', "You haven't created yet");
-      map.set('archives', " articles in total");
-      map.set('cloud-tags', " tags in total");
-      map.set('copyright', "Copyright: ");
-      map.set('author', "Author: ");
-      map.set('link', "Link: ");
-      map.set('leave-message', "Leave a message");
-      map.set('format', "Links Format");
-      map.set('site-name', "Name: ");
-      map.set('site-link', "Link: ");
-      map.set('site-desc', "Desc: ");
-      map.set('stat', " related results, taking ");
-      map.set('stat-time', " ms");
-      map.set('site-img', "Image: ");
-    }
-
-    if (map.size > 0) {
-      let lanElems = document.querySelectorAll('.language');
-      lanElems.forEach(elem => {
-        let lan = elem.dataset.lan, text = map.get(lan);
-        if (elem.__proto__ === HTMLInputElement.prototype) {
-          elem.placeholder = text
-        } else {
-          if (elem.dataset.count) {
-            text = elem.dataset.count + text;
-          }
-          elem.textContent = text;
+            // 如果文字删除完毕
+            if (mobilecharIndex < 0) {
+                mobileisDeleting = false;
+                // 额外增加200毫秒延迟
+                mobilestart = time + 200;
+            }
         }
-      })
-    }
-  }
-  //拿来主义(真香)^_^，Clipboard 实现摘自掘金 https://juejin.im/post/5aefeb6e6fb9a07aa43c20af
-  window.Clipboard = (function (window, document, navigator) {
-    var textArea,
-      copy;
-
-    // 判断是不是ios端
-    function isOS() {
-      return navigator.userAgent.match(/ipad|iphone/i);
-    }
-    //创建文本元素
-    function createTextArea(text) {
-      textArea = document.createElement('textArea');
-      textArea.value = text;
-      textArea.style.width = 0;
-      textArea.style.height = 0;
-      textArea.clientHeight = 0;
-      textArea.clientWidth = 0;
-      document.body.appendChild(textArea);
-    }
-    //选择内容
-    function selectText() {
-      var range,
-        selection;
-
-      if (isOS()) {
-        range = document.createRange();
-        range.selectNodeContents(textArea);
-        selection = window.getSelection();
-        selection.removeAllRanges();
-        selection.addRange(range);
-        textArea.setSelectionRange(0, 999999);
-      } else {
-        textArea.select();
-      }
     }
 
-    //复制到剪贴板
-    function copyToClipboard() {
-      try {
-        document.execCommand("Copy")
-      } catch (err) {
-        alert("复制错误！请手动复制！")
-      }
-      document.body.removeChild(textArea);
-    }
-
-    copy = function (text) {
-      createTextArea(text);
-      selectText();
-      copyToClipboard();
-    };
-
-    return {
-      copy: copy
-    };
-  })(window, document, navigator);
-
-  function copyCode(e) {
-    if (e.srcElement.tagName === 'SPAN' && e.srcElement.classList.contains('copy-code')) {
-      let code = e.currentTarget.querySelector('code');
-      var text = code.innerText;
-      if (e.srcElement.textContent === '复制成功') {
-        return;
-      }
-      e.srcElement.textContent = '复制成功';
-      (function (elem) {
-        setTimeout(() => {
-          if (elem.textContent === '复制成功') {
-            elem.textContent = '复制代码'
-          }
-        }, 1000);
-      })(e.srcElement)
-      Clipboard.copy(text);
-    }
-  }
-
-  let pres = document.querySelectorAll('pre');
-  pres.forEach(pre => {
-    let code = pre.querySelector('code');
-    let copyElem = document.createElement('span');
-    copyElem.classList.add('copy-code');
-    copyElem.textContent = '复制代码';
-    pre.appendChild(copyElem);
-    pre.onclick = copyCode
-  })
-
+    window.requestAnimationFrame(mobileLoadDes);
 </script>
-<script src="https://cdn.jsdelivr.net/gh/preszang/preszang.github.io@main/media/js/motion.js"></script>
+                    </div>
+                    <div style="display:none"><style>
+    @media screen and (min-width: 1300px) {
+        .veditor::placeholder {
+            color: #b3b3b3;
+            font-size: 18px;
+            text-align: center;
+            line-height: 3rem;
+            font-family: kaiti;
+        }
+    }
+</style>
 
+<body>
+    <div id="vcomments">
+    </div>
+    <script src="https://preszang.github.io/media/js/valine.min.js"></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    <script>
+        var valine = new Valine();
+        var curpath = window.location.pathname;
+        if (curpath[curpath.length - 1] != '/')
+            curpath += '/'
+        valine.init({
+            el: '#vcomments',
+            appId: '',
+            appKey: '',
+            notify: true,
+            verify: false,
+            avatar: 'retro',
+            pageSize: 10,
+            placeholder: '既然来了，何不畅所欲言呢？',
+            visitor: true, // 阅读量统计
+            recordIP: true,
+            path: curpath //[重点] 记得添加path路径
+        });
+    </script>
+    <script type="text/javascript">
+        var jrsc = '既然来了，何不畅所欲言呢？';
+        jinrishici.load(function (result) {
+            // 自己的处理逻辑
+            jrsc = result.data.content + "\n「" + result.data.origin.title + "」" + result.data.origin
+                .dynasty + " · " + result.data.origin.author;
+        });
+    </script>
 
-<script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+</body></div>
+                    <link rel="stylesheet" href="https://preszang.github.io/media/css/font-awesome.css">
+<div id="post-container">
+    
+    <div class="postshow postlist">
+        
+        <a data-pjax href="https://preszang.github.io/post/Python 第三方日志框架 loguru 使用/" class="apost">
+            <div id="post" style="width:100%">
+                
+                <img src="/media/images/postdefault.png" class="postimage">
+                
+            <div class="posttitlebox">
+                <div class="posttitle" >
+                Python 第三方日志框架 loguru 使用
+            </div>
+    </div>
+</div>
+</a>
+<div class="postinfo">
+    <div class="postdate"><i class="fa fa-calendar"></i>2021-02-08</div>
+    <div class="poststatus postdate"><i class="fa fa-clock-o"></i> 3 min read</div>
+    <div class="posttag">
+        
+        <a data-pjax href="https://preszang.github.io/tag/python/" class="postlink">
+            <i class="fa fa-tag"></i> python
+        </a>
+        
+    </div>
+</div>
+
+</div>
+
+    <div class="postshow postlist">
+        
+        <a data-pjax href="https://preszang.github.io/post/【山雀】万能青年旅店/" class="apost">
+            <div id="post" style="width:100%">
+                
+                <img src="/media/images/postdefault.png" class="postimage">
+                
+            <div class="posttitlebox">
+                <div class="posttitle" >
+                【山雀】万能青年旅店
+            </div>
+    </div>
+</div>
+</a>
+<div class="postinfo">
+    <div class="postdate"><i class="fa fa-calendar"></i>2018-12-12</div>
+    <div class="poststatus postdate"><i class="fa fa-clock-o"></i> 0 min read</div>
+    <div class="posttag">
+        
+        <a data-pjax href="https://preszang.github.io/tag/XySIiVPfD/" class="postlink">
+            <i class="fa fa-tag"></i> Gridea
+        </a>
+        
+    </div>
+</div>
+
+</div>
+
+</div>
+                    <div>
+                        <div class="pcpagi">
+    <div class="pagi">
+        <ul>
+            
+            <li><a style="width:100px">&nbsp;</a></li>
+            
+                    <li><a id="page1">1</a></li>
+                    <li><a id="page2" class="active">2</a></li>
+                    <li><a id="page3">3</a></li>
+                    
+            <li><a style="width:100px">&nbsp;</a></li>
+            
+                </ul>
+    </div>
+</div>
+
+<div id="pagination-prev" style="display:none"> 
+</div>
+<div id="pagination-next" style="display:none"> </div>
+
+<div class="pagination-container">
+      
+    
+</div>
+
 <script>
-  var scroll = new SmoothScroll('a[href*="#"]', {
-    speed: 200
-  });
+    var prevstr = document.getElementById("pagination-prev").innerHTML;
+    var nextstr = document.getElementById("pagination-next").innerHTML;
+    var page1 = document.getElementById("page1");
+    var page2 = document.getElementById("page2");
+    var page3 = document.getElementById("page3");
+    page1.innerHTML = '-';
+    page2.innerHTML = '1';
+    page3.innerHTML = '-';
+    if (prevstr.length > 5) {
+        if (prevstr.indexOf("page/") != -1) {
+            var prevnum = parseInt(prevstr.split("page/")[1]);
+            page1.innerHTML = prevnum;
+            page2.innerHTML = prevnum + 1;
+        } else {
+            page1.innerHTML = 1;
+            page2.innerHTML = 2;
+        }
+    }
+    if (nextstr.indexOf("page/") != -1) {
+        var nextnum = parseInt(nextstr.split("page/")[1]);
+        page3.innerHTML = nextnum;
+        page2.innerHTML = nextnum - 1;
+    }
 </script>
+                    </div>
+                </div>
+                <div class="col-md-1 col-lg-2"></div>
+                
+                 
+                </div>
+            </div>
+            <div id="bg">
+            </div>
+            <div id="bgchoice" style="display: none">default
+            </div>
+            
+            <div id="bgurl" style="display:none">/media/images/bgimg.png</div>
+             
+        <div id="landlord">
+            <div class="message" style="opacity:0"></div>
+            <canvas id="live2d" width="240" height="250" class="live2d"></canvas>
+        </div>
+    </div>
+    
+    <div id="domainname" style="display:none">https://preszang.github.io
+        </div>
+        
+        <script type="text/javascript">
+            var message_Path = '/live2d/'
+            var home_Path = document.getElementById("domainname").innerHTML + "/"; //此处修改为你的域名，必须带斜杠
+        </script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/live2d.js"></script>
+        <script type="text/javascript" src="https://preszang.github.io/media/live2d/js/message.js"></script>
+        <script type="text/javascript">
+            loadlive2d("live2d", "https://preszang.github.io/media/live2d/assets/tororo.model.json");
+        </script>
+        
 
+<script>
+    var bgchoice = $('#bgchoice').html();
+    var bg = $('#bg');
+    var bgurl = document.getElementById("bgurl").innerHTML;
+    if (bgchoice == 'default')
+        for (var i = 0; i < 3; i++)
+            bgurl = bgurl.replace("\\", "/");
+    bg.css("background", "url('" + bgurl + "')");
 
-<script src="/media/js/mouse/peace.js"></script>
+    window.onload = function () {
+        aplayerbtnInit();
+    }
+</script>
+<!-- 页内pjax刷新 -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.pjax/2.0.1/jquery.pjax.js"></script>
 
-
-
-
-
+        <script src="https://preszang.github.io/media/js/index.js"></script>
+        
+</body>
 </html>
