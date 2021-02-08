@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>关于软件测试和软件测试人员 | 霜序五</title>
+<title>使用yagmail发送邮件，就几行代码 | 霜序五</title>
 
 <link rel="shortcut icon" href="https://preszang.github.io/favicon.ico?v=1612774371273">
 
@@ -202,81 +202,47 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    关于软件测试和软件测试人员
+                    使用yagmail发送邮件，就几行代码
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
                         · 2021-02-08 ·
                     </time>
                     
-                        <a href="https://preszang.github.io/tag/ruan-jian-ce-shi/" class="post-tags">
-                            # 软件测试
+                        <a href="https://preszang.github.io/tag/python/" class="post-tags">
+                            # python
                         </a>
                     
                 </div>
                 <div class="post-content">
-                    <h4 id="一-软件测试人员应该居安思危">一、软件测试人员应该居安思危</h4>
-<ol>
-<li>身为测试人员，虽然我们平常的工作相对比较安逸。 但是千万不能温水煮青蛙。</li>
-<li>应该自强不息， 要像开发人员一样， 不断学习，提高自己的编程水平。</li>
-</ol>
-<h4 id="二-测试人员应该比开发人员更熟悉业务需求">二、测试人员应该比开发人员更熟悉业务需求</h4>
-<pre><code>1. 测试人员的水平主要体现在测试用例的设计上。 要设计出全面，覆盖广的测试用例，需要测试人员对自己所测试的项目的业务需求非常熟悉，甚至要比开发人员还要熟悉。
-2. 这些业务知识非常有用的，学习起来比较有激情。
-3. 要熟读功能需求文档， 任何有疑问的地方都要去和PM确认。
-4. 把自己当成最终用户， 经常使用自己所测试的软件。模拟用户的行为。
-5. 熟记软件的每个功能。
+                    <blockquote>
+<p><code>yagmail</code>可以更简单的来实现自动发邮件功能。</p>
+</blockquote>
+<blockquote>
+<p><code>github</code>项目地址: https://github.com/kootenpv/yagmail</p>
+</blockquote>
+<h5 id="安装">安装</h5>
+<pre><code class="language-python">pip install yagmail
 </code></pre>
-<h4 id="三-学会如何跟开发人员相处">三、学会如何跟开发人员相处</h4>
-<pre><code>1. 测试人员必须跟开发人员密切合作， 所以跟开发人员搞好关系是相当重要的。
-2. 和开发人员成为朋友，熟悉了干啥都方便
-3. 不要打扰开发人员，看到开发在聚精会神写代码的时候，千万不要去打扰人家。 写代码需要集中精力，如果被打扰，就会中断思考。
-4. 集中问问题。把需要问的问题都总结起来， 集中起来问开发，这样能节省大量的时间。
-5. 提好的Bug，不被开发人员烦。如果开发人员看到一个Bug 描述不清楚，还无法重现，他肯定会骂测试人员。 所以测试人员一定要写好Bug，描述精确，简洁，没有歧义，详细简洁的重现步骤，加截图。
+<h5 id="简单例子">简单例子</h5>
+<pre><code class="language-python">import yagmail
+
+# 链接邮箱服务器
+yag = yagmail.SMTP(user=&quot;user@126.com&quot;, password=&quot;1234&quot;, host='smtp.126.com')
+
+#邮箱正文
+contents = ['This is the body, and here is just text http://somedomain/image.png',
+            'You can find an audio file attached.', '/local/path/song.mp3']
+
+# 发送邮件
+yag.send('taaa@126.com', 'subject', contents)
+
+# 给多个用户发送邮件 只需要将接收邮箱 变成一个list即可。
+yag.send(['aa@126.com','bb@qq.com','cc@gmail.com'], 'subject', contents)
+
+# 发送带附件的邮件只需要添加要发送的附件列表即可。
+yag.send('aaaa@126.com', '发送附件', contents, [&quot;d://log.txt&quot;,&quot;d://baidu_img.jpg&quot;])
 </code></pre>
-<h4 id="四-测试人员应该懂一些基本的编程">四、测试人员应该懂一些基本的编程</h4>
-<pre><code>1. 你的产品是用`php` 开发的，那测试人员应该有`php`的入门知识。 如果架构是微服务，那起码要懂得一些`RPC`相关的东西吧。
-2. 你测试web程序，你起码要了解`HTML`、`CSS`、 `Javascript`、` Jquery`吧，否则你测了一两年web程序，都不知道这东西是怎么做的，悲剧了吧。
-3. 只有懂代码你才能和开发人员交流，不被开发鄙视。
-</code></pre>
-<h4 id="五-测试人员搭建开发环境">五、测试人员搭建开发环境</h4>
-<pre><code>1. 项目的代码是最好的学习资料了，我们不能总跟在开发屁股后面做测试，不能老是等开发`build`一个版本后，我们就测试这个版本，开发`commit`了什么代码，测试人员一点都不知道。
-2. 偶尔我们应该了解下产品代码是怎么设计的，了解下开发人员是如何修复bug的。
-3. 说不定编程水平高了，还能帮开发做`code review`。
-4. 使用工具把代码`check out`到本机。 经常看看代码，尤其是经常看看开发修复bug时候提交的代码，事半功倍。
-</code></pre>
-<h4 id="六-写文档是测试人员的核心能力">六、写文档是测试人员的核心能力</h4>
-<pre><code>1. 多写写博客，写写文档，多总结。
-2. 测试后期应该做交叉测试，就是指两个测试工程师，互相交换下测试的项目。 这样做有很多好处。
-3. 有利于找出bug, 测试工程师测久了自己的项目，容易形成眼盲。会对一些Bug熟视无睹。
-4. 有利于知识和业务共享，避免人员离职，请假，造成无人测试的情况。
-5. 测试思想不一样，可以互相找出很多问题
-</code></pre>
-<h4 id="七-测试人员的瓶颈">七、测试人员的瓶颈</h4>
-<ol>
-<li>黑盒测试工作做个两三年，基本上就能掌握测试需要的大部分知识， 很多人就感觉到发展瓶颈了，每天重复测试，学不到东西，很快就会对测试工作失去激情。</li>
-<li>学不到东西，技术水平低下，是测试这个行业最大的毛病。</li>
-<li>如何突破瓶颈？ 我也不知道。</li>
-</ol>
-<h4 id="八-尽量实现自动化">八、尽量实现自动化</h4>
-<pre><code>1. 抽时间尽量把自己的测试工作实现自动化，可以节省测试的时间，提高自己的技术水平，也可以避免老是重复测试，~~也为了更方便的摸鱼~~
-</code></pre>
-<h4 id="九-自动化测试vs手动测试">九、自动化测试VS手动测试</h4>
-<pre><code>1. 自动化是趋势， 只会做手工测试的人，以后肯定会失去竞争力。
-2. 自动化测试的技术和开发用到的技术相差太远。
-3. 努力学习编码，然后用于测试，才是正道
-</code></pre>
-<h4 id="十-优秀的测试人员非常稀少">十、优秀的测试人员非常稀少</h4>
-<pre><code>1. 想把测试做好非常不容易
-2. 优秀的测试人员需要很广的知识面，良好的沟通能力（不但要和开发人员和项目经理打交道，还要跟其他组的人交流）。  
-3. 丰富的测试经验，对测试工作有极大的热情， 耐心。
-4. 还需要测试人员有丰富的业务知识
-5. 还要会写代码。
-</code></pre>
-<h4 id="十一-尽量少用ui自动化测试多使用单元测试接口测试">十一、尽量少用<code>UI</code>自动化测试，多使用单元测试，接口测试</h4>
-<pre><code>1. 能找到`bug`的自动化测试，才是有用的，否则就是个噱头
-2. `UI`自动化测试比较不稳定，对于测试结果的分析也困难。 
-3. 而且`UI`改动也大。 所以应该尽量多做一些底层的的自动化测试，</code></pre>
 
                 </div>
             </article>
@@ -285,8 +251,8 @@
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://preszang.github.io/post/nu-er-qing-xie-rui-wen-ban-ben/" class="post-title gt-a-link">
-                    【女儿情】叶锐文版本
+                <a href="https://preszang.github.io/post/8iH4xT1qu/" class="post-title gt-a-link">
+                    Python 调用钉钉和企业微信机器人发送消息
                 </a>
             </div>
         

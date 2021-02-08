@@ -1,0 +1,1028 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Python 调用钉钉和企业微信机器人发送消息 | 霜序五</title>
+
+<link rel="shortcut icon" href="https://preszang.github.io/favicon.ico?v=1612774371273">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://preszang.github.io/styles/main.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"> -->
+
+<style>
+    hr {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border: 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script> -->
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <style>
+    /* 导航栏样式 */
+    .navbar {
+        position: relative;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -ms-flex-align: center;
+        align-items: center;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        padding: 0.5rem 1rem;
+    }
+
+    .navbar-brand {
+        display: inline-block;
+        padding-top: 0.3125rem;
+        padding-bottom: 0.3125rem;
+        margin-right: 1rem;
+        font-size: 1.25rem;
+        line-height: inherit;
+        white-space: nowrap;
+    }
+
+    .navbar-brand:hover,
+    .navbar-brand:focus {
+        text-decoration: none;
+    }
+
+    .navbar-nav {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+    }
+
+    .navbar-collapse {
+        -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+    .navbar-toggler {
+        padding: 0.25rem 0.75rem;
+        font-size: 1.25rem;
+        line-height: 1;
+        background-color: transparent;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
+    }
+
+    .navbar-toggler:hover,
+    .navbar-toggler:focus {
+        text-decoration: none;
+    }
+
+    @media (min-width: 992px) {
+        .navbar-expand-lg {
+            -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
+            -ms-flex-pack: start;
+            justify-content: flex-start;
+        }
+
+        .navbar-expand-lg .navbar-nav {
+            -ms-flex-direction: row;
+            flex-direction: row;
+        }
+
+        .navbar-expand-lg .navbar-collapse {
+            display: -ms-flexbox !important;
+            display: flex !important;
+            -ms-flex-preferred-size: auto;
+            flex-basis: auto;
+        }
+
+        .navbar-expand-lg .navbar-toggler {
+            display: none;
+        }
+    }
+
+    @media (max-width: 991px) {
+        #navbarSupportedContent {
+            display: none;
+        }
+    }
+</style>
+<nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            霜序五
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+            <div class="nav-item">
+                
+                <a href="/" class="menu gt-a-link">
+                    首页
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/archives" class="menu gt-a-link">
+                    归档
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/tags" class="menu gt-a-link">
+                    标签
+                </a>
+                
+            </div>
+            
+            <div class="nav-item">
+                
+                <a href="/post/about" class="menu gt-a-link">
+                    关于
+                </a>
+                
+            </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1612774371273"
+                action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+<script>
+    /* 移动端导航栏展开/收起切换 */
+    document.getElementById('changeNavbar').onclick = function () {
+        var element = document.getElementById('navbarSupportedContent');
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+</script>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Python 调用钉钉和企业微信机器人发送消息
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2021-02-08 ·
+                    </time>
+                    
+                        <a href="https://preszang.github.io/tag/python/" class="post-tags">
+                            # python
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="python-调用钉钉和企业企业微信机器人发送消息">Python 调用钉钉和企业企业微信机器人发送消息</h2>
+<h3 id="企业微信">企业微信</h3>
+<blockquote>
+<p>在终端某个群组添加机器人之后，可以获取到<code>webhook</code>地址，然后开发者用户按以下说明构造post data向这个地址发起HTTP POST 请求，即可实现给该群组发送消息。特别特别要注意：一定要保护好机器人的<code>webhook</code>地址，避免泄漏！</p>
+</blockquote>
+<p>以下是用 python 往群组推送文本消息的示例（注意要将<code>url</code> 替换成你的机器人<code>webhook</code>地址）：</p>
+<pre><code class="language-python">import json
+import requests
+
+# 向企业微信机器人发消息
+def sendQyWechat(msg):
+    token = '这是token'
+    url = f'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key={token}'
+    data = {&quot;msgtype&quot;: &quot;text&quot;, &quot;text&quot;: {&quot;content&quot;: msg}}
+    res = requests.post(url, json.dumps(data))
+    res.encoding = 'utf-8'
+    return res.text
+</code></pre>
+<ul>
+<li>
+<p>当前自定义机器人支持文本（text）、markdown（markdown）两种消息类型。</p>
+</li>
+<li>
+<p>每个机器人发送的消息不能超过 20 条/分钟。</p>
+</li>
+</ul>
+<h4 id="消息类型和数据格式">消息类型和数据格式</h4>
+<h5 id="文本类型">文本类型</h5>
+<pre><code class="language-json">{
+  &quot;msgtype&quot;: &quot;text&quot;,
+  &quot;text&quot;: {
+    &quot;content&quot;: &quot;广州今日天气：29度，大部分多云，降雨概率：60%&quot;,
+    &quot;mentioned_list&quot;: [&quot;wangqing&quot;, &quot;@all&quot;],
+    &quot;mentioned_mobile_list&quot;: [&quot;13800001111&quot;, &quot;@all&quot;]
+  }
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>是否必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>msgtype</code></td>
+<td>是</td>
+<td>消息类型，此时固定为<code>text</code></td>
+</tr>
+<tr>
+<td><code>content</code></td>
+<td>是</td>
+<td>文本内容，最长不超过 2048 个字节，必须是<code>utf8</code>编码</td>
+</tr>
+<tr>
+<td><code>mentioned_list</code></td>
+<td>否</td>
+<td><code>userid</code>的列表，提醒群中的指定成员(@某个成员)，@all 表示提醒所有人，如果开发者获取不到<code>userid</code>，可以使用<code>mentioned_mobile_list</code></td>
+</tr>
+<tr>
+<td><code>mentioned_mobile_list</code></td>
+<td>否</td>
+<td>手机号列表，提醒手机号对应的群成员(@某个成员)，@all 表示提醒所有人</td>
+</tr>
+</tbody>
+</table>
+<figure data-type="image" tabindex="1"><img src="https://p.qpic.cn/pic_wework/220922847/2325e72fe7c62f371e828acf452e08a60bd20cf4402516af/0" alt="img" loading="lazy"></figure>
+<h5 id="markdown-类型">markdown 类型</h5>
+<pre><code class="language-json">{
+  &quot;msgtype&quot;: &quot;markdown&quot;,
+  &quot;markdown&quot;: {
+    &quot;content&quot;: &quot;实时新增用户反馈&lt;font color=\&quot;warning\&quot;&gt;132例&lt;/font&gt;，请相关同事注意。\n         &gt;类型:&lt;font color=\&quot;comment\&quot;&gt;用户反馈&lt;/font&gt; \n         &gt;普通用户反馈:&lt;font color=\&quot;comment\&quot;&gt;117例&lt;/font&gt; \n         &gt;VIP用户反馈:&lt;font color=\&quot;comment\&quot;&gt;15例&lt;/font&gt;&quot;
+  }
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>是否必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>msgtype</code></td>
+<td>是</td>
+<td>消息类型，此时固定为<code>markdown</code></td>
+</tr>
+<tr>
+<td><code>content</code></td>
+<td>是</td>
+<td><code>markdown</code>内容，最长不超过 4096 个字节，必须是<code>utf8</code>编码</td>
+</tr>
+</tbody>
+</table>
+<figure data-type="image" tabindex="2"><img src="https://p.qpic.cn/pic_wework/3887590517/1e18b50e1f1517a6328199454b42c9501fe22d7ddcc2457d/0" alt="img" loading="lazy"></figure>
+<p>目前支持的 markdown 语法是如下的子集：</p>
+<ol>
+<li>
+<p>标题 （支持 1 至 6 级标题，注意#与文字中间要有空格）</p>
+<pre><code class="language-markdown"># 标题一
+
+## 标题二
+
+### 标题三
+
+#### 标题四
+
+##### 标题五
+
+###### 标题六
+</code></pre>
+</li>
+<li>
+<p>加粗</p>
+<pre><code class="language-markdown">**bold**
+</code></pre>
+</li>
+<li>
+<p>链接</p>
+<pre><code class="language-markdown">[这是一个链接](http://work.weixin.qq.com/api/doc)
+</code></pre>
+</li>
+<li>
+<p>行内代码段（暂不支持跨行）</p>
+<pre><code class="language-markdown">`code`
+</code></pre>
+</li>
+<li>
+<p>引用</p>
+<pre><code class="language-markdown">&gt; 引用文字
+</code></pre>
+</li>
+<li>
+<p>字体颜色(只支持 3 种内置颜色)</p>
+<pre><code class="language-markdown">&lt;font color=&quot;info&quot;&gt;绿色&lt;/font&gt;
+&lt;font color=&quot;comment&quot;&gt;灰色&lt;/font&gt;
+&lt;font color=&quot;warning&quot;&gt;橙红色&lt;/font&gt;
+</code></pre>
+</li>
+</ol>
+<h5 id="图片类型">图片类型</h5>
+<pre><code class="language-json">{
+  &quot;msgtype&quot;: &quot;image&quot;,
+  &quot;image&quot;: {
+    &quot;base64&quot;: &quot;DATA&quot;,
+    &quot;md5&quot;: &quot;MD5&quot;
+  }
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>是否必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>msgtype</code></td>
+<td>是</td>
+<td>消息类型，此时固定为 image</td>
+</tr>
+<tr>
+<td><code>base64</code></td>
+<td>是</td>
+<td>图片内容的<code>base64</code>编码</td>
+</tr>
+<tr>
+<td><code>md5</code></td>
+<td>是</td>
+<td>图片内容（<code>base64</code>编码前）的<code>md5</code>值</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注：图片（<code>base64</code>编码前）最大不能超过<code>2M</code>，支持<code>JPG</code>,<code>PNG</code>格式</p>
+</blockquote>
+<figure data-type="image" tabindex="3"><img src="http://p.qpic.cn/pic_wework/2882333867/6b6d7c66fb1b8cbecf9e3a89ad87b6ef135d3c140496be31/0" alt="img" loading="lazy"></figure>
+<h5 id="图文类型">图文类型</h5>
+<pre><code class="language-json">{
+  &quot;msgtype&quot;: &quot;news&quot;,
+  &quot;news&quot;: {
+    &quot;articles&quot;: [
+      {
+        &quot;title&quot;: &quot;中秋节礼品领取&quot;,
+        &quot;description&quot;: &quot;今年中秋节公司有豪礼相送&quot;,
+        &quot;url&quot;: &quot;URL&quot;,
+        &quot;picurl&quot;: &quot;http://res.mail.qq.com/node/ww/wwopenmng/images/independent/doc/test_pic_msg1.png&quot;
+      }
+    ]
+  }
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>是否必填</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>msgtype</code></td>
+<td>是</td>
+<td>消息类型，此时固定为 news</td>
+</tr>
+<tr>
+<td><code>articles</code></td>
+<td>是</td>
+<td>图文消息，一个图文消息支持 1 到 8 条图文</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>是</td>
+<td>标题，不超过 128 个字节，超过会自动截断</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>否</td>
+<td>描述，不超过 512 个字节，超过会自动截断</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>是</td>
+<td>点击后跳转的链接。</td>
+</tr>
+<tr>
+<td><code>picurl</code></td>
+<td>否</td>
+<td>图文消息的图片链接，支持<code>JPG</code>、<code>PNG</code>格式，较好的效果为大图 1068<em>455，小图 150</em>150。</td>
+</tr>
+</tbody>
+</table>
+<figure data-type="image" tabindex="4"><img src="http://p.qpic.cn/pic_wework/3634058781/8187918cc7b9ba346403e2f42b1b7bbf9c5889067ac6b227/0" alt="img" loading="lazy"></figure>
+<h3 id="钉钉">钉钉</h3>
+<blockquote>
+<p>获取自定义机器人``webhook`</p>
+</blockquote>
+<ol>
+<li>
+<p>在机器人管理页面选择“自定义”机器人，输入机器人名字并选择要发送消息的群，同时可以为机器人设置机器人头像。</p>
+</li>
+<li>
+<p>完成必要的安全设置（至少选择一种），勾选 我已阅读并同意《自定义机器人服务及免责条款》，点击“完成”。安全设置目前有3种方式，设置说明见下文介绍。</p>
+</li>
+<li>
+<p>完成安全设置后，复制出机器人的<code>Webhook</code>地址，可用于向这个群发送消息</p>
+</li>
+</ol>
+<pre><code class="language-python">import json
+import requests
+
+# 向钉钉机器人发消息(安全设置为加签)
+def sendDingDing(msg):
+    token = '这是token'
+    timeStamp, sign = makeDingDingRobotSign()
+    url = f'https://oapi.dingtalk.com/robot/send?access_token={token}&amp;timestamp={timeStamp}&amp;sign={sign}'
+    headers = {'Content-Type': 'application/json'}
+    data = {&quot;msgtype&quot;: &quot;text&quot;, &quot;text&quot;: {&quot;content&quot;: msg}}
+    res = requests.post(url, json.dumps(data), headers=headers)
+    res.encoding = 'utf-8'
+    return res.text
+</code></pre>
+<h4 id="安全设置">安全设置</h4>
+<p>安全设置目前有3种方式：</p>
+<h5 id="方式一自定义关键词">方式一，自定义关键词</h5>
+<p>最多可以设置10个关键词，消息中至少包含其中1个关键词才可以发送成功。</p>
+<p>例如：添加了一个自定义关键词：监控报警</p>
+<p>则这个机器人所发送的消息，必须包含 监控报警 这个词，才能发送成功。</p>
+<h5 id="方式二加签">方式二，加签</h5>
+<ol>
+<li>把<code>timestamp+&quot;\n&quot;+密钥</code>当做签名字符串，使用<code>HmacSHA256</code>算法计算签名，然后进行<code>Base64 encode</code>，最后再把签名参数再进行<code>urlEncode</code>，得到最终的签名（需要使用<code>UTF-8</code>字符集）。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>timestamp</code></td>
+<td>当前时间戳，单位是毫秒，与请求调用时间误差不能超过1小时</td>
+</tr>
+<tr>
+<td><code>secret</code></td>
+<td>密钥，机器人安全设置页面，加签一栏下面显示的SEC开头的字符串</td>
+</tr>
+</tbody>
+</table>
+<p><code>python3</code>生成签名和时间戳示例</p>
+<pre><code class="language-python">import base64
+import hashlib
+import hmac
+import time
+import urllib
+
+# 生成钉钉机器人的签名和时间戳
+def makeDingDingRobotSign():
+    signKey = '这是secret'
+    timeStamp = int(round(time.time() * 1000))
+    key = signKey.encode(&quot;utf-8&quot;)
+    preSignStr = f'{timeStamp}\n{signKey}'.encode(&quot;utf-8&quot;)
+    hmacStr = hmac.new(key, preSignStr, digestmod=hashlib.sha256).digest()
+    base64Str = base64.b64encode(hmacStr)
+    sign = urllib.parse.quote_plus(base64Str)
+    return timeStamp, sign
+</code></pre>
+<ol start="2">
+<li>把<code>timestamp</code>和第一步得到的签名值拼接到URL中。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>timestamp</code></td>
+<td>第一步使用到的时间戳</td>
+</tr>
+<tr>
+<td><code>sign</code></td>
+<td>第一步得到的签名值</td>
+</tr>
+</tbody>
+</table>
+<h5 id="方式三ip地址段">方式三，<code>IP地址（段）</code></h5>
+<blockquote>
+<p>设定后，只有来自<code>IP</code>地址范围内的请求才会被正常处理。支持两种设置方式：<code>IP</code>、<code>IP</code>段，暂不支持<code>IPv6</code>地址白名单，格式如下:</p>
+</blockquote>
+<figure data-type="image" tabindex="5"><img src="https://dingtalkdoc.oss-cn-beijing.aliyuncs.com/images/0.0.172/1572524017383-1e973d34-f85b-4d82-a997-42637791f5a0.png" alt="image.png" loading="lazy"></figure>
+<p>注意：安全设置的上述三种方式，需要至少设置其中一种，以进行安全保护。校验不通过的消息将会发送失败，错误如下：</p>
+<pre><code class="language-json">//消息内容中不包含任何关键词
+{
+    &quot;errcode&quot;: 310000,
+    &quot;errmsg&quot;: &quot;keywords not in content&quot;
+}
+</code></pre>
+<pre><code class="language-json">//timestamp 无效
+{
+    &quot;errcode&quot;: 310000,
+    &quot;errmsg&quot;: &quot;invalid timestamp&quot;
+}
+</code></pre>
+<pre><code class="language-json">//签名不匹配
+{
+    &quot;errcode&quot;: 310000,
+    &quot;errmsg&quot;: &quot;sign not match&quot;
+}
+</code></pre>
+<pre><code class="language-json">//IP地址不在白名单
+{
+    &quot;errcode&quot;: 310000,
+    &quot;errmsg&quot;: &quot;ip X.X.X.X not in whitelist&quot;
+}
+</code></pre>
+<h4 id="消息类型及数据格式">消息类型及数据格式</h4>
+<h5 id="text类型">text类型</h5>
+<pre><code class="language-json">{
+    &quot;msgtype&quot;: &quot;text&quot;,
+    &quot;text&quot;: {
+        &quot;content&quot;: &quot;我就是我, 是不一样的烟火@156xxxx8827&quot;
+    },
+    &quot;at&quot;: {
+        &quot;atMobiles&quot;: [&quot;156xxxx8827&quot;, &quot;189xxxx8325&quot;],
+        &quot;isAtAll&quot;: false
+    }
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>msgtype</code></td>
+<td><code>String</code></td>
+<td>是</td>
+<td>消息类型，此时固定为：text</td>
+</tr>
+<tr>
+<td><code>content</code></td>
+<td><code>String</code></td>
+<td>是</td>
+<td>消息内容</td>
+</tr>
+<tr>
+<td><code>atMobiles</code></td>
+<td><code>Array</code></td>
+<td>否</td>
+<td>被@人的手机号(在content里添加@人的手机号)</td>
+</tr>
+<tr>
+<td><code>isAtAll</code></td>
+<td><code>bool</code></td>
+<td>否</td>
+<td>@所有人时：true，否则为：false</td>
+</tr>
+</tbody>
+</table>
+<figure data-type="image" tabindex="6"><img src="https://img.alicdn.com/tfs/TB1jFpqaRxRMKJjy0FdXXaifFXa-497-133.png" alt="img" loading="lazy"></figure>
+<h5 id="link类型">link类型</h5>
+<pre><code class="language-json">{
+    &quot;msgtype&quot;: &quot;link&quot;,
+    &quot;link&quot;: {
+        &quot;text&quot;:
+        &quot;这个即将发布的新版本，创始人xx称它为“红树林”。 而在此之前，每当面临重大升级，产品经理们都会取一个应景的代号，这一次，为什么是“红树林”？&quot;,
+        &quot;title&quot;:
+        &quot;时代的火车向前开&quot;,
+        &quot;picUrl&quot;:
+        &quot;&quot;,
+        &quot;messageUrl&quot;:
+        &quot;https://www.dingtalk.com/s?__biz=MzA4NjMwMTA2Ng==&amp;mid=2650316842&amp;idx=1&amp;sn=60da3ea2b29f1dcc43a7c8e4a7c97a16&amp;scene=2&amp;srcid=09189AnRJEdIiWVaKltFzNTw&amp;from=timeline&amp;isappinstalled=0&amp;key=&amp;ascene=2&amp;uin=&amp;devicetype=android-23&amp;version=26031933&amp;nettype=WIFI&quot;
+    }
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>参数类型</th>
+<th>必须</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>msgtype</code></td>
+<td><code>String</code></td>
+<td>是</td>
+<td>消息类型，此时固定为：link</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>String</code></td>
+<td>是</td>
+<td>消息标题</td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td><code>String</code></td>
+<td>是</td>
+<td>消息内容。如果太长只会部分展示</td>
+</tr>
+<tr>
+<td><code>messageUrl</code></td>
+<td><code>String</code></td>
+<td>是</td>
+<td>点击消息跳转的URL</td>
+</tr>
+<tr>
+<td><code>picUrl</code></td>
+<td><code>String</code></td>
+<td>否</td>
+<td>图片URL</td>
+</tr>
+</tbody>
+</table>
+<figure data-type="image" tabindex="7"><img src="https://dingtalkdoc.oss-cn-beijing.aliyuncs.com/images/0.0.172/1570679827267-6243216b-d1c3-48b7-9b1e-0f0b4211b50b.png" alt="image.png" loading="lazy"></figure>
+<h5 id="markdown类型">markdown类型</h5>
+<pre><code class="language-json">{
+    &quot;msgtype&quot;: &quot;markdown&quot;,
+    &quot;markdown&quot;: {
+        &quot;title&quot;:
+        &quot;杭州天气&quot;,
+        &quot;text&quot;:
+        &quot;#### 杭州天气 @156xxxx8827\n&quot; + &quot;&gt; 9度，西北风1级，空气良89，相对温度73%\n\n&quot; +
+        &quot;&gt; ![screenshot](https://gw.alicdn.com/tfs/TB1ut3xxbsrBKNjSZFpXXcXhFXa-846-786.png)\n&quot;
+        + &quot;&gt; ###### 10点20分发布 [天气](http://www.thinkpage.cn/) \n&quot;
+    },
+    &quot;at&quot;: {
+        &quot;atMobiles&quot;: [&quot;156xxxx8827&quot;, &quot;189xxxx8325&quot;],
+        &quot;isAtAll&quot;: false
+    }
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必选</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>msgtype</code></td>
+<td><code>String</code></td>
+<td>是</td>
+<td>此消息类型为固定markdown</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>String</code></td>
+<td>是</td>
+<td>首屏会话透出的展示内容</td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td><code>String</code></td>
+<td>是</td>
+<td>markdown格式的消息</td>
+</tr>
+<tr>
+<td><code>atMobiles</code></td>
+<td><code>Array</code></td>
+<td>否</td>
+<td>被@人的手机号(在text内容里要有@手机号)</td>
+</tr>
+<tr>
+<td><code>isAtAll</code></td>
+<td><code>bool</code></td>
+<td>否</td>
+<td>@所有人时：true，否则为：false</td>
+</tr>
+</tbody>
+</table>
+<figure data-type="image" tabindex="8"><img src="https://img.alicdn.com/tfs/TB1yL3taUgQMeJjy0FeXXXOEVXa-492-380.png" alt="img" loading="lazy"></figure>
+<p>说明：目前只支持<code>md</code>语法的子集，具体支持的元素如下</p>
+<pre><code class="language-markdown"># 一级标题
+## 二级标题
+### 三级标题
+#### 四级标题
+##### 五级标题
+###### 六级标题
+</code></pre>
+<pre><code class="language-markdown">&gt; A man who stands for nothing will fall for anything.
+</code></pre>
+<pre><code class="language-markdown">**bold**
+</code></pre>
+<pre><code class="language-markdown">*italic*
+</code></pre>
+<pre><code class="language-markdown">[this is a link](http://name.com)
+</code></pre>
+<pre><code class="language-markdown">![](http://name.com/pic.jpg)
+</code></pre>
+<pre><code class="language-markdown">- item1
+- item2
+</code></pre>
+<pre><code class="language-markdown">1. item1
+2. item2
+</code></pre>
+<h5 id="整体跳转actioncard类型">整体跳转ActionCard类型</h5>
+<pre><code class="language-json">{
+    &quot;actionCard&quot;: {
+        &quot;title&quot;: &quot;乔布斯 20 年前想打造一间苹果咖啡厅，而它正是 Apple Store 的前身&quot;,
+        &quot;text&quot;:
+        &quot;![screenshot](@lADOpwk3K80C0M0FoA)   ### 乔布斯 20 年前想打造的苹果咖啡厅   Apple Store 的设计正从原来满满的科技感走向生活化，而其生活化的走向其实可以追溯到 20 年前苹果一个建立咖啡馆的计划&quot;,
+        &quot;hideAvatar&quot;: &quot;0&quot;,
+        &quot;btnOrientation&quot;: &quot;0&quot;,
+        &quot;singleTitle&quot;: &quot;阅读全文&quot;,
+        &quot;singleURL&quot;: &quot;https://www.dingtalk.com/&quot;
+    },
+    &quot;msgtype&quot;: &quot;actionCard&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必选</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>msgtype</code></td>
+<td>string</td>
+<td>true</td>
+<td>此消息类型为固定<code>actionCard</code></td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>string</td>
+<td>true</td>
+<td>首屏会话透出的展示内容</td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td>string</td>
+<td>true</td>
+<td><code>markdown</code>格式的消息</td>
+</tr>
+<tr>
+<td><code>singleTitle</code></td>
+<td>string</td>
+<td>true</td>
+<td>单个按钮的方案。(设置此项和<code>singleUR</code>后<code>btns</code>无效)</td>
+</tr>
+<tr>
+<td><code>singleURL</code></td>
+<td>string</td>
+<td>true</td>
+<td>点击<code>singleTitle</code>按钮触发的URL</td>
+</tr>
+<tr>
+<td><code>btnOrientation</code></td>
+<td>string</td>
+<td>false</td>
+<td>0-按钮竖直排列，1-按钮横向排列</td>
+</tr>
+<tr>
+<td><code>hideAvatar</code></td>
+<td>string</td>
+<td>false</td>
+<td>0-正常发消息者头像，1-隐藏发消息者头像</td>
+</tr>
+</tbody>
+</table>
+<p>通过整体跳转<code>ActionCard</code>类型消息发出的消息样式如下：</p>
+<p><img src="https://img.alicdn.com/tfs/TB1ehWCiBfH8KJjy1XbXXbLdXXa-334-218.png" alt="img" loading="lazy"><img src="https://img.alicdn.com/tfs/TB1nhWCiBfH8KJjy1XbXXbLdXXa-547-379.png" alt="img" loading="lazy"></p>
+<h5 id="独立跳转actioncard类型">独立跳转<code>ActionCard</code>类型</h5>
+<pre><code class="language-json">{
+    &quot;actionCard&quot;: {
+        &quot;title&quot;:
+        &quot;乔布斯 20 年前想打造一间苹果咖啡厅，而它正是 Apple Store 的前身&quot;,
+        &quot;text&quot;:
+        &quot;![screenshot](@lADOpwk3K80C0M0FoA)### 乔布斯20 年前想打造的苹果咖啡厅Apple Store的设计正从原来满满的科技感走向生活化，而其生活化的走向其实可以追溯到 20 年前苹果一个建立咖啡馆的计划&quot;,
+        &quot;hideAvatar&quot;:
+        &quot;0&quot;,
+        &quot;btnOrientation&quot;:
+        &quot;0&quot;,
+        &quot;btns&quot;: [{
+            &quot;title&quot;: &quot;内容不错&quot;,
+            &quot;actionURL&quot;: &quot;https://www.dingtalk.com/&quot;
+        }, {
+            &quot;title&quot;: &quot;不感兴趣&quot;,
+            &quot;actionURL&quot;: &quot;https://www.dingtalk.com/&quot;
+        }]
+    },
+    &quot;msgtype&quot;: &quot;actionCard&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必选</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>msgtype</code></td>
+<td>string</td>
+<td>true</td>
+<td>此消息类型为固定<code>actionCard</code></td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>string</td>
+<td>true</td>
+<td>首屏会话透出的展示内容</td>
+</tr>
+<tr>
+<td><code>text</code></td>
+<td>string</td>
+<td>true</td>
+<td>markdown格式的消息</td>
+</tr>
+<tr>
+<td><code>btns</code></td>
+<td>array</td>
+<td>true</td>
+<td>按钮的信息：title-按钮方案，<code>actionURL</code>-点击按钮触发的URL</td>
+</tr>
+<tr>
+<td><code>btnOrientation</code></td>
+<td>string</td>
+<td>false</td>
+<td>0-按钮竖直排列，1-按钮横向排列</td>
+</tr>
+<tr>
+<td><code>hideAvatar</code></td>
+<td>string</td>
+<td>false</td>
+<td>0-正常发消息者头像，1-隐藏发消息者头像</td>
+</tr>
+</tbody>
+</table>
+<p>通过独立跳转<code>ActionCard</code>类型消息发出的消息样式如下：</p>
+<figure data-type="image" tabindex="9"><img src="https://dingtalkdoc.oss-cn-beijing.aliyuncs.com/images/0.0.172/1570679939723-c1fb7861-5bcb-4c30-9e1b-033932f6b72f.png" alt="image.png" loading="lazy"></figure>
+<h5 id="feedcard类型"><code>FeedCard</code>类型</h5>
+<pre><code class="language-json">{
+    &quot;feedCard&quot;: {
+        &quot;links&quot;: [{
+            &quot;title&quot;: &quot;时代的火车向前开&quot;,
+            &quot;messageURL&quot;:
+            &quot;https://www.dingtalk.com/s?__biz=MzA4NjMwMTA2Ng==&amp;mid=2650316842&amp;idx=1&amp;sn=60da3ea2b29f1dcc43a7c8e4a7c97a16&amp;scene=2&amp;srcid=09189AnRJEdIiWVaKltFzNTw&amp;from=timeline&amp;isappinstalled=0&amp;key=&amp;ascene=2&amp;uin=&amp;devicetype=android-23&amp;version=26031933&amp;nettype=WIFI&quot;,
+            &quot;picURL&quot;: &quot;https://www.dingtalk.com/&quot;
+        }, {
+            &quot;title&quot;: &quot;时代的火车向前开2&quot;,
+            &quot;messageURL&quot;:
+            &quot;https://www.dingtalk.com/s?__biz=MzA4NjMwMTA2Ng==&amp;mid=2650316842&amp;idx=1&amp;sn=60da3ea2b29f1dcc43a7c8e4a7c97a16&amp;scene=2&amp;srcid=09189AnRJEdIiWVaKltFzNTw&amp;from=timeline&amp;isappinstalled=0&amp;key=&amp;ascene=2&amp;uin=&amp;devicetype=android-23&amp;version=26031933&amp;nettype=WIFI&quot;,
+            &quot;picURL&quot;: &quot;https://www.dingtalk.com/&quot;
+        }]
+    },
+    &quot;msgtype&quot;: &quot;feedCard&quot;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必选</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>msgtype</code></td>
+<td>string</td>
+<td>true</td>
+<td>此消息类型为固定<code>feedCard</code></td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>string</td>
+<td>true</td>
+<td>单条信息文本</td>
+</tr>
+<tr>
+<td><code>messageURL</code></td>
+<td>string</td>
+<td>true</td>
+<td>点击单条信息到跳转链接</td>
+</tr>
+<tr>
+<td><code>picURL</code></td>
+<td>string</td>
+<td>true</td>
+<td>单条信息后面图片的URL</td>
+</tr>
+</tbody>
+</table>
+<p>通过<code>FeedCard</code>类型消息发出的消息样式如下：</p>
+<figure data-type="image" tabindex="10"><img src="http://img01.taobaocdn.com/top/i1/LB1R2evQVXXXXXDapXXXXXXXXXX" alt="img" loading="lazy"></figure>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://preszang.github.io/post/KST7ZTnOT/" class="post-title gt-a-link">
+                     一个测试dubbo接口的小工具
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">啦啦啦啦啦啦啦啦啦啦啦啦</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        是谁来自山川湖海，却囿于昼夜、厨房与爱。
+    </div>
+
+<!--    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://preszang.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div> -->
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

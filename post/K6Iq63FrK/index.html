@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>关于软件测试和软件测试人员 | 霜序五</title>
+<title>Python Faker库常用操作 函数 | 霜序五</title>
 
 <link rel="shortcut icon" href="https://preszang.github.io/favicon.ico?v=1612774371273">
 
@@ -202,81 +202,169 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    关于软件测试和软件测试人员
+                    Python Faker库常用操作 函数
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
                         · 2021-02-08 ·
                     </time>
                     
-                        <a href="https://preszang.github.io/tag/ruan-jian-ce-shi/" class="post-tags">
-                            # 软件测试
+                        <a href="https://preszang.github.io/tag/python/" class="post-tags">
+                            # python
                         </a>
                     
                 </div>
                 <div class="post-content">
-                    <h4 id="一-软件测试人员应该居安思危">一、软件测试人员应该居安思危</h4>
+                    <h1 id="python-faker-库常用操作-函数">Python Faker 库常用操作 函数</h1>
+<blockquote>
+<p>Python Faker 库常用操作 函数</p>
+</blockquote>
 <ol>
-<li>身为测试人员，虽然我们平常的工作相对比较安逸。 但是千万不能温水煮青蛙。</li>
-<li>应该自强不息， 要像开发人员一样， 不断学习，提高自己的编程水平。</li>
+<li>country()：国家</li>
+<li>province()：省份</li>
+<li>city_suffix()：市，县</li>
+<li>district()：区</li>
+<li>street_address()：街道地址</li>
+<li>street_name()：街道名</li>
+<li>street_suffix()：街、路</li>
+<li>country_code()：国家编码</li>
+<li>postcode()：邮编</li>
+<li>geo_coordinate()：地理坐标</li>
+<li>longitude()：经度</li>
+<li>latitude()：纬度</li>
+<li>lexify()：替换所有问号？带有随机事件</li>
+<li>numerify()：生成三位随机数</li>
+<li>random_digit()：生成 0~9 随机数</li>
+<li>random_digit_not_null()：生成 1~9 的随机数</li>
+<li>random_element()：生成随机字母</li>
+<li>random_int()：随机数字，默认 0~9999，可通过 min,max 参数修改</li>
+<li>random_letter()：随机字母</li>
+<li>random_number()：随机数字，参数 digits 设置生成的数字位数</li>
+<li>color_name()：随机颜色名</li>
+<li>hex_color()：随机 HEX 颜色</li>
+<li>rgb_color()：随机 RGB 颜色</li>
+<li>safe_color_name()：随机安全色名</li>
+<li>safe_hex_color()：随机安全 HEX 颜色</li>
+<li>bs()：随机公司服务名</li>
+<li>company()：随机公司名（长）</li>
+<li>company_prefix()：随机公司名（短）</li>
+<li>company_suffix()：公司性质</li>
+<li>credit_card_expire()：随机信用卡到期日</li>
+<li>credit_card_full()：生成完整信用卡信息</li>
+<li>credit_card_number()：信用卡号</li>
+<li>credit_card_provider()：信用卡类型</li>
+<li>credit_card_security_code()：信用卡安全码</li>
+<li>currency_code()：货币编码</li>
+<li>am_pm()：AM/PM</li>
+<li>century()：随机世纪</li>
+<li>date()：随机日期</li>
+<li>date_between()：随机生成指定范围内日期，参数：start_date，end_date</li>
+<li>date_between_dates()：随机生成指定范围内日期，用法同上</li>
+<li>date_object()：随机生产从 1970-1-1 到指定日期的随机日期。</li>
+<li>date_this_month()：</li>
+<li>date_this_year()：</li>
+<li>date_time()：随机生成指定时间（1970 年 1 月 1 日至今）</li>
+<li>date_time_ad()：生成公元 1 年到现在的随机时间</li>
+<li>date_time_between()：用法同 dates</li>
+<li>future_date()：未来日期</li>
+<li>future_datetime()：未来时间</li>
+<li>month()：随机月份</li>
+<li>month_name()：随机月份（英文）</li>
+<li>past_date()：随机生成已经过去的日期</li>
+<li>past_datetime()：随机生成已经过去的时间</li>
+<li>time()：随机 24 小时时间</li>
+<li>timedelta()：随机获取时间差</li>
+<li>time_object()：随机 24 小时时间，time 对象</li>
+<li>time_series()：随机 TimeSeries 对象</li>
+<li>timezone()：随机时区</li>
+<li>unix_time()：随机 Unix 时间</li>
+<li>year()：随机年份</li>
+<li>file_extension()：随机文件扩展名</li>
+<li>file_name()：随机文件名（包含扩展名，不包含路径）</li>
+<li>file_path()：随机文件路径（包含文件名，扩展名）</li>
+<li>mime_type()：随机 mime Type</li>
+<li>ascii_company_email()：随机 ASCII 公司邮箱名</li>
+<li>ascii_email()：随机 ASCII 邮箱</li>
+<li>ascii_free_email()：</li>
+<li>ascii_safe_email()：</li>
+<li>company_email()：</li>
+<li>domain_name()：生成域名</li>
+<li>domain_word()：域词(即，不包含后缀)</li>
+<li>email()：</li>
+<li>free_email()：</li>
+<li>free_email_domain()：</li>
+<li>f.safe_email()：安全邮箱</li>
+<li>f.image_url()：随机 URL 地址</li>
+<li>ipv4()：随机 IP4 地址</li>
+<li>ipv6()：随机 IP6 地址</li>
+<li>mac_address()：随机 MAC 地址</li>
+<li>tld()：网址域名后缀</li>
+<li>uri()：随机 URI 地址</li>
+<li>uri_extension()：网址文件后缀</li>
+<li>uri_page()：网址文件（不包含后缀）</li>
+<li>uri_path()：网址文件路径（不包含文件名）</li>
+<li>url()：随机 URL 地址</li>
+<li>user_name()：随机用户名</li>
+<li>isbn10()：随机 ISBN（10 位）</li>
+<li>isbn13()：随机 ISBN（13 位）</li>
+<li>job()：随机职位</li>
+<li>paragraph()：随机生成一个段落</li>
+<li>paragraphs()：随机生成多个段落，通过参数 nb 来控制段落数，返回数组</li>
+<li>sentence()：随机生成一句话</li>
+<li>sentences()：随机生成多句话，与段落类似</li>
+<li>text()：随机生成一篇文章</li>
+<li>word()：随机生成词语</li>
+<li>words()：随机生成多个词语，用法与段落，句子，类似</li>
+<li>binary()：随机生成二进制编码</li>
+<li>boolean()：True/False</li>
+<li>language_code()：随机生成两位语言编码</li>
+<li>locale()：随机生成语言/国际 信息</li>
+<li>md5()：随机生成 MD5</li>
+<li>null_boolean()：NULL/True/False</li>
+<li>password()：随机生成密码,可选参数：length：密码长度；special_chars：是否能使用特殊字符；digits：是否包含数字</li>
+<li>upper_case：是否包含大写字母；lower_case：是否包含小写字母</li>
+<li>sha1()：随机 SHA1</li>
+<li>sha256()：随机 SHA256</li>
+<li>uuid4()：随机 UUID</li>
+<li>first_name()：</li>
+<li>first_name_female()：女性名</li>
+<li>first_name_male()：男性名</li>
+<li>first_romanized_name()：罗马名</li>
+<li>last_name()：</li>
+<li>last_name_female()：女</li>
+<li>last_name_male()：男</li>
+<li>last_romanized_name()：</li>
+<li>name()：随机生成姓名</li>
+<li>name_female()：男性姓名</li>
+<li>name_male()：女性姓名</li>
+<li>romanized_name()：罗马名</li>
+<li>msisdn()：移动台国际用户识别码，即移动用户的 ISDN 号码</li>
+<li>phone_number()：随机生成手机号</li>
+<li>phonenumber_prefix()：随机生成手机号段</li>
+<li>profile()：随机生成档案信息</li>
+<li>simple_profile()：随机生成简单档案信息</li>
+<li>pybool()：</li>
+<li>pydecimal()：</li>
+<li>pydict()：</li>
+<li>pyfloat()：left_digits=2 #生成的整数位数,</li>
+<li>right_digits=1 #生成的小数位数,</li>
+<li>positive=True #是否只有正数</li>
+<li>pyint()：</li>
+<li>pyiterable()</li>
+<li>pylist()</li>
+<li>pyset()</li>
+<li>pystr()</li>
+<li>pystruct()</li>
+<li>pytuple()</li>
+<li>ssn()：生成身份证号</li>
+<li>chrome()：随机生成 Chrome 的浏览器 user_agent 信息</li>
+<li>firefox()：随机生成 FireFox 的浏览器 user_agent 信息</li>
+<li>internet_explorer()：随机生成 IE 的浏览器 user_agent 信息</li>
+<li>opera()：随机生成 Opera 的浏览器 user_agent 信息</li>
+<li>safari()：随机生成 Safari 的浏览器 user_agent 信息</li>
+<li>linux_platform_token()：随机 Linux 信息</li>
+<li>user_agent()：随机 user_agent 信息</li>
 </ol>
-<h4 id="二-测试人员应该比开发人员更熟悉业务需求">二、测试人员应该比开发人员更熟悉业务需求</h4>
-<pre><code>1. 测试人员的水平主要体现在测试用例的设计上。 要设计出全面，覆盖广的测试用例，需要测试人员对自己所测试的项目的业务需求非常熟悉，甚至要比开发人员还要熟悉。
-2. 这些业务知识非常有用的，学习起来比较有激情。
-3. 要熟读功能需求文档， 任何有疑问的地方都要去和PM确认。
-4. 把自己当成最终用户， 经常使用自己所测试的软件。模拟用户的行为。
-5. 熟记软件的每个功能。
-</code></pre>
-<h4 id="三-学会如何跟开发人员相处">三、学会如何跟开发人员相处</h4>
-<pre><code>1. 测试人员必须跟开发人员密切合作， 所以跟开发人员搞好关系是相当重要的。
-2. 和开发人员成为朋友，熟悉了干啥都方便
-3. 不要打扰开发人员，看到开发在聚精会神写代码的时候，千万不要去打扰人家。 写代码需要集中精力，如果被打扰，就会中断思考。
-4. 集中问问题。把需要问的问题都总结起来， 集中起来问开发，这样能节省大量的时间。
-5. 提好的Bug，不被开发人员烦。如果开发人员看到一个Bug 描述不清楚，还无法重现，他肯定会骂测试人员。 所以测试人员一定要写好Bug，描述精确，简洁，没有歧义，详细简洁的重现步骤，加截图。
-</code></pre>
-<h4 id="四-测试人员应该懂一些基本的编程">四、测试人员应该懂一些基本的编程</h4>
-<pre><code>1. 你的产品是用`php` 开发的，那测试人员应该有`php`的入门知识。 如果架构是微服务，那起码要懂得一些`RPC`相关的东西吧。
-2. 你测试web程序，你起码要了解`HTML`、`CSS`、 `Javascript`、` Jquery`吧，否则你测了一两年web程序，都不知道这东西是怎么做的，悲剧了吧。
-3. 只有懂代码你才能和开发人员交流，不被开发鄙视。
-</code></pre>
-<h4 id="五-测试人员搭建开发环境">五、测试人员搭建开发环境</h4>
-<pre><code>1. 项目的代码是最好的学习资料了，我们不能总跟在开发屁股后面做测试，不能老是等开发`build`一个版本后，我们就测试这个版本，开发`commit`了什么代码，测试人员一点都不知道。
-2. 偶尔我们应该了解下产品代码是怎么设计的，了解下开发人员是如何修复bug的。
-3. 说不定编程水平高了，还能帮开发做`code review`。
-4. 使用工具把代码`check out`到本机。 经常看看代码，尤其是经常看看开发修复bug时候提交的代码，事半功倍。
-</code></pre>
-<h4 id="六-写文档是测试人员的核心能力">六、写文档是测试人员的核心能力</h4>
-<pre><code>1. 多写写博客，写写文档，多总结。
-2. 测试后期应该做交叉测试，就是指两个测试工程师，互相交换下测试的项目。 这样做有很多好处。
-3. 有利于找出bug, 测试工程师测久了自己的项目，容易形成眼盲。会对一些Bug熟视无睹。
-4. 有利于知识和业务共享，避免人员离职，请假，造成无人测试的情况。
-5. 测试思想不一样，可以互相找出很多问题
-</code></pre>
-<h4 id="七-测试人员的瓶颈">七、测试人员的瓶颈</h4>
-<ol>
-<li>黑盒测试工作做个两三年，基本上就能掌握测试需要的大部分知识， 很多人就感觉到发展瓶颈了，每天重复测试，学不到东西，很快就会对测试工作失去激情。</li>
-<li>学不到东西，技术水平低下，是测试这个行业最大的毛病。</li>
-<li>如何突破瓶颈？ 我也不知道。</li>
-</ol>
-<h4 id="八-尽量实现自动化">八、尽量实现自动化</h4>
-<pre><code>1. 抽时间尽量把自己的测试工作实现自动化，可以节省测试的时间，提高自己的技术水平，也可以避免老是重复测试，~~也为了更方便的摸鱼~~
-</code></pre>
-<h4 id="九-自动化测试vs手动测试">九、自动化测试VS手动测试</h4>
-<pre><code>1. 自动化是趋势， 只会做手工测试的人，以后肯定会失去竞争力。
-2. 自动化测试的技术和开发用到的技术相差太远。
-3. 努力学习编码，然后用于测试，才是正道
-</code></pre>
-<h4 id="十-优秀的测试人员非常稀少">十、优秀的测试人员非常稀少</h4>
-<pre><code>1. 想把测试做好非常不容易
-2. 优秀的测试人员需要很广的知识面，良好的沟通能力（不但要和开发人员和项目经理打交道，还要跟其他组的人交流）。  
-3. 丰富的测试经验，对测试工作有极大的热情， 耐心。
-4. 还需要测试人员有丰富的业务知识
-5. 还要会写代码。
-</code></pre>
-<h4 id="十一-尽量少用ui自动化测试多使用单元测试接口测试">十一、尽量少用<code>UI</code>自动化测试，多使用单元测试，接口测试</h4>
-<pre><code>1. 能找到`bug`的自动化测试，才是有用的，否则就是个噱头
-2. `UI`自动化测试比较不稳定，对于测试结果的分析也困难。 
-3. 而且`UI`改动也大。 所以应该尽量多做一些底层的的自动化测试，</code></pre>
 
                 </div>
             </article>
@@ -285,8 +373,8 @@
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://preszang.github.io/post/nu-er-qing-xie-rui-wen-ban-ben/" class="post-title gt-a-link">
-                    【女儿情】叶锐文版本
+                <a href="https://preszang.github.io/post/8CoDqKwKu/" class="post-title gt-a-link">
+                    使用yagmail发送邮件，就几行代码
                 </a>
             </div>
         
